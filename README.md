@@ -1,8 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Rishikesh Gharat - Portfolio
+
+This is a modern, minimal professional portfolio website for Rishikesh Gharat, a Full Stack Developer and Computer Science Graduate from New York University. It is built with Next.js, Tailwind CSS, and Framer Motion.
+
+## Features
+
+- **Clean, Minimal Design**: Professional aesthetic with generous whitespace and thoughtful typography
+- **Responsive**: Fully responsive design that works on all devices
+- **Interactive**: Subtle animations and transitions using Framer Motion
+- **SEO Friendly**: SEO optimized with appropriate metadata
+- **Dark Mode Support**: Supports both light and dark themes
+- **Performance Focused**: Optimized for fast loading and good performance metrics
+
+## About Rishikesh
+
+Rishikesh Gharat is a Computer Science graduate student at New York University with experience in:
+- Full Stack Development
+- Cloud Computing (AWS)
+- Data Analysis
+- Machine Learning and AI
+
+## Tech Stack
+
+- **React & Next.js**: For structure, routing, and server-side rendering
+- **TypeScript**: For type safety and better developer experience
+- **Tailwind CSS**: For utility-first styling
+- **Framer Motion**: For smooth animations and micro-interactions
 
 ## Getting Started
 
-First, run the development server:
+First, clone the repository:
+
+```bash
+git clone https://github.com/rishikeshgharat/portfolio.git
+cd portfolio
+```
+
+Install the dependencies:
+
+```bash
+npm install
+# or
+yarn install
+# or
+pnpm install
+```
+
+Run the development server:
 
 ```bash
 npm run dev
@@ -10,27 +53,41 @@ npm run dev
 yarn dev
 # or
 pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Customization
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+To make this portfolio your own:
 
-## Learn More
+1. Update personal information in the components
+   - Edit the text in Hero.tsx, About.tsx, and other components
+   - Add your actual project details in Projects.tsx
+   - Update your skills and services in Skills.tsx
+   - Add your contact information in Contact.tsx
 
-To learn more about Next.js, take a look at the following resources:
+2. Change colors and styling
+   - Main color scheme can be adjusted in globals.css
+   - Component-specific styling can be modified directly within each component file
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3. Add your images
+   - Replace placeholder images in the public directory with your own
+   - Update image references in components accordingly
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Deployment
 
-## Deploy on Vercel
+This portfolio is ready to be deployed on Vercel, Netlify, or any other static hosting platform. For the best experience, it's recommended to use Vercel as it's optimized for Next.js applications.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2Frishikeshgharat%2Fportfolio)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## License
+
+[MIT License](LICENSE)
+
+## Acknowledgements
+
+- Design inspiration from [Adham Dannaway](https://www.adhamdannaway.com/)
+- Built with [Next.js](https://nextjs.org/)
+- Styled with [Tailwind CSS](https://tailwindcss.com/)
+- Animations by [Framer Motion](https://www.framer.com/motion/)
