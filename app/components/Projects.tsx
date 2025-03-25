@@ -12,7 +12,8 @@ const projects = [
     description: 'Fully offline AI code autocompletion tool integrated into VS Code for developer productivity.',
     tags: ['TypeScript', 'Python', 'FastAPI', 'OLLAMA', 'LLM'],
     imageUrl: '/images/code-ai.jpg',
-    period: 'Jan 2025 - Feb 2025'
+    period: 'Jan 2025 - Feb 2025',
+    github: 'https://github.com/Matrix030/LocalPilot'
   },
   {
     id: 2,
@@ -20,7 +21,9 @@ const projects = [
     description: 'ML model to predict candidates personalities through sentiment analysis using Big 5 traits.',
     tags: ['Python', 'NLP', 'Machine Learning', 'Pandas'],
     imageUrl: '/images/ml-personality.jpg',
-    period: 'August 2022 - May 2023'
+    period: 'August 2022 - May 2023',
+    github: 'https://github.com/Matrix030/PersonalityPrediction2',
+    publication: 'https://ltce.in/assets/Final-proceeding-ICRMIR-2023.pdf'
   },
   {
     id: 3,
@@ -28,7 +31,8 @@ const projects = [
     description: 'K-means clustering algorithm to categorize students into performance-based groups.',
     tags: ['Python', 'Numpy', 'Pandas', 'PostgreSQL'],
     imageUrl: '/images/students.jpg',
-    period: 'Jan 2022 - June 2022'
+    period: 'Jan 2022 - June 2022',
+    github: 'https://github.com/Matrix030/Student-Analysis'
   },
   {
     id: 4,
@@ -87,14 +91,27 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0], index: n
           </CardItem>
           
           <div className="flex justify-between items-center mt-8">
-            <CardItem
-              translateZ={20}
-              as={Link}
-              href="#"
-              className="px-4 py-2 rounded-xl text-xs font-normal dark:text-white"
-            >
-              View Details →
-            </CardItem>
+            {project.github ? (
+              <CardItem
+                translateZ={20}
+                as="a"
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-4 py-2 rounded-xl text-xs font-normal dark:text-white"
+              >
+                GitHub →
+              </CardItem>
+            ) : (
+              <CardItem
+                translateZ={20}
+                as={Link}
+                href="#"
+                className="px-4 py-2 rounded-xl text-xs font-normal dark:text-white"
+              >
+                View Details →
+              </CardItem>
+            )}
             
             <CardItem
               translateZ={20}
@@ -127,7 +144,7 @@ const Projects = () => {
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             <span className="text-gradient">My Projects</span>
           </h2>
-          <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+          <p className="text-white max-w-2xl mx-auto">
             These projects showcase my skills in full-stack development, machine learning, and data analysis.
           </p>
         </motion.div>
@@ -145,7 +162,7 @@ const Projects = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.3 }}
         >
-          <h3 className="text-2xl font-semibold mb-6">Publications</h3>
+          <h3 className="text-2xl font-semibold mb-6 text-white">Publications</h3>
           <CardContainer className="inline-block">
             <CardBody className="bg-gray-50 dark:bg-black p-8 rounded-xl shadow-md dark:hover:shadow-2xl dark:hover:shadow-purple-500/[0.1] border border-black/[0.1] dark:border-white/[0.2]">
               <CardItem translateZ={20} className="font-bold text-xl mb-3 text-neutral-600 dark:text-white">
@@ -155,13 +172,16 @@ const Projects = () => {
                 International Conference on Recent Trends on Multidisciplinary Research and Innovation (ICRMIR – 2023)
               </CardItem>
               <CardItem translateZ={60} className="mt-6">
-                <motion.button
+                <motion.a
+                  href="https://ltce.in/assets/Final-proceeding-ICRMIR-2023.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   className="px-4 py-2 rounded-xl bg-black dark:bg-white dark:text-black text-white text-xs font-bold"
                 >
                   View Publication
-                </motion.button>
+                </motion.a>
               </CardItem>
             </CardBody>
           </CardContainer>
