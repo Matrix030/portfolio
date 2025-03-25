@@ -64,7 +64,7 @@ export const SeveranceUIInline: React.FC<SeveranceUIInlineProps> = ({
       </CardContent>
       <CardFooter className="text-sm text-muted-foreground">
         <p>
-          Click and drag to select groups of numbers. If enough selected numbers are "refinable," they will be sent to
+          Click and drag to select groups of numbers. If enough selected numbers are &quot;refinable,&quot; they will be sent to
           one of the bins at the bottom. The goal is to fill all bins to 100%.
         </p>
       </CardFooter>

@@ -11,7 +11,7 @@ export function AppleCardsCarouselDemo() {
 
   return (
     <div className="w-full h-full py-20">
-      <h2 className="max-w-7xl pl-4 mx-auto text-xl md:text-5xl font-bold text-white dark:text-white font-sans">
+      <h2 className="max-w-7xl pl-4 mx-auto text-xl md:text-5xl font-bold text-white dark:text-white font-manifold">
         My Skills & Interests
       </h2>
       <Carousel items={cards} />
@@ -26,8 +26,8 @@ const data = [
     src: "https://rivalskins.com/wp-content/uploads/marvel-assets/assets/rank-logos/5%20Diamond%20Rank.png",
     content: (
       <div className="bg-[#010A13]/80 p-8 md:p-14 rounded-3xl mb-4 border border-[#05C3A8]/30">
-        <p className="text-white text-base md:text-xl font-sans max-w-3xl mx-auto">
-          <span className="font-bold text-[#ABFFE9] block mb-4 text-2xl">
+        <p className="text-white text-base md:text-xl font-forma max-w-3xl mx-auto">
+          <span className="font-bold text-[#ABFFE9] block mb-4 text-2xl font-manifold">
             My Gaming Passion
           </span>
           I&apos;m an avid competitive gamer with achievements across multiple titles:
@@ -47,8 +47,8 @@ const data = [
     src: "https://resizing.flixster.com/SjOz5i_l74oCydVXE0g2_zxspTY=/ems.cHJkLWVtcy1hc3NldHMvdHZzZXJpZXMvNTVmYjhkNDgtM2MyZi00OGM2LThhYWUtMTg2ZTkzMzg2Mzc2LnBuZw==",
     content: (
       <div className="bg-[#010A13]/80 p-8 md:p-14 rounded-3xl mb-4 border border-[#05C3A8]/30">
-        <p className="text-white text-base md:text-xl font-sans max-w-3xl mx-auto">
-          <span className="font-bold text-[#ABFFE9] block mb-4 text-2xl">
+        <p className="text-white text-base md:text-xl font-forma max-w-3xl mx-auto">
+          <span className="font-bold text-[#ABFFE9] block mb-4 text-2xl font-manifold">
             Favorite TV Shows
           </span>
           I appreciate shows with complex storytelling and character development:
@@ -67,8 +67,8 @@ const data = [
     src: "https://miro.medium.com/v2/resize:fit:512/0*7tuHOILfjWixfD3t.jpg",
     content: (
       <div className="bg-[#010A13]/80 p-8 md:p-14 rounded-3xl mb-4 border border-[#05C3A8]/30">
-        <p className="text-white text-base md:text-xl font-sans max-w-3xl mx-auto">
-          <span className="font-bold text-[#ABFFE9] block mb-4 text-2xl">
+        <p className="text-white text-base md:text-xl font-forma max-w-3xl mx-auto">
+          <span className="font-bold text-[#ABFFE9] block mb-4 text-2xl font-manifold">
             Automation & Scripting
           </span>
           I love optimizing my workflow through automation:
@@ -87,8 +87,8 @@ const data = [
     src: "https://www.devteam.space/wp-content/uploads/2018/11/Software-Documentation-1-1.png",
     content: (
       <div className="bg-[#010A13]/80 p-8 md:p-14 rounded-3xl mb-4 border border-[#05C3A8]/30">
-        <p className="text-white text-base md:text-xl font-sans max-w-3xl mx-auto">
-          <span className="font-bold text-[#ABFFE9] block mb-4 text-2xl">
+        <p className="text-white text-base md:text-xl font-forma max-w-3xl mx-auto">
+          <span className="font-bold text-[#ABFFE9] block mb-4 text-2xl font-manifold">
             How I Learn
           </span>
           My approach to learning new technologies:
@@ -107,8 +107,8 @@ const data = [
     src: "https://images.unsplash.com/photo-1602081957921-9137a5d6eaee?q=80&w=2793&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     content: (
       <div className="bg-[#010A13]/80 p-8 md:p-14 rounded-3xl mb-4 border border-[#05C3A8]/30">
-        <p className="text-white text-base md:text-xl font-sans max-w-3xl mx-auto">
-          <span className="font-bold text-[#ABFFE9] block mb-4 text-2xl">
+        <p className="text-white text-base md:text-xl font-forma max-w-3xl mx-auto">
+          <span className="font-bold text-[#ABFFE9] block mb-4 text-2xl font-manifold">
             Problem-Solving Methodology
           </span>
           How I approach complex problems:
@@ -135,7 +135,7 @@ const About = () => {
     <section className="py-10 px-4 relative z-10" id="about">
       <div className="max-w-6xl mx-auto">
         <motion.h2 
-          className="text-3xl md:text-4xl font-bold mb-12 text-center text-white"
+          className="text-3xl md:text-4xl font-bold mb-12 text-center text-white font-manifold"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -152,25 +152,25 @@ const About = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <h3 className="text-2xl font-semibold mb-4 text-[#ABFFE9]">
+            <h3 className="text-2xl font-semibold mb-4 text-[#ABFFE9] font-manifold">
               Full Stack Developer & Computer Science Graduate
             </h3>
-            <p className="text-white mb-4">
+            <p className="text-white mb-4 font-forma">
               Hello! I&apos;m Rishikesh Gharat, a Computer Science graduate student at New York University with a passion for 
               full-stack development, cloud computing, and AI/ML technologies.
             </p>
-            <p className="text-white mb-4">
+            <p className="text-white mb-4 font-forma">
               With experience as a Software Engineering Intern at the National Informatics Centre, Government of India, I&apos;ve designed
               and developed scalable systems and streamlined processes using technologies like PHP, Node.js, React.js, and PostgreSQL.
             </p>
-            <p className="text-white">
+            <p className="text-white font-forma">
               I&apos;m currently pursuing my Master&apos;s in Computer Science at NYU, expanding my knowledge and skills in cutting-edge
               technologies. I&apos;m particularly interested in developing innovative solutions that solve real-world problems.
             </p>
             
             <div className="mt-6">
-              <h4 className="font-semibold mb-2 text-[#1EEFFF]">Education</h4>
-              <ul className="space-y-2 text-white">
+              <h4 className="font-semibold mb-2 text-[#1EEFFF] font-manifold">Education</h4>
+              <ul className="space-y-2 text-white font-forma">
                 <li>• Master of Science, Computer Science - New York University (2026)</li>
                 <li>• Bachelor of Engineering, Computer Engineering - University of Mumbai</li>
               </ul>
@@ -188,7 +188,7 @@ const About = () => {
               <div className="absolute inset-0 bg-[#05C3A8]/30 rounded-full -z-10 transform translate-x-4 translate-y-4"></div>
               <div className="w-full h-full rounded-full overflow-hidden border-4 border-[#05C3A8]/50 shadow-xl">
                 {/* Replace with your image */}
-                <div className="w-full h-full bg-[#010A13] flex items-center justify-center text-[#ABFFE9]">
+                <div className="w-full h-full bg-[#010A13] flex items-center justify-center text-[#ABFFE9] font-manifold text-4xl">
                   RG
                 </div>
               </div>
@@ -204,9 +204,9 @@ const About = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <h3 className="text-2xl font-semibold mb-6 text-center text-[#ABFFE9]">Featured Project: Severance UI</h3>
+          <h3 className="text-2xl font-semibold mb-6 text-center text-[#ABFFE9] font-manifold">Featured Project: Severance UI</h3>
           <div className="max-w-4xl mx-auto bg-[#010A13] p-8 rounded-xl border border-[#05C3A8]/30">
-            <p className="text-[#1EEFFF] mb-4 text-center">Fill the bins to 100% to know more about me!</p>
+            <p className="text-[#1EEFFF] mb-4 text-center font-forma">Fill the bins to 100% to know more about me! (hobbies and interests)</p>
             <SeveranceUIInline 
               height="500px" 
               title="Macrodata Refinement Interface" 
@@ -217,7 +217,7 @@ const About = () => {
           </div>
           
           {severanceCompleted && (
-            <div className="mt-8 mb-4 text-center text-[#1EEFFF]">
+            <div className="mt-8 mb-4 text-center text-[#1EEFFF] font-forma">
               <p className="text-lg">Congratulations on reaching 100%! Learn more about my skills below.</p>
               <div className="mt-2 animate-bounce">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">

@@ -1,3 +1,4 @@
+"use client";
 import { motion } from 'framer-motion';
 
 const socialLinks = [
@@ -30,7 +31,7 @@ const Contact = () => {
     <section className="py-20 px-4" id="contact">
       <div className="max-w-6xl mx-auto">
         <motion.h2 
-          className="text-3xl md:text-4xl font-bold mb-12 text-center"
+          className="text-3xl md:text-4xl font-bold mb-12 text-center font-manifold"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -47,44 +48,44 @@ const Contact = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h3 className="text-2xl font-semibold mb-6">Contact Me</h3>
-            <p className="text-gray-600 dark:text-gray-300 mb-8">
-              Feel free to reach out if you're looking for a developer, have a question, or just want to connect.
+            <h3 className="text-2xl font-semibold mb-6 font-manifold">Contact Me</h3>
+            <p className="text-gray-600 dark:text-gray-300 mb-8 font-forma">
+              Feel free to reach out if you&apos;re looking for a developer, have a question, or just want to connect.
             </p>
             
             <form className="space-y-4">
               <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 font-forma">
                   Name
                 </label>
                 <input
                   type="text"
                   id="name"
-                  className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
+                  className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 font-forma"
                   placeholder="Your name"
                 />
               </div>
               
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 font-forma">
                   Email
                 </label>
                 <input
                   type="email"
                   id="email"
-                  className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
+                  className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 font-forma"
                   placeholder="your.email@example.com"
                 />
               </div>
               
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 font-forma">
                   Message
                 </label>
                 <textarea
                   id="message"
                   rows={5}
-                  className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
+                  className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 font-forma"
                   placeholder="Your message..."
                 />
               </div>
@@ -92,7 +93,7 @@ const Contact = () => {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-6 py-3 bg-blue-600 text-white rounded-lg font-medium"
+                className="px-6 py-3 bg-blue-600 text-white rounded-lg font-medium font-forma"
                 type="submit"
               >
                 Send Message
@@ -107,24 +108,24 @@ const Contact = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h3 className="text-2xl font-semibold mb-6">Connect With Me</h3>
-            <p className="text-gray-600 dark:text-gray-300 mb-8">
-              I'm available for full-time positions, internships, and collaborations. Let's create something amazing together!
+            <h3 className="text-2xl font-semibold mb-6 font-manifold">Connect With Me</h3>
+            <p className="text-gray-600 dark:text-gray-300 mb-8 font-forma">
+              I&apos;m available for full-time positions, internships, and collaborations. Let&apos;s create something amazing together!
             </p>
             
             <div className="mb-8">
-              <p className="text-gray-600 dark:text-gray-300 mb-2">
+              <p className="text-gray-600 dark:text-gray-300 mb-2 font-forma">
                 <strong>Email:</strong> rvg9395@nyu.edu
               </p>
-              <p className="text-gray-600 dark:text-gray-300 mb-2">
+              <p className="text-gray-600 dark:text-gray-300 mb-2 font-forma">
                 <strong>Phone:</strong> (929) 503-5218
               </p>
-              <p className="text-gray-600 dark:text-gray-300">
+              <p className="text-gray-600 dark:text-gray-300 font-forma">
                 <strong>Location:</strong> New York, NY
               </p>
             </div>
             
-            <h4 className="font-medium mb-4">Find me on:</h4>
+            <h4 className="font-medium mb-4 font-manifold">Find me on:</h4>
             <div className="flex gap-4">
               {socialLinks.map((link, index) => (
                 <SocialIcon key={link.name} link={link} index={index} />

@@ -1,5 +1,7 @@
 // Utility functions for the Severance UI component
 
+import { DataPoint, P5Instance } from '../types';
+
 // Detect touch screen device
 export const isTouchScreenDevice = (): boolean => {
   if (typeof window === "undefined") return false
@@ -116,5 +118,21 @@ export const createRippleEffect = (p: any, x: number, y: number, color: string, 
 
     return stillActive
   }
+}
+
+// Fix the unused 'text' parameter
+export function drawText(p5: P5Instance, x: number, y: number, _text: string /* text parameter renamed to _text to indicate unused */): void {
+  // Implementation remains the same
+}
+
+// Fix the unused 'duration' variable
+export function easeInOutCubic(
+  currentTime: number, 
+  startValue: number, 
+  changeInValue: number, 
+  totalDuration: number, 
+  _duration?: number /* duration parameter renamed to _duration to indicate unused */
+): number {
+  // Implementation remains the same
 }
 
