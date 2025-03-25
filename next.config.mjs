@@ -14,6 +14,35 @@ const nextConfig = {
     // your project has ESLint errors.
     ignoreDuringBuilds: true,
   },
+  // Configure allowed image domains
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'rivalskins.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'resizing.flixster.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'miro.medium.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.devteam.space',
+      },
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'assets.aceternity.com',
+      },
+    ],
+  },
 };
 
 export default nextConfig; 
