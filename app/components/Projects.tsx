@@ -129,7 +129,6 @@ const Projects = () => {
           </h2>
           <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
             These projects showcase my skills in full-stack development, machine learning, and data analysis.
-            Hover over the cards to see the 3D effect.
           </p>
         </motion.div>
         
