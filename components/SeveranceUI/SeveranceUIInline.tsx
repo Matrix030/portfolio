@@ -33,36 +33,41 @@ export const SeveranceUIInline: React.FC<SeveranceUIInlineProps> = ({
   }
 
   return (
-    <Card className={className}>
-      <CardHeader>
-        <CardTitle>{title}</CardTitle>
-        <CardDescription>{description}</CardDescription>
+    <Card className={`${className} border-cyan-500/30`}>
+      <CardHeader className="pb-6">
+        <CardTitle className="text-2xl md:text-3xl text-cyan-400">{title}</CardTitle>
+        <CardDescription className="text-base md:text-lg mt-2">{description}</CardDescription>
       </CardHeader>
       <CardContent>
         {isActive ? (
-          <div style={{ height }} className="relative rounded-md overflow-hidden">
+          <div style={{ height }} className="relative rounded-md overflow-hidden border-2 border-cyan-700/50">
             <SeveranceUI height="100%" onComplete={handleComplete} />
           </div>
         ) : (
           <div
             style={{ height }}
-            className="bg-slate-900 rounded-md flex flex-col items-center justify-center cursor-pointer"
+            className="bg-slate-900 rounded-md flex flex-col items-center justify-center cursor-pointer border-2 border-cyan-700/50 transition-all hover:border-cyan-500"
             onClick={() => setIsActive(true)}
           >
-            <div className="text-cyan-400 font-mono text-center mb-4">
-              <div className="text-2xl mb-2">MACRODATA</div>
-              <div className="text-sm">REFINEMENT</div>
+            <div className="text-cyan-400 font-mono text-center mb-8 transform transition-transform hover:scale-105">
+              <div className="text-4xl md:text-5xl mb-4">MACRODATA</div>
+              <div className="text-xl md:text-2xl">REFINEMENT</div>
             </div>
-            <Button onClick={() => setIsActive(true)}>Start Refinement</Button>
+            <Button 
+              onClick={() => setIsActive(true)}
+              className="bg-cyan-700 hover:bg-cyan-600 text-white font-medium px-6 py-3 text-lg"
+            >
+              Start Refinement
+            </Button>
           </div>
         )}
         {completionTime && (
-          <p className="mt-4 text-center font-medium">
+          <p className="mt-6 text-center font-medium text-lg text-cyan-400">
             Refinement completed in {(completionTime / 1000).toFixed(2)} seconds!
           </p>
         )}
       </CardContent>
-      <CardFooter className="text-sm text-muted-foreground">
+      <CardFooter className="text-base text-muted-foreground pt-6">
         <p>
           Click and drag to select groups of numbers. If enough selected numbers are &quot;refinable,&quot; they will be sent to
           one of the bins at the bottom. The goal is to fill all bins to 100%.

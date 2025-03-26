@@ -198,17 +198,17 @@ const About = () => {
         
         {/* Dedicated Severance UI section */}
         <motion.div 
-          className="mt-12 border-t pt-12 border-[#05C3A8]/30"
+          className="mt-16 mb-24" 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <h3 className="text-2xl font-semibold mb-6 text-center text-[#ABFFE9] font-manifold">Featured Project: Severance UI</h3>
-          <div className="max-w-4xl mx-auto bg-[#010A13] p-8 rounded-xl border border-[#05C3A8]/30">
-            <p className="text-[#1EEFFF] mb-4 text-center font-forma">Fill the bins to 100% to know more about me! (hobbies and interests)</p>
+          <h3 className="text-3xl font-bold mb-8 text-center text-[#ABFFE9] font-manifold">Featured Project: Severance UI</h3>
+          <div className="max-w-5xl mx-auto bg-[#010A13] p-8 md:p-10 rounded-xl border-2 border-[#05C3A8]/50 shadow-lg shadow-[#05C3A8]/20">
+            <p className="text-[#1EEFFF] mb-6 text-center text-lg font-forma">Fill the bins to 100% to know more about me! (hobbies and interests)</p>
             <SeveranceUIInline 
-              height="500px" 
+              height="700px" 
               title="Macrodata Refinement Interface" 
               description="A recreation of the interface from Apple TV+'s Severance"
               className="w-full"
@@ -217,10 +217,10 @@ const About = () => {
           </div>
           
           {severanceCompleted && (
-            <div className="mt-8 mb-4 text-center text-[#1EEFFF] font-forma">
-              <p className="text-lg">Congratulations on reaching 100%! Learn more about my skills below.</p>
-              <div className="mt-2 animate-bounce">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <div className="mt-10 mb-6 text-center text-[#1EEFFF] font-forma">
+              <p className="text-xl">Congratulations on reaching 100%! Learn more about my skills below.</p>
+              <div className="mt-4 animate-bounce">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
                 </svg>
               </div>

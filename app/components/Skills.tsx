@@ -91,7 +91,7 @@ const Skills = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          Skills & Services
+          Skills
         </motion.h2>
         
         <div className="flex flex-col lg:flex-row gap-16">

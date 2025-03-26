@@ -1,5 +1,6 @@
 "use client";
 import { motion } from 'framer-motion';
+import { GlobeDemo } from "./GlobeDemo";
 
 const socialLinks = [
   { name: 'GitHub', icon: 'GitHub', url: 'https://github.com/Matrix030' },
@@ -48,69 +49,9 @@ const Contact = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h3 className="text-2xl font-semibold mb-6 font-manifold text-white">Contact Me</h3>
-            <p className="text-white mb-8 font-forma">
-              Feel free to reach out if you&apos;re looking for a developer, have a question, or just want to connect.
-            </p>
-            
-            <form className="space-y-4">
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium text-white mb-1 font-forma">
-                  Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 font-forma"
-                  placeholder="Your name"
-                />
-              </div>
-              
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-white mb-1 font-forma">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 font-forma"
-                  placeholder="your.email@example.com"
-                />
-              </div>
-              
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium text-white mb-1 font-forma">
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  rows={5}
-                  className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 font-forma"
-                  placeholder="Your message..."
-                />
-              </div>
-              
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-6 py-3 bg-blue-600 text-white rounded-lg font-medium font-forma"
-                type="submit"
-              >
-                Send Message
-              </motion.button>
-            </form>
-          </motion.div>
-          
-          <motion.div 
-            className="w-full md:w-1/2"
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
             <h3 className="text-2xl font-semibold mb-6 font-manifold text-white">Connect With Me</h3>
             <p className="text-white mb-8 font-forma">
-              I&apos;m available for full-time positions, internships, and collaborations. Let&apos;s create something amazing together!
+              I&apos;m available for internships, and collaborations. Let&apos;s create something amazing together!
             </p>
             
             <div className="mb-8">
@@ -131,6 +72,16 @@ const Contact = () => {
                 <SocialIcon key={link.name} link={link} index={index} />
               ))}
             </div>
+          </motion.div>
+          
+          <motion.div 
+            className="w-full md:w-1/2"
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <GlobeDemo />
           </motion.div>
         </div>
       </div>
