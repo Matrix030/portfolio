@@ -14,31 +14,15 @@ const Hero = () => {
         transition={{ duration: 0.5 }}
         className="text-center max-w-4xl mx-auto relative z-10"
       >
-        <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white">
-          Hi, I&apos;m <span className="text-[#ABFFE9]">Rishikesh Gharat</span>
+        <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white font-manifold whitespace-nowrap">
+          Hi, I&apos;m <span className="text-[#ABFFE9]" style={{ fontFamily: "var(--font-manifold) !important" }}>Rishikesh Gharat</span>
         </h1>
-        <h2 className="text-2xl md:text-3xl text-[#1EEFFF] mb-10">
-          Full Stack Developer & Computer Science Graduate
-        </h2>
+        <div className="text-2xl md:text-3xl text-[#1EEFFF] mb-10 flex flex-col items-center" style={{ fontFamily: "var(--font-manifold) !important" }}>
+          <div style={{ fontFamily: "var(--font-manifold) !important" }}>Full Stack Developer</div>
+          <div className="my-2" style={{ fontFamily: "var(--font-manifold) !important" }}>&</div>
+          <div style={{ fontFamily: "var(--font-manifold) !important" }}>Computer Science Graduate</div>
+        </div>
       </motion.div>
-      
-      {/* Placeholder for optional 3D element */}
-      <div className="mt-8 h-40 w-full flex justify-center items-center">
-        <motion.div
-          animate={{ 
-            y: [0, -10, 0],
-            rotate: [0, 5, 0]
-          }}
-          transition={{ 
-            repeat: Infinity, 
-            duration: 3,
-            ease: "easeInOut" 
-          }}
-          className="w-40 h-40 bg-[#05C3A8]/20 rounded-full opacity-50"
-        >
-          {/* Future 3D element container */}
-        </motion.div>
-      </div>
     </section>
   );
 };

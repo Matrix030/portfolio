@@ -54,7 +54,7 @@ const Navbar = () => {
                 >
                   <a 
                     href={link.href} 
-                    className="text-white hover:text-blue-400 font-medium"
+                    className="text-blue-500 hover:text-blue-400 font-medium font-manifold"
                     onClick={(e) => {
                       e.preventDefault();
                       const target = document.querySelector(link.href);
@@ -75,7 +75,7 @@ const Navbar = () => {
           
           {/* Mobile Menu Button */}
           <button 
-            className="md:hidden text-white"
+            className="md:hidden text-blue-500"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             <span className="sr-only">Open menu</span>
@@ -104,7 +104,7 @@ const Navbar = () => {
             <li key={link.name}>
               <a 
                 href={link.href} 
-                className="text-white hover:text-blue-400 font-medium block py-2"
+                className="text-blue-500 hover:text-blue-400 font-medium block py-2 font-manifold"
                 onClick={(e) => {
                   e.preventDefault();
                   setMobileMenuOpen(false);

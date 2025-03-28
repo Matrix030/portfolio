@@ -187,10 +187,12 @@ const About = () => {
             <div className="relative w-64 h-64 md:w-80 md:h-80">
               <div className="absolute inset-0 bg-[#05C3A8]/30 rounded-full -z-10 transform translate-x-4 translate-y-4"></div>
               <div className="w-full h-full rounded-full overflow-hidden border-4 border-[#05C3A8]/50 shadow-xl">
-                {/* Replace with your image */}
-                <div className="w-full h-full bg-[#010A13] flex items-center justify-center text-[#ABFFE9] font-manifold text-4xl">
-                  RG
-                </div>
+                {/* Add profile picture */}
+                <img 
+                  src="/images/profile_picture.jpg" 
+                  alt="Rishikesh Gharat" 
+                  className="w-full h-full object-cover"
+                />
               </div>
             </div>
           </motion.div>
@@ -205,13 +207,14 @@ const About = () => {
           transition={{ duration: 0.6, delay: 0.2 }}
         >
           <h3 className="text-3xl font-bold mb-8 text-center text-[#ABFFE9] font-manifold">Featured Project: Severance UI</h3>
-          <div className="max-w-5xl mx-auto bg-[#010A13] p-8 md:p-10 rounded-xl border-2 border-[#05C3A8]/50 shadow-lg shadow-[#05C3A8]/20">
-            <p className="text-[#1EEFFF] mb-6 text-center text-lg font-forma">Fill the bins to 100% to know more about me! (hobbies and interests)</p>
+          <p className="text-[#1EEFFF] mb-6 text-center text-lg font-forma">Fill the bins to 100% to know more about me! (hobbies and interests)</p>
+          
+          <div className="relative mx-auto" style={{ height: "800px", maxWidth: "1425px", overflow: "visible" }}>
             <SeveranceUIInline 
-              height="700px" 
+              height="100%" 
               title="Macrodata Refinement Interface" 
               description="A recreation of the interface from Apple TV+'s Severance"
-              className="w-full"
+              className="w-full h-full severence-ui"
               onComplete={handleSeveranceComplete}
             />
           </div>

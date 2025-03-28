@@ -3,7 +3,6 @@
 import type React from "react"
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import SeveranceUI from "./SeveranceUI"
 
 interface SeveranceUIInlineProps {
@@ -33,47 +32,37 @@ export const SeveranceUIInline: React.FC<SeveranceUIInlineProps> = ({
   }
 
   return (
-    <Card className={`${className} border-cyan-500/30`}>
-      <CardHeader className="pb-6">
-        <CardTitle className="text-2xl md:text-3xl text-cyan-400">{title}</CardTitle>
-        <CardDescription className="text-base md:text-lg mt-2">{description}</CardDescription>
-      </CardHeader>
-      <CardContent>
-        {isActive ? (
-          <div style={{ height }} className="relative rounded-md overflow-hidden border-2 border-cyan-700/50">
-            <SeveranceUI height="100%" onComplete={handleComplete} />
+    <div className={`${className} border-2 border-cyan-500/30 rounded-lg overflow-hidden bg-[#010A13]`}>
+      {isActive ? (
+        <div style={{ height }} className="relative overflow-hidden">
+          <SeveranceUI height="100%" onComplete={handleComplete} />
+        </div>
+      ) : (
+        <div
+          style={{ height }}
+          className="bg-slate-900 flex flex-col items-center justify-center cursor-pointer hover:bg-slate-800/80 transition-all"
+          onClick={() => setIsActive(true)}
+        >
+          <div className="text-cyan-400 font-mono text-center mb-8 transform transition-transform hover:scale-105">
+            <div className="text-4xl md:text-5xl mb-4 font-manifold">MACRODATA</div>
+            <div className="text-xl md:text-2xl font-manifold">REFINEMENT</div>
           </div>
-        ) : (
-          <div
-            style={{ height }}
-            className="bg-slate-900 rounded-md flex flex-col items-center justify-center cursor-pointer border-2 border-cyan-700/50 transition-all hover:border-cyan-500"
+          <Button 
             onClick={() => setIsActive(true)}
+            className="bg-cyan-700 hover:bg-cyan-600 text-white font-medium px-6 py-3 text-lg"
           >
-            <div className="text-cyan-400 font-mono text-center mb-8 transform transition-transform hover:scale-105">
-              <div className="text-4xl md:text-5xl mb-4">MACRODATA</div>
-              <div className="text-xl md:text-2xl">REFINEMENT</div>
-            </div>
-            <Button 
-              onClick={() => setIsActive(true)}
-              className="bg-cyan-700 hover:bg-cyan-600 text-white font-medium px-6 py-3 text-lg"
-            >
-              Start Refinement
-            </Button>
-          </div>
-        )}
-        {completionTime && (
-          <p className="mt-6 text-center font-medium text-lg text-cyan-400">
+            Start Refinement
+          </Button>
+        </div>
+      )}
+      {completionTime && (
+        <div className="bg-slate-900 py-4 border-t border-cyan-500/30">
+          <p className="text-center font-medium text-lg text-cyan-400 font-forma">
             Refinement completed in {(completionTime / 1000).toFixed(2)} seconds!
           </p>
-        )}
-      </CardContent>
-      <CardFooter className="text-base text-muted-foreground pt-6">
-        <p>
-          Click and drag to select groups of numbers. If enough selected numbers are &quot;refinable,&quot; they will be sent to
-          one of the bins at the bottom. The goal is to fill all bins to 100%.
-        </p>
-      </CardFooter>
-    </Card>
+        </div>
+      )}
+    </div>
   )
 }
 

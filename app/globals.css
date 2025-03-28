@@ -41,6 +41,8 @@
   --sidebar-accent-foreground: oklch(0.21 0.006 285.885);
   --sidebar-border: oklch(0.92 0.004 286.32);
   --sidebar-ring: oklch(0.705 0.015 286.067);
+  --foreground-rgb: 255, 255, 255;
+  --background-rgb: 0, 0, 0;
 }
 
 @theme inline {
@@ -134,13 +136,7 @@
 }
 
 .text-gradient {
-  background: linear-gradient(90deg, var(--primary), var(--accent));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-fill-color: transparent;
-  background-size: 200% 200%;
-  animation: gradient 4s ease infinite;
+  @apply text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-300 to-teal-200;
 }
 
 .gradient-bg {
@@ -236,4 +232,32 @@
   body {
     @apply bg-background text-foreground;
   }
+  h1, h2, h3, h4, h5, h6, h1 span, h2 span, h3 span, h4 span, h5 span, h6 span {
+    font-family: var(--font-manifold);
+  }
+  
+  p, a, button, span, div, li {
+    font-family: var(--font-forma);
+  }
+  
+  code {
+    font-family: var(--font-geist-mono);
+  }
+}
+
+.font-manifold {
+  font-family: var(--font-manifold);
+}
+
+.font-forma {
+  font-family: var(--font-forma);
+}
+
+/* Hide cursor when hovering over SeveranceUI component */
+.severance-ui {
+  cursor: none !important;
+}
+
+.severance-ui:hover {
+  cursor: none !important;
 }

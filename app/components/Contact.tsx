@@ -1,10 +1,11 @@
 "use client";
 import { motion } from 'framer-motion';
 import { GlobeDemo } from "./GlobeDemo";
+import Image from 'next/image';
 
 const socialLinks = [
-  { name: 'GitHub', icon: 'GitHub', url: 'https://github.com/Matrix030' },
-  { name: 'LinkedIn', icon: 'LinkedIn', url: 'https://www.linkedin.com/in/rishikesh-gharat' },
+  { name: 'GitHub', icon: '/images/github icon.png', url: 'https://github.com/Matrix030' },
+  { name: 'LinkedIn', icon: '/images/linkedin icon.png', url: 'https://www.linkedin.com/in/rishikesh-gharat' },
 ];
 
 const SocialIcon = ({ link, index }: { link: typeof socialLinks[0], index: number }) => {
@@ -13,16 +14,21 @@ const SocialIcon = ({ link, index }: { link: typeof socialLinks[0], index: numbe
       href={link.url}
       target="_blank"
       rel="noopener noreferrer"
-      className="w-12 h-12 flex items-center justify-center bg-white dark:bg-gray-800 rounded-full shadow-md text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
-      whileHover={{ y: -5, transition: { duration: 0.2 } }}
+      className="w-16 h-16 flex items-center justify-center bg-[#010A13] border border-[#05C3A8]/30 rounded-full shadow-md hover:border-[#05C3A8] transition-all duration-300"
+      whileHover={{ y: -5, scale: 1.05, transition: { duration: 0.2 } }}
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.3, delay: index * 0.1 }}
     >
       <span className="sr-only">{link.name}</span>
-      {/* Replace with actual icons */}
-      <div className="text-sm font-bold">{link.icon}</div>
+      <Image 
+        src={link.icon} 
+        alt={link.name} 
+        width={30} 
+        height={30} 
+        className="object-contain"
+      />
     </motion.a>
   );
 };

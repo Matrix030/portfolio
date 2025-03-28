@@ -11,7 +11,7 @@ const projects = [
     title: 'LocalPilotAI',
     description: 'Fully offline AI code autocompletion tool integrated into VS Code for developer productivity.',
     tags: ['TypeScript', 'Python', 'FastAPI', 'OLLAMA', 'LLM'],
-    imageUrl: '/images/code-ai.jpg',
+    imageUrl: '/images/LocalPilot_Thumbnail.png',
     period: 'Jan 2025 - Feb 2025',
     github: 'https://github.com/Matrix030/LocalPilot'
   },
@@ -20,7 +20,7 @@ const projects = [
     title: 'Personality Prediction for CV Analysis',
     description: 'ML model to predict candidates personalities through sentiment analysis using Big 5 traits.',
     tags: ['Python', 'NLP', 'Machine Learning', 'Pandas'],
-    imageUrl: '/images/ml-personality.jpg',
+    imageUrl: '/images/PersonalityPrediction.png',
     period: 'August 2022 - May 2023',
     github: 'https://github.com/Matrix030/PersonalityPrediction2',
     publication: 'https://ltce.in/assets/Final-proceeding-ICRMIR-2023.pdf'
@@ -30,7 +30,7 @@ const projects = [
     title: 'Student Recommendation System',
     description: 'K-means clustering algorithm to categorize students into performance-based groups.',
     tags: ['Python', 'Numpy', 'Pandas', 'PostgreSQL'],
-    imageUrl: '/images/students.jpg',
+    imageUrl: '/images/StudentRecommendationSystem.png',
     period: 'Jan 2022 - June 2022',
     github: 'https://github.com/Matrix030/Student-Analysis'
   },
@@ -57,7 +57,7 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0], index: n
         <CardBody className="bg-gray-50 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-full h-auto rounded-xl p-6 border">
           <CardItem
             translateZ="50"
-            className="text-xl font-bold text-neutral-600 dark:text-white"
+            className="text-xl font-bold text-neutral-600 dark:text-white font-manifold"
           >
             {project.title}
           </CardItem>
@@ -65,17 +65,19 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0], index: n
           <CardItem
             as="p"
             translateZ="60"
-            className="text-neutral-500 text-sm max-w-sm mt-2 dark:text-neutral-300"
+            className="text-neutral-500 text-sm max-w-sm mt-2 dark:text-neutral-300 font-forma"
           >
             {project.description}
           </CardItem>
           
           <CardItem translateZ="100" className="w-full mt-4">
             <div className="h-60 w-full bg-gray-200 dark:bg-gray-700 rounded-xl overflow-hidden">
-              {/* Add real images later */}
-              <div className="w-full h-full flex items-center justify-center text-gray-400 dark:text-gray-500 group-hover/card:shadow-xl">
-                Project Image
-              </div>
+              {/* Display project image */}
+              <img 
+                src={project.imageUrl}
+                alt={project.title}
+                className="w-full h-full object-cover"
+              />
             </div>
           </CardItem>
           
@@ -83,7 +85,7 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0], index: n
             {project.tags.map((tag, i) => (
               <span 
                 key={i} 
-                className="text-xs bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 px-2 py-1 rounded"
+                className="text-xs bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 px-2 py-1 rounded font-forma"
               >
                 {tag}
               </span>
@@ -98,7 +100,7 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0], index: n
                 href={project.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-4 py-2 rounded-xl text-xs font-normal dark:text-white"
+                className="px-4 py-2 rounded-xl text-xs font-normal dark:text-white font-forma"
               >
                 GitHub →
               </CardItem>
@@ -107,7 +109,7 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0], index: n
                 translateZ={20}
                 as={Link}
                 href="#"
-                className="px-4 py-2 rounded-xl text-xs font-normal dark:text-white"
+                className="px-4 py-2 rounded-xl text-xs font-normal dark:text-white font-forma"
               >
                 View Details →
               </CardItem>
@@ -116,7 +118,7 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0], index: n
             <CardItem
               translateZ={20}
               as="button"
-              className="px-4 py-2 rounded-xl bg-black dark:bg-white dark:text-black text-white text-xs font-bold"
+              className="px-4 py-2 rounded-xl bg-black dark:bg-white dark:text-black text-white text-xs font-bold font-forma"
             >
               Demo
             </CardItem>
@@ -141,10 +143,10 @@ const Projects = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 font-manifold">
             <span className="text-gradient">My Projects</span>
           </h2>
-          <p className="text-white max-w-2xl mx-auto">
+          <p className="text-white max-w-2xl mx-auto font-forma">
             These projects showcase my skills in full-stack development, machine learning, and data analysis.
           </p>
         </motion.div>
@@ -162,13 +164,13 @@ const Projects = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.3 }}
         >
-          <h3 className="text-2xl font-semibold mb-6 text-white">Publications</h3>
+          <h3 className="text-2xl font-semibold mb-6 text-white font-manifold">Publications</h3>
           <CardContainer className="inline-block">
             <CardBody className="bg-gray-50 dark:bg-black p-8 rounded-xl shadow-md dark:hover:shadow-2xl dark:hover:shadow-purple-500/[0.1] border border-black/[0.1] dark:border-white/[0.2]">
-              <CardItem translateZ={20} className="font-bold text-xl mb-3 text-neutral-600 dark:text-white">
+              <CardItem translateZ={20} className="font-bold text-xl mb-3 text-neutral-600 dark:text-white font-manifold">
                 Personality Prediction for CV Analysis
               </CardItem>
-              <CardItem translateZ={40} className="text-neutral-500 dark:text-neutral-300">
+              <CardItem translateZ={40} className="text-neutral-500 dark:text-neutral-300 font-forma">
                 International Conference on Recent Trends on Multidisciplinary Research and Innovation (ICRMIR – 2023)
               </CardItem>
               <CardItem translateZ={60} className="mt-6">
@@ -178,7 +180,7 @@ const Projects = () => {
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="px-4 py-2 rounded-xl bg-black dark:bg-white dark:text-black text-white text-xs font-bold"
+                  className="px-4 py-2 rounded-xl bg-black dark:bg-white dark:text-black text-white text-xs font-bold font-forma"
                 >
                   View Publication
                 </motion.a>
