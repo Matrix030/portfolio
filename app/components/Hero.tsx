@@ -3,7 +3,7 @@ import LampDemo from '@/components/ui/lamp';
 
 const Hero = () => {
   return (
-    <section className="min-h-screen flex flex-col justify-center items-center py-12 px-4 relative">
+    <section className="min-h-screen flex flex-col justify-center items-center py-12 px-4 relative" id="home">
       <div className="absolute inset-0 -top-60 pointer-events-none">
         <LampDemo />
       </div>

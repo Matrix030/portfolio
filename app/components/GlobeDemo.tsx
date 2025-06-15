@@ -1,40 +1,13 @@
 "use client";
 import React from "react";
-import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
-import { useEffect, useState } from "react";
 
 // Use the correct path based on the user's project structure
 const World = dynamic(() => import("../../components/ui/globe").then((m) => m.World), {
   ssr: false,
 });
 
-// Fetch data from the JSON file
-const fetchGlobeData = async () => {
-  try {
-    const response = await fetch('/data/globe.json');
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error('Error loading globe data:', error);
-    return null;
-  }
-};
-
 export function GlobeDemo() {
-  const [globeData, setGlobeData] = useState([]);
-  
-  useEffect(() => {
-    const loadData = async () => {
-      const data = await fetchGlobeData();
-      if (data) {
-        setGlobeData(data);
-      }
-    };
-    
-    loadData();
-  }, []);
-  
   const globeConfig = {
     pointSize: 4,
     globeColor: "#062056",
@@ -57,6 +30,7 @@ export function GlobeDemo() {
     autoRotate: true,
     autoRotateSpeed: 0.5,
   };
+
   const colors = ["#06b6d4", "#3b82f6", "#6366f1"];
   const sampleArcs = [
     {
@@ -425,7 +399,7 @@ export function GlobeDemo() {
     <div className="flex flex-col items-center justify-center h-full dark:bg-black bg-transparent relative w-full">
       <div className="w-full relative overflow-hidden h-[400px] md:h-[500px]">
         <div className="absolute w-full -bottom-10 h-72 md:h-full z-10">
-          <World data={globeData.length > 0 ? globeData : sampleArcs} globeConfig={globeConfig} />
+          <World data={sampleArcs} globeConfig={globeConfig} />
         </div>
       </div>
     </div>

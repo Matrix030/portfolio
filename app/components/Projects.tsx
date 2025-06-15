@@ -28,20 +28,20 @@ const projects = [
   {
     id: 3,
     title: 'Student Recommendation System',
-    description: 'K-means clustering algorithm to categorize students into performance-based groups.',
+    description: 'K-means clustering algorithm to categorize students into performance-based groups. Helps educators identify at-risk students and personalize learning strategies.',
     tags: ['Python', 'Numpy', 'Pandas', 'PostgreSQL'],
     imageUrl: '/images/StudentRecommendationSystem.png',
     period: 'Jan 2022 - June 2022',
     github: 'https://github.com/Matrix030/Student-Analysis'
   },
   {
-    id: 4,
-    title: 'User Management System',
-    description: 'Scalable system streamlining access control for multiple departments at National Informatics Centre.',
-    tags: ['PHP', 'Node.js', 'React.js', 'PostgreSQL'],
-    imageUrl: '/images/user-management.jpg',
-    period: 'April 2022 - Sept 2022'
-  },
+  id: 4,
+  title: 'SteamLens AI',
+  description: 'GPU-accelerated game analytics platform that transforms Steam reviews into actionable development insights using distributed computing and advanced NLP.',
+  tags: ['Python', 'Streamlit', 'PyTorch', 'Dask', 'Transformers', 'CUDA'],
+  imageUrl: '/images/steamlens-ai.png',
+  period: 'Current Project'
+},
 ];
 
 const ProjectCard = ({ project, index }: { project: typeof projects[0], index: number }) => {
@@ -65,7 +65,7 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0], index: n
           <CardItem
             as="p"
             translateZ="60"
-            className="text-neutral-500 text-sm max-w-sm mt-2 dark:text-neutral-300 font-forma"
+            className="text-neutral-500 text-sm  mt-2 dark:text-neutral-300 font-forma"
           >
             {project.description}
           </CardItem>
@@ -95,15 +95,15 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0], index: n
           <div className="flex justify-between items-center mt-8">
             {project.github ? (
               <CardItem
-                translateZ={20}
-                as="a"
-                href={project.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-4 py-2 rounded-xl text-xs font-normal dark:text-white font-forma"
-              >
-                GitHub →
-              </CardItem>
+  translateZ={20}
+  as="a"
+  href={project.github}
+  target="_blank"
+  rel="noopener noreferrer"
+  className="px-4 py-2 rounded-xl text-sm font-normal dark:text-white font-forma" // Changed text-xs to text-sm
+>
+  GitHub →
+</CardItem>
             ) : (
               <CardItem
                 translateZ={20}
@@ -115,13 +115,13 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0], index: n
               </CardItem>
             )}
             
-            <CardItem
+            {/* <CardItem
               translateZ={20}
               as="button"
               className="px-4 py-2 rounded-xl bg-black dark:bg-white dark:text-black text-white text-xs font-bold font-forma"
             >
               Demo
-            </CardItem>
+            </CardItem> */}
           </div>
         </CardBody>
       </CardContainer>

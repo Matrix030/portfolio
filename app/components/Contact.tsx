@@ -4,7 +4,7 @@ import { GlobeDemo } from "./GlobeDemo";
 import Image from 'next/image';
 
 const socialLinks = [
-  { name: 'GitHub', icon: '/images/github icon.png', url: 'https://github.com/Matrix030' },
+  { name: 'GitHub', icon: '/images/github-icon.png', url: 'https://github.com/Matrix030' },
   { name: 'LinkedIn', icon: '/images/linkedin icon.png', url: 'https://www.linkedin.com/in/rishikesh-gharat' },
 ];
 

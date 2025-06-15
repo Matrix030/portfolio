@@ -26,7 +26,7 @@ const data = [
     src: "https://rivalskins.com/wp-content/uploads/marvel-assets/assets/rank-logos/5%20Diamond%20Rank.png",
     content: (
       <div className="bg-[#010A13]/80 p-8 md:p-14 rounded-3xl mb-4 border border-[#05C3A8]/30">
-        <p className="text-white text-base md:text-xl font-forma max-w-3xl mx-auto">
+        <h6 className="text-white text-base md:text-xl font-forma max-w-3xl mx-auto">
           <span className="font-bold text-[#ABFFE9] block mb-4 text-2xl font-manifold">
             My Gaming Passion
           </span>
@@ -37,7 +37,7 @@ const data = [
             <li>Ascendant rank in Valorant</li>
             <li>Love exploring the intricate worlds of games like Elden Ring</li>
           </ul>
-        </p>
+        </h6>
       </div>
     ),
   },
@@ -132,7 +132,7 @@ const About = () => {
   };
 
   return (
-    <section className="py-10 px-4 relative z-10" id="about">
+    <section className="py-20 px-4 relative z-10" id="about">
       <div className="max-w-6xl mx-auto">
         <motion.h2 
           className="text-3xl md:text-4xl font-bold mb-12 text-center text-white font-manifold"
