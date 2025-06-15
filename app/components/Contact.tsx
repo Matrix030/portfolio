@@ -87,7 +87,7 @@ const Contact = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <GlobeDemo />
+            <GlobeDemo  />
           </motion.div>
         </div>
       </div>
