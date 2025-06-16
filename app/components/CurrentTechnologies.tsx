@@ -2,77 +2,97 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import { useState } from 'react';
 
 const technologies = [
+  // Core Programming Languages
   {
-    name: 'Figma',
-    subtitle: 'Design Tool',
-    icon: '/icons/figma.svg', // You'll need to add these icons to your public/icons folder
-    color: '#F24E1E'
+    name: 'Python',
+    subtitle: 'Data Science & Backend',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg',
+    color: '#3776AB'
   },
   {
     name: 'TypeScript',
     subtitle: 'JavaScript but better',
-    icon: './../../public/icons/typescript.svg',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg',
     color: '#3178C6'
   },
   {
+    name: 'Java',
+    subtitle: 'Enterprise Development',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg',
+    color: '#ED8B00'
+  },
+
+  // Frontend Stack
+  {
     name: 'React',
     subtitle: 'JavaScript Library',
-    icon: '/icons/react.svg',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg',
     color: '#61DAFB'
   },
   {
-    name: 'NextJS',
-    subtitle: 'React framework',
-    icon: '/icons/nextjs.svg',
+    name: 'Next.js',
+    subtitle: 'React Framework',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg',
     color: '#000000'
   },
   {
-    name: 'Tailwind',
-    subtitle: 'CSS framework',
-    icon: '/icons/tailwind.svg',
+    name: 'Tailwind CSS',
+    subtitle: 'Utility-first CSS',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg',
     color: '#06B6D4'
   },
+
+  // Backend & Database
   {
-    name: 'Git',
-    subtitle: 'Version control',
-    icon: '/icons/git.svg',
-    color: '#F05032'
-  },
-  {
-    name: 'Supabase',
-    subtitle: 'Backend tool',
-    icon: '/icons/supabase.svg',
-    color: '#3ECF8E'
-  },
-  {
-    name: 'NodeJS',
-    subtitle: 'Backend',
-    icon: '/icons/nodejs.svg',
+    name: 'Node.js',
+    subtitle: 'JavaScript Runtime',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg',
     color: '#339933'
   },
   {
-    name: 'MongoDB',
-    subtitle: 'NoSQL database',
-    icon: '/icons/mongodb.svg',
-    color: '#47A248'
-  },
-  {
-    name: 'Prisma',
-    subtitle: 'ORM',
-    icon: '/icons/prisma.svg',
-    color: '#2D3748'
-  },
-  {
     name: 'PostgreSQL',
-    subtitle: 'OR database system',
-    icon: '/icons/postgresql.svg',
+    subtitle: 'Relational Database',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg',
     color: '#336791'
+  },
+
+  // Cloud & DevOps
+  {
+    name: 'AWS',
+    subtitle: 'Cloud Platform',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg',
+    color: '#FF9900'
+  },
+  {
+    name: 'Docker',
+    subtitle: 'Containerization',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg',
+    color: '#2496ED'
+  },
+
+  // Development Tools
+  {
+    name: 'Git',
+    subtitle: 'Version Control',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg',
+    color: '#F05032'
+  },
+
+  // AI/ML Specialization
+  {
+    name: 'TensorFlow',
+    subtitle: 'Machine Learning',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg',
+    color: '#FF6F00'
   }
 ];
 
 const TechCard = ({ tech, index }: { tech: typeof technologies[0], index: number }) => {
+  const [imageError, setImageError] = useState(false);
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -86,26 +106,25 @@ const TechCard = ({ tech, index }: { tech: typeof technologies[0], index: number
       className="flex items-center gap-3 p-4 bg-[#1F2937] rounded-lg border border-[#2A2A2A] hover:border-[#05C3A8]/30 transition-all duration-300 hover:shadow-lg hover:shadow-[#05C3A8]/10 group cursor-pointer min-w-[220px]"
     >
       <div className="flex-shrink-0 w-10 h-10 relative">
-        {/* Fallback div with first letter if icon fails to load */}
-        <div 
-          className="w-10 h-10 rounded-lg flex items-center justify-center text-white font-bold text-lg"
-          style={{ backgroundColor: tech.color }}
-        >
-          {tech.name.charAt(0)}
-        </div>
-        
-        {/* Uncomment this when you add the actual icons */}
-        <Image
-          src={tech.icon}
-          alt={`${tech.name} icon`}
-          width={40}
-          height={40}
-          className="rounded-lg"
-          onError={(e) => {
-            // Hide the image if it fails to load, showing the fallback div above
-            e.currentTarget.style.display = 'none';
-          }}
-        />
+        {!imageError ? (
+          <Image
+            src={tech.icon}
+            alt={`${tech.name} icon`}
+            width={40}
+            height={40}
+            className="rounded-lg object-contain"
+            onError={() => setImageError(true)}
+            unoptimized // This helps with external CDN images
+          />
+        ) : (
+          // Fallback div with first letter if icon fails to load
+          <div 
+            className="w-10 h-10 rounded-lg flex items-center justify-center text-white font-bold text-lg"
+            style={{ backgroundColor: tech.color }}
+          >
+            {tech.name.charAt(0)}
+          </div>
+        )}
       </div>
       
       <div className="flex-1 min-w-0">
