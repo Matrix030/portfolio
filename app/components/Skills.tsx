@@ -1,58 +1,85 @@
 import { motion } from 'framer-motion';
+import {
+  Code2,
+  Coffee,
+  Atom,
+  Server,
+  Database,
+  Cloud,
+  Brain,
+  Monitor,
+  BarChart3,
+  type LucideIcon
+} from 'lucide-react';
+import { fadeInUp, fadeInLeft, fadeIn, viewportOnce } from '@/lib/animations';
 
-const skills = [
-  { name: 'Python', level: 95, icon: '🐍' },
-  { name: 'JavaScript/TypeScript', level: 90, icon: '🟨' },
-  { name: 'Java', level: 85, icon: '☕' },
-  { name: 'React & Next.js', level: 85, icon: '⚛️' },
-  { name: 'Node.js', level: 80, icon: '🟢' },
-  { name: 'SQL (PostgreSQL, MySQL)', level: 85, icon: '🗄️' },
-  { name: 'AWS Cloud', level: 80, icon: '☁️' },
-  { name: 'Machine Learning', level: 75, icon: '🤖' },
+interface Skill {
+  name: string;
+  level: number;
+  Icon: LucideIcon;
+}
+
+interface Service {
+  title: string;
+  description: string;
+  Icon: LucideIcon;
+}
+
+const skills: Skill[] = [
+  { name: 'Python', level: 95, Icon: Code2 },
+  { name: 'JavaScript/TypeScript', level: 90, Icon: Code2 },
+  { name: 'Java', level: 85, Icon: Coffee },
+  { name: 'React & Next.js', level: 85, Icon: Atom },
+  { name: 'Node.js', level: 80, Icon: Server },
+  { name: 'SQL (PostgreSQL, MySQL)', level: 85, Icon: Database },
+  { name: 'AWS Cloud', level: 80, Icon: Cloud },
+  { name: 'Machine Learning', level: 75, Icon: Brain },
 ];
 
-const services = [
+const services: Service[] = [
   {
     title: 'Full Stack Development',
     description: 'Building responsive web applications with modern frameworks like React, Next.js, and Node.js.',
-    icon: '💻',
+    Icon: Monitor,
   },
   {
     title: 'Cloud Solutions',
     description: 'Implementing scalable cloud solutions using AWS and other cloud platforms.',
-    icon: '☁️',
+    Icon: Cloud,
   },
   {
     title: 'AI/ML Integration',
     description: 'Developing machine learning models and integrating AI solutions for business needs.',
-    icon: '🤖',
+    Icon: Brain,
   },
   {
     title: 'Data Analysis',
     description: 'Analyzing large datasets to extract valuable insights using Python and visualization tools.',
-    icon: '📊',
+    Icon: BarChart3,
   },
 ];
 
-const SkillBar = ({ skill, index }: { skill: typeof skills[0], index: number }) => {
+const SkillBar = ({ skill, index }: { skill: Skill, index: number }) => {
+  const { Icon } = skill;
   return (
-    <motion.div 
+    <motion.div
       className="mb-6"
-      initial={{ opacity: 0, x: -20 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.4, delay: index * 0.1 }}
+      variants={fadeInLeft}
+      initial="hidden"
+      whileInView="visible"
+      viewport={viewportOnce}
+      transition={{ delay: index * 0.1 }}
     >
       <div className="flex items-center justify-between mb-2">
         <div className="flex items-center">
-          <span className="mr-2 text-xl">{skill.icon}</span>
+          <Icon className="mr-2 w-5 h-5 text-brand-teal" />
           <span className="font-medium text-white font-forma">{skill.name}</span>
         </div>
-        <span className="text-sm text-[#B0B0B0]">{skill.level}%</span>
+        <span className="text-sm text-brand-text-muted">{skill.level}%</span>
       </div>
-      <div className="h-2 bg-[#1F2937] rounded-full overflow-hidden">
-        <motion.div 
-          className="h-full bg-gradient-to-r from-[#05C3A8] to-[#ABFFE9] rounded-full"
+      <div className="h-2 bg-brand-card rounded-full overflow-hidden">
+        <motion.div
+          className="h-full bg-gradient-to-r from-brand-teal to-brand-mint rounded-full"
           initial={{ width: 0 }}
           whileInView={{ width: `${skill.level}%` }}
           viewport={{ once: true }}
@@ -63,45 +90,47 @@ const SkillBar = ({ skill, index }: { skill: typeof skills[0], index: number }) 
   );
 };
 
-const ServiceCard = ({ service, index }: { service: typeof services[0], index: number }) => {
+const ServiceCard = ({ service, index }: { service: Service, index: number }) => {
+  const { Icon } = service;
   return (
-    <motion.div 
-      className="bg-[#1F2937] border border-[#2A2A2A] hover:border-[#05C3A8]/30 p-6 rounded-xl shadow-md transition-all duration-300 hover:shadow-lg hover:shadow-[#05C3A8]/10"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
+    <motion.div
+      className="bg-brand-card border border-brand-border hover:border-brand-teal/30 p-6 rounded-xl shadow-md transition-all duration-300 hover:shadow-lg hover:shadow-brand-teal/10"
+      variants={fadeInUp}
+      initial="hidden"
+      whileInView="visible"
+      viewport={viewportOnce}
+      transition={{ delay: index * 0.1 }}
       whileHover={{ y: -5, transition: { duration: 0.2 } }}
     >
-      <div className="text-3xl mb-4">{service.icon}</div>
+      <Icon className="w-8 h-8 mb-4 text-brand-teal" />
       <h3 className="text-xl font-semibold mb-2 text-white font-manifold">{service.title}</h3>
-      <p className="text-[#B0B0B0] font-forma">{service.description}</p>
+      <p className="text-brand-text-muted font-forma">{service.description}</p>
     </motion.div>
   );
 };
 
 const Skills = () => {
   return (
-    <section className="py-20 px-4 bg-[#010A13]" id="skills">
+    <section className="py-20 px-4 bg-brand-dark" id="skills">
       <div className="max-w-6xl mx-auto">
-        <motion.h2 
+        <motion.h2
           className="text-3xl md:text-4xl font-bold mb-12 text-center text-white font-manifold"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          variants={fadeInUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
         >
           Skills
         </motion.h2>
-        
+
         <div className="flex flex-col lg:flex-row gap-16">
           <div className="w-full lg:w-1/2">
-            <motion.h3 
-              className="text-2xl font-semibold mb-6 text-[#ABFFE9] font-manifold"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
+            <motion.h3
+              className="text-2xl font-semibold mb-6 text-brand-mint font-manifold"
+              variants={fadeIn}
+              initial="hidden"
+              whileInView="visible"
+              viewport={viewportOnce}
             >
               Technical Skills
             </motion.h3>
@@ -114,12 +143,12 @@ const Skills = () => {
           </div>
           
           <div className="w-full lg:w-1/2">
-            <motion.h3 
-              className="text-2xl font-semibold mb-6 text-[#ABFFE9] font-manifold"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
+            <motion.h3
+              className="text-2xl font-semibold mb-6 text-brand-mint font-manifold"
+              variants={fadeIn}
+              initial="hidden"
+              whileInView="visible"
+              viewport={viewportOnce}
             >
               Services
             </motion.h3>

@@ -1,3 +1,5 @@
+export type TextAlignment = 'left' | 'center' | 'right' | 'top' | 'bottom';
+
 export type DataPoint = {
   id: string;
   value: number;
@@ -39,8 +41,12 @@ export type P5Instance = {
   mouseIsPressed: boolean;
   windowWidth: number;
   windowHeight: number;
-  textAlign: (alignment: unknown) => void;
-  CENTER: unknown;
+  textAlign: (horizAlign: TextAlignment, vertAlign?: TextAlignment) => void;
+  CENTER: TextAlignment;
+  LEFT: TextAlignment;
+  RIGHT: TextAlignment;
+  TOP: TextAlignment;
+  BOTTOM: TextAlignment;
   textSize: (size: number) => void;
   noStroke: () => void;
   noFill: () => void;

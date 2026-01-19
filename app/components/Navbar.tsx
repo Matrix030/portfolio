@@ -75,12 +75,13 @@ const Navbar = () => {
           </nav>
           
           {/* Mobile Menu Button */}
-          <button 
+          <button
             className="md:hidden text-blue-500"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-menu"
+            aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
           >
-            <span className="sr-only">Open menu</span>
-            {/* Replace with actual hamburger icon */}
             <div className="w-6 h-6 flex flex-col justify-around">
               <span className={`block w-full h-0.5 bg-current transition-all duration-300 ${mobileMenuOpen ? 'rotate-45 translate-y-1.5' : ''}`}></span>
               <span className={`block w-full h-0.5 bg-current transition-all duration-300 ${mobileMenuOpen ? 'opacity-0' : ''}`}></span>
@@ -91,10 +92,12 @@ const Navbar = () => {
       </div>
       
       {/* Mobile Navigation */}
-      <motion.div 
+      <motion.nav
+        id="mobile-menu"
+        aria-hidden={!mobileMenuOpen}
         className={`md:hidden absolute top-full left-0 right-0 bg-white dark:bg-gray-900 shadow-lg py-4 px-4 ${mobileMenuOpen ? 'block' : 'hidden'}`}
         initial={{ opacity: 0, height: 0 }}
-        animate={{ 
+        animate={{
           opacity: mobileMenuOpen ? 1 : 0,
           height: mobileMenuOpen ? 'auto' : 0,
         }}
@@ -123,7 +126,7 @@ const Navbar = () => {
             </li>
           ))}
         </ul>
-      </motion.div>
+      </motion.nav>
     </header>
   );
 };

@@ -29,6 +29,13 @@ type Position = {
   color: string;
 };
 
+interface GlobeMaterial {
+  color: Color;
+  emissive: Color;
+  emissiveIntensity: number;
+  shininess: number;
+}
+
 export type GlobeConfig = {
   pointSize?: number;
   globeColor?: string;
@@ -97,12 +104,7 @@ export function Globe({ globeConfig, data }: WorldProps) {
   useEffect(() => {
     if (!globeRef.current || !isInitialized) return;
 
-    const globeMaterial = globeRef.current.globeMaterial() as unknown as {
-      color: Color;
-      emissive: Color;
-      emissiveIntensity: number;
-      shininess: number;
-    };
+    const globeMaterial = globeRef.current.globeMaterial() as GlobeMaterial;
     globeMaterial.color = new Color(globeConfig.globeColor);
     globeMaterial.emissive = new Color(globeConfig.emissive);
     globeMaterial.emissiveIntensity = globeConfig.emissiveIntensity || 0.1;

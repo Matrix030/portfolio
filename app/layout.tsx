@@ -60,8 +60,14 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${manifold.variable} ${forma.variable} antialiased bg-[#010A13]`}
+        className={`${geistSans.variable} ${geistMono.variable} ${manifold.variable} ${forma.variable} antialiased bg-brand-dark`}
       >
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] bg-brand-teal text-black px-4 py-2 rounded font-medium"
+        >
+          Skip to main content
+        </a>
         <Background>{children}</Background>
       </body>
     </html>
