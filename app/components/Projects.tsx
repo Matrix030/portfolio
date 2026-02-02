@@ -1,9 +1,7 @@
 "use client";
 
 import { motion } from 'framer-motion';
-import React from "react";
-import { CardBody, CardContainer, CardItem } from "./ui/3d-card";
-import Link from "next/link";
+import { ExternalLink, Github } from 'lucide-react';
 
 const projects = [
   {
@@ -67,155 +65,120 @@ const projects = [
 
 const ProjectCard = ({ project, index }: { project: typeof projects[0], index: number }) => {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 50 }}
+    <motion.article
+      initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="w-full"
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.4, delay: index * 0.05 }}
+      className="group bg-brand-card border border-brand-border rounded-xl overflow-hidden hover:border-brand-teal/30 transition-colors"
     >
-      <CardContainer className="w-full">
-        <CardBody className="bg-gray-50 relative group/card dark:hover:shadow-2xl dark:hover:shadow-brand-teal/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-full h-auto rounded-xl p-6 border">
-          <CardItem
-            translateZ="50"
-            className="text-xl font-bold text-neutral-600 dark:text-white font-manifold"
-          >
+      {/* Image */}
+      <div className="aspect-video w-full overflow-hidden bg-brand-dark">
+        <img
+          src={project.imageUrl}
+          alt={project.title}
+          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+        />
+      </div>
+
+      {/* Content */}
+      <div className="p-5">
+        <div className="flex items-start justify-between gap-3 mb-2">
+          <h3 className="text-lg font-semibold text-white font-manifold leading-tight">
             {project.title}
-          </CardItem>
+          </h3>
+          <span className="text-xs text-brand-text-muted whitespace-nowrap font-forma">
+            {project.period}
+          </span>
+        </div>
 
-          <CardItem
-            as="p"
-            translateZ="60"
-            className="text-neutral-500 text-sm mt-2 dark:text-neutral-300 font-forma"
-          >
-            {project.description}
-          </CardItem>
+        <p className="text-sm text-brand-text-muted mb-4 font-forma leading-relaxed">
+          {project.description}
+        </p>
 
-          <CardItem translateZ="100" className="w-full mt-4">
-            <div className="h-60 w-full bg-gray-200 dark:bg-gray-700 rounded-xl overflow-hidden">
-              <img
-                src={project.imageUrl}
-                alt={`Screenshot of ${project.title}: ${project.description.slice(0, 50)}...`}
-                className="w-full h-full object-cover"
-              />
-            </div>
-          </CardItem>
-
-          {project.highlights && (
-            <CardItem translateZ="30" className="flex flex-wrap gap-2 mt-4">
-              {project.highlights.map((highlight, i) => (
-                <span
-                  key={i}
-                  className="text-xs bg-brand-teal/20 text-brand-mint px-2 py-1 rounded font-forma"
-                >
-                  {highlight}
-                </span>
-              ))}
-            </CardItem>
-          )}
-
-          <CardItem translateZ="40" className="flex flex-wrap gap-2 mt-3">
-            {project.tags.map((tag, i) => (
+        {/* Highlights */}
+        {project.highlights && (
+          <div className="flex flex-wrap gap-2 mb-4">
+            {project.highlights.map((highlight, i) => (
               <span
                 key={i}
-                className="text-xs bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 px-2 py-1 rounded font-forma"
+                className="text-xs bg-brand-teal/10 text-brand-mint px-2 py-1 rounded font-forma"
               >
-                {tag}
+                {highlight}
               </span>
             ))}
-          </CardItem>
-
-          <div className="flex justify-between items-center mt-6">
-            {project.github ? (
-              <CardItem
-                translateZ={20}
-                as="a"
-                href={project.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-4 py-2 rounded-xl text-sm font-normal dark:text-white hover:text-brand-teal transition-colors font-forma"
-              >
-                GitHub →
-              </CardItem>
-            ) : (
-              <CardItem
-                translateZ={20}
-                as={Link}
-                href="#"
-                className="px-4 py-2 rounded-xl text-sm font-normal dark:text-white font-forma"
-              >
-                View Details →
-              </CardItem>
-            )}
           </div>
-        </CardBody>
-      </CardContainer>
-    </motion.div>
+        )}
+
+        {/* Tags */}
+        <div className="flex flex-wrap gap-1.5 mb-4">
+          {project.tags.map((tag, i) => (
+            <span
+              key={i}
+              className="text-xs text-brand-text-muted bg-brand-dark px-2 py-0.5 rounded font-forma"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+
+        {/* Links */}
+        <div className="flex items-center gap-4 pt-3 border-t border-brand-border">
+          {project.github && (
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 text-sm text-brand-text-muted hover:text-brand-teal transition-colors font-forma"
+            >
+              <Github className="w-4 h-4" />
+              <span>Code</span>
+            </a>
+          )}
+          {project.publication && (
+            <a
+              href={project.publication}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 text-sm text-brand-text-muted hover:text-brand-teal transition-colors font-forma"
+            >
+              <ExternalLink className="w-4 h-4" />
+              <span>Publication</span>
+            </a>
+          )}
+        </div>
+      </div>
+    </motion.article>
   );
 };
 
 const Projects = () => {
   return (
-    <section className="py-20 px-4 relative" id="projects">
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-50/20 dark:via-blue-900/10 to-transparent -z-10"></div>
-      
-      <div className="max-w-6xl mx-auto">
+    <section className="py-20 px-4" id="projects">
+      <div className="max-w-5xl mx-auto">
         <motion.div
-          className="text-center mb-16"
+          className="text-center mb-12"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 font-manifold">
-            <span className="text-gradient">My Projects</span>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white font-manifold">
+            Projects
           </h2>
-          <p className="text-white max-w-2xl mx-auto font-forma">
-            These projects showcase my skills in full-stack development, machine learning, and data analysis.
+          <p className="text-brand-text-muted max-w-2xl mx-auto font-forma">
+            A selection of projects showcasing my work in full-stack development, machine learning, and systems engineering.
           </p>
         </motion.div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {projects.map((project, index) => (
             <ProjectCard key={project.id} project={project} index={index} />
           ))}
         </div>
-
-        <motion.div
-          className="mt-20 text-center"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-        >
-          <h3 className="text-2xl font-semibold mb-6 text-white font-manifold">Publications</h3>
-          <CardContainer className="inline-block">
-            <CardBody className="bg-gray-50 dark:bg-black p-8 rounded-xl shadow-md dark:hover:shadow-2xl dark:hover:shadow-purple-500/[0.1] border border-black/[0.1] dark:border-white/[0.2]">
-              <CardItem translateZ={20} className="font-bold text-xl mb-3 text-neutral-600 dark:text-white font-manifold">
-                Personality Prediction for CV Analysis
-              </CardItem>
-              <CardItem translateZ={40} className="text-neutral-500 dark:text-neutral-300 font-forma">
-                International Conference on Recent Trends on Multidisciplinary Research and Innovation (ICRMIR – 2023)
-              </CardItem>
-              <CardItem translateZ={60} className="mt-6">
-                <motion.a
-                  href="https://ltce.in/assets/Final-proceeding-ICRMIR-2023.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="px-4 py-2 rounded-xl bg-black dark:bg-white dark:text-black text-white text-xs font-bold font-forma"
-                >
-                  View Publication
-                </motion.a>
-              </CardItem>
-            </CardBody>
-          </CardContainer>
-        </motion.div>
       </div>
     </section>
   );
 };
 
-export default Projects; 
+export default Projects;
