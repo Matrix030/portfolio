@@ -19,7 +19,7 @@ export class OpenSimplexNoise {
   private readonly STRETCH_4D = (1 / Math.sqrt(4 + 1) - 1) / 4
 
   // Simplified constructor
-  constructor(/* seed: number */) {
+  constructor(seed?: number) {
     this.perm = new Uint8Array(256)
     this.perm2D = new Uint8Array(256)
     this.perm3D = new Uint8Array(256)
@@ -53,7 +53,7 @@ export class OpenSimplexNoise {
   }
 }
 
-export function opensimplexNoise(/* seed: number */) {
-  // Implementation remains the same
+export function opensimplexNoise(seed?: number): OpenSimplexNoise {
+  return new OpenSimplexNoise()
 }
 

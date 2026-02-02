@@ -120,19 +120,21 @@ export const createRippleEffect = (p: any, x: number, y: number, color: string, 
   }
 }
 
-// Fix the unused 'text' parameter
-export function drawText(p5: P5Instance, x: number, y: number, _text: string /* text parameter renamed to _text to indicate unused */): void {
-  // Implementation remains the same
+// Draw text at a position
+export function drawText(p5: P5Instance, x: number, y: number, text: string): void {
+  p5.text(text, x, y)
 }
 
-// Fix the unused 'duration' variable
+// Easing function for animations
 export function easeInOutCubic(
   currentTime: number, 
   startValue: number, 
   changeInValue: number, 
-  totalDuration: number, 
-  _duration?: number /* duration parameter renamed to _duration to indicate unused */
+  totalDuration: number
 ): number {
-  // Implementation remains the same
+  let t = currentTime / (totalDuration / 2)
+  if (t < 1) return changeInValue / 2 * t * t * t + startValue
+  t -= 2
+  return changeInValue / 2 * (t * t * t + 2) + startValue
 }
 

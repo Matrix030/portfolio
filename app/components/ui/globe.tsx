@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { useRef, useState, useEffect } from "react";
-import { createGlobe } from "cobe";
+import createGlobe from "cobe";
 
 type WorldProps = {
   data: {

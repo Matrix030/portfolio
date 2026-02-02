@@ -3,11 +3,11 @@
 import type React from "react"
 import { useEffect, useRef } from "react"
 import p5 from "p5"
-import { Bin } from "./lib/bin.ts"
-import { Data } from "./lib/data.ts"
-import { MacrodataFile } from "./lib/macrodata.ts"
-import { OpenSimplexNoise } from "./lib/osn.ts"
-import { createLumonLogo, createPlaceholderImage } from "./lib/utils.ts"
+import { Bin } from "./lib/bin"
+import { Data } from "./lib/data"
+import { MacrodataFile } from "./lib/macrodata"
+import { OpenSimplexNoise } from "./lib/osn"
+import { createLumonLogo, createPlaceholderImage } from "./lib/utils"
 
 interface P5WrapperProps {
   onComplete?: (time: number) => void
