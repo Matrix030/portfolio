@@ -18,17 +18,7 @@ const Footer = () => {
             </p>
           </motion.div>
           
-          <motion.div 
-            className="mt-4 md:mt-0"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            <p className="text-sm text-gray-500 dark:text-gray-400">
-              &copy; {new Date().getFullYear()} All Rights Reserved.
-            </p>
-          </motion.div>
+
         </div>
       </div>
     </footer>
