@@ -18,11 +18,11 @@ const Hero = () => {
         <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white font-manifold whitespace-nowrap">
           Hi, I&apos;m <span className="text-brand-mint font-manifold">Rishikesh Gharat</span>
         </h1>
-        <div className="text-2xl md:text-3xl text-brand-cyan mb-10 flex flex-col items-center font-manifold">
-          <div>Full Stack Developer</div>
-          <div className="my-2">&</div>
-          <div>Computer Science Graduate</div>
-        </div>
+        <p className="text-2xl md:text-3xl text-brand-cyan mb-10 flex flex-col items-center font-manifold">
+          <span className="font-manifold">Full Stack Developer</span>
+          <span className="my-2 font-manifold">&</span>
+          <span className="font-manifold">Computer Science Graduate</span>
+        </p>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
