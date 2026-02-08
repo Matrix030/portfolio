@@ -131,7 +131,7 @@ const TechCard = ({ tech, index }: { tech: typeof technologies[0], index: number
         <h3 className="text-white font-semibold text-base font-manifold group-hover:text-[#ABFFE9] transition-colors duration-300">
           {tech.name}
         </h3>
-        <p className="text-[#B0B0B0] text-sm font-forma mt-1">
+        <p className="text-[#B0B0B0] text-sm font-forma mt-1 max-h-0 overflow-hidden opacity-0 group-hover:max-h-10 group-hover:opacity-100 transition-all duration-300">
           {tech.subtitle}
         </p>
       </div>
