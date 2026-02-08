@@ -45,7 +45,7 @@ export const projects: ProjectData[] = [
     description:
       "Agentic AI system automating multi-step debugging workflows, reducing dev time by 60%. Features secure sandbox for file I/O with 100% filesystem isolation and Claude Code-like UX.",
     tags: ["Python", "Gemini API", "Pydantic", "Subprocess"],
-    imageUrl: "/images/patchbot-ai.png",
+    imageUrl: "/images/steamlens-ai.png",
     period: "2024",
     highlights: [
       "60% dev time reduction",
@@ -60,7 +60,7 @@ export const projects: ProjectData[] = [
     description:
       "Real-time transit tracking app using MTA API & Mapbox, serving 80+ active users. Alert dashboard and live map reduced transit lookup time by 70% compared to official MTA tools.",
     tags: ["TypeScript", "RESTful API", "Firebase", "Mapbox"],
-    imageUrl: "/images/nyc-transit.png",
+    imageUrl: "/images/steamlens-ai.png",
     period: "2024",
     highlights: ["80+ active users", "70% faster lookups", "Real-time updates"],
     category: "Full Stack",
@@ -84,7 +84,7 @@ export const projects: ProjectData[] = [
     description:
       "Post-quantum encryption system using AES-GCM + Kyber for medical records with 85% stronger key exchange than RSA. Dilithium-based signing eliminated 95% of IoT data tampering.",
     tags: ["Python", "AES-GCM", "Kyber", "Dilithium", "OQS-Python"],
-    imageUrl: "/images/quantum-health.png",
+    imageUrl: "/images/steamlens-ai.png",
     period: "2024",
     highlights: [
       "85% stronger encryption",

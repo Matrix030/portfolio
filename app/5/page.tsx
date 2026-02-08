@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform } from "motion/react";
 import { projects } from "@/lib/projects-data";
 import { useRef } from "react";
 import { VariantNav } from "../components/VariantNav";

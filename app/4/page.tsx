@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "motion/react";
 import { projects } from "@/lib/projects-data";
 import { useState } from "react";
 import { VariantNav } from "../components/VariantNav";
