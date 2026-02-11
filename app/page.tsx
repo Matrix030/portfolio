@@ -14,8 +14,8 @@ export default function Home() {
         <main id="main-content" className="overflow-hidden">
             <Navbar />
             <Hero />
-            <CurrentTechnologies />
             <About />
+            <CurrentTechnologies />
             <Projects />
             {/* <Skills /> */}
             <Contact />
