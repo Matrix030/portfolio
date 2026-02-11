@@ -10,16 +10,16 @@ import Contact from './components/Contact';
 import CurrentTechnologies from './components/CurrentTechnologies';
 
 export default function Home() {
-	return (
-		<main id="main-content" className="overflow-hidden">
-			<Navbar />
-			<Hero />
-			<CurrentTechnologies />
-			<About />
-			<Projects />
-			{/* <Skills /> */}
-			<Contact />
-			{/* <Footer /> */}
-		</main>
-	);
+    return (
+        <main id="main-content" className="overflow-hidden">
+            <Navbar />
+            <Hero />
+            <CurrentTechnologies />
+            <About />
+            <Projects />
+            {/* <Skills /> */}
+            <Contact />
+            {/* <Footer /> */}
+        </main>
+    );
 }
