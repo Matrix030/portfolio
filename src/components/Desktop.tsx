@@ -3,6 +3,7 @@
 import { useState, type ReactNode } from "react";
 import Window from "./Window";
 import About from "./windows/About";
+import Projects from "./windows/Projects";
 
 interface WindowDef {
   id: string;
@@ -25,7 +26,7 @@ const windows: WindowDef[] = [
     title: "projects",
     gridColumn: "5 / 9",
     gridRow: "1 / 7",
-    content: <span style={{ color: "#737994", fontSize: 12 }}>projects</span>,
+    content: <Projects />,
   },
   {
     id: "experience",
