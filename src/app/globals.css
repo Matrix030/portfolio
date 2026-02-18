@@ -2,26 +2,42 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap");
+
+@font-face {
+  font-family: "CaskaydiaCove Nerd Font Mono";
+  src: local("CaskaydiaCove Nerd Font Mono"),
+    local("CaskaydiaCoveNerdFontMono-Regular");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@font-face {
+  font-family: "CaskaydiaCove Nerd Font Mono";
+  src: local("CaskaydiaCove Nerd Font Mono Bold"),
+    local("CaskaydiaCoveNerdFontMono-Bold");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+  height: 100%;
+  overflow: hidden;
+  background-color: #0a0a0a;
+  color: #c6d0f5;
+  font-family: "CaskaydiaCove Nerd Font Mono", "JetBrains Mono", monospace;
+  font-size: 13px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
