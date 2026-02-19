@@ -60,9 +60,9 @@ export default function Desktop() {
   return (
     <div
       style={{
-        height: "calc(100vh - 42px)",
-        marginTop: 42,
+        height: "100%",
         padding: 5,
+        background: "#232634",
       }}
     >
       <div

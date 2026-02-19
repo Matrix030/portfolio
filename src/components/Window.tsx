@@ -32,9 +32,9 @@ export default function Window({
         borderRadius: 10,
         padding: 1,
         background: isActive
-          ? "linear-gradient(45deg, #33ccff, #00ff99)"
-          : "#595959",
-        boxShadow: "0 4px 24px rgba(26,26,26,0.93)",
+          ? "linear-gradient(45deg, #8caaee, #ca9ee6)"
+          : "#51576d",
+        boxShadow: "0 4px 32px rgba(35,38,52,0.8)",
         backdropFilter: "blur(8px)",
         transition: "all 0.2s cubic-bezier(0.23,1,0.32,1)",
         overflow: "hidden",
@@ -45,7 +45,7 @@ export default function Window({
       {/* Inner container with actual background */}
       <div
         style={{
-          background: "#101010",
+          background: "rgba(48,52,70,0.85)",
           borderRadius: 9,
           width: "100%",
           height: "100%",
@@ -59,8 +59,8 @@ export default function Window({
           style={{
             height: 28,
             minHeight: 28,
-            background: "rgba(255,255,255,0.03)",
-            borderBottom: "1px solid rgba(255,255,255,0.05)",
+            background: "rgba(41,44,60,0.8)",
+            borderBottom: "1px solid rgba(81,87,109,0.4)",
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",

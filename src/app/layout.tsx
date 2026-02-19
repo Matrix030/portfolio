@@ -14,7 +14,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <div className="w-screen h-screen overflow-hidden bg-desktop">
+        <div className="w-screen h-screen overflow-hidden bg-crust">
           {children}
         </div>
       </body>

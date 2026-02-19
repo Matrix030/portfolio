@@ -101,7 +101,7 @@ export default function Education() {
                   <span
                     key={course}
                     style={{
-                      background: "rgba(140,170,238,0.1)",
+                      background: "#414559",
                       border: "1px solid rgba(140,170,238,0.25)",
                       borderRadius: 3,
                       padding: "2px 8px",
@@ -121,7 +121,7 @@ export default function Education() {
             <div
               style={{
                 height: 1,
-                background: "rgba(255,255,255,0.05)",
+                background: "#414559",
                 marginTop: 16,
               }}
             />

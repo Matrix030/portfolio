@@ -1,11 +1,37 @@
+"use client";
+
+import { useState } from "react";
 import Waybar from "@/components/Waybar";
-import Desktop from "@/components/Desktop";
+import WorkspaceManager from "@/components/WorkspaceManager";
 
 export default function Home() {
+  const [activeWorkspace, setActiveWorkspace] = useState(1);
+
   return (
-    <div className="h-full w-full bg-desktop">
-      <Waybar />
-      <Desktop />
+    <div
+      style={{
+        position: "relative",
+        width: "100vw",
+        height: "100vh",
+        overflow: "hidden",
+        background: "#232634",
+      }}
+    >
+      <Waybar
+        activeWorkspace={activeWorkspace}
+        onWorkspaceChange={setActiveWorkspace}
+      />
+      <div
+        style={{
+          position: "absolute",
+          top: 42,
+          left: 0,
+          right: 0,
+          bottom: 0,
+        }}
+      >
+        <WorkspaceManager activeWorkspace={activeWorkspace} />
+      </div>
     </div>
   );
 }

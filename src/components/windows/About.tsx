@@ -54,13 +54,13 @@ export default function About() {
         <div
           style={{
             height: 1,
-            background: "rgba(255,255,255,0.08)",
+            background: "#414559",
             margin: "10px 0",
           }}
         />
         <div
           style={{
-            color: "rgba(198,208,245,0.8)",
+            color: "#a5adce",
             fontSize: "0.8rem",
             lineHeight: 1.6,
           }}
@@ -83,8 +83,8 @@ export default function About() {
           <div
             key={s}
             style={{
-              background: "rgba(255,255,255,0.04)",
-              border: "1px solid rgba(255,255,255,0.07)",
+              background: "#414559",
+              border: "1px solid #51576d",
               borderRadius: 5,
               padding: "4px 10px",
               fontSize: "0.75rem",
@@ -108,7 +108,7 @@ export default function About() {
             target="_blank"
             rel="noopener noreferrer"
             style={{
-              border: "1px solid #595959",
+              border: "1px solid #51576d",
               borderRadius: 5,
               padding: "4px 12px",
               color: "#c6d0f5",
@@ -119,12 +119,12 @@ export default function About() {
             }}
             onMouseEnter={(e) => {
               const t = e.currentTarget;
-              t.style.borderColor = "#33ccff";
-              t.style.color = "#33ccff";
+              t.style.borderColor = "#8caaee";
+              t.style.color = "#8caaee";
             }}
             onMouseLeave={(e) => {
               const t = e.currentTarget;
-              t.style.borderColor = "#595959";
+              t.style.borderColor = "#51576d";
               t.style.color = "#c6d0f5";
             }}
           >

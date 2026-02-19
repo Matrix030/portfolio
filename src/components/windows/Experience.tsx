@@ -47,9 +47,9 @@ export default function Experience() {
           style={{
             background:
               hovered === i
-                ? "rgba(255,255,255,0.06)"
-                : "rgba(255,255,255,0.03)",
-            border: `1px solid ${hovered === i ? "rgba(255,255,255,0.12)" : "rgba(255,255,255,0.06)"}`,
+                ? "#414559"
+                : "rgba(65,69,89,0.6)",
+            border: `1px solid ${hovered === i ? "#626880" : "#51576d"}`,
             borderRadius: 5,
             padding: "10px 12px",
             transition: "all 0.2s cubic-bezier(0.23,1,0.32,1)",
@@ -101,7 +101,7 @@ export default function Experience() {
               <div
                 key={point}
                 style={{
-                  color: "rgba(198,208,245,0.65)",
+                  color: "#a5adce",
                   fontSize: "0.7rem",
                   lineHeight: 1.5,
                 }}

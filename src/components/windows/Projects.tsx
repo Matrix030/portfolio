@@ -77,9 +77,9 @@ export default function Projects() {
           style={{
             background:
               hovered === i
-                ? "rgba(255,255,255,0.06)"
-                : "rgba(255,255,255,0.03)",
-            border: `1px solid ${hovered === i ? "rgba(255,255,255,0.12)" : "rgba(255,255,255,0.06)"}`,
+                ? "#414559"
+                : "rgba(65,69,89,0.6)",
+            border: `1px solid ${hovered === i ? "#626880" : "#51576d"}`,
             borderRadius: 5,
             padding: "10px 12px",
             cursor: "pointer",
@@ -126,7 +126,7 @@ export default function Projects() {
           {/* Row 2: description */}
           <div
             style={{
-              color: "rgba(198,208,245,0.65)",
+              color: "#a5adce",
               fontSize: "0.75rem",
               lineHeight: 1.5,
               marginTop: 4,
@@ -148,12 +148,12 @@ export default function Projects() {
               <span
                 key={tag}
                 style={{
-                  background: "rgba(255,255,255,0.04)",
-                  border: "1px solid rgba(255,255,255,0.08)",
+                  background: "#414559",
+                  border: "1px solid #51576d",
                   borderRadius: 3,
                   padding: "1px 6px",
                   fontSize: "0.65rem",
-                  color: "rgba(198,208,245,0.7)",
+                  color: "#b5bfe2",
                 }}
               >
                 {tag}
