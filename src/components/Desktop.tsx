@@ -35,22 +35,22 @@ const windows: WindowDef[] = [
     id: "experience",
     title: "experience",
     gridColumn: "9 / 13",
-    gridRow: "1 / 3",
+    gridRow: "1 / 4",
     content: <Experience />,
-  },
-  {
-    id: "skills",
-    title: "skills",
-    gridColumn: "1 / 5",
-    gridRow: "4 / 7",
-    content: <Skills />,
   },
   {
     id: "education",
     title: "education",
-    gridColumn: "9 / 13",
-    gridRow: "3 / 7",
+    gridColumn: "1 / 5",
+    gridRow: "4 / 7",
     content: <Education />,
+  },
+  {
+    id: "skills",
+    title: "skills",
+    gridColumn: "9 / 13",
+    gridRow: "4 / 7",
+    content: <Skills />,
   },
 ];
 
@@ -61,7 +61,7 @@ export default function Desktop() {
     <div
       style={{
         height: "100%",
-        padding: 5,
+        padding: "clamp(4px, 0.4vw, 8px)",
         background: "#232634",
       }}
     >
@@ -70,7 +70,7 @@ export default function Desktop() {
           display: "grid",
           gridTemplateColumns: "repeat(12, 1fr)",
           gridTemplateRows: "repeat(6, 1fr)",
-          gap: 2,
+          gap: "clamp(2px, 0.2vw, 4px)",
           height: "100%",
         }}
       >

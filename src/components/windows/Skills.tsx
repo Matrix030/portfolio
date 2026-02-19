@@ -78,7 +78,7 @@ export default function Skills() {
             <span
               style={{
                 color: group.color,
-                fontSize: "0.72rem",
+                fontSize: "0.65rem",
                 fontWeight: 600,
                 letterSpacing: "0.05em",
                 textTransform: "uppercase",
@@ -98,7 +98,7 @@ export default function Skills() {
                   border: `1px solid ${hexToRgba(group.color, 0.25)}`,
                   borderRadius: 3,
                   padding: "2px 8px",
-                  fontSize: "0.7rem",
+                  fontSize: "0.63rem",
                   color: hexToRgba(group.color, 0.9),
                 }}
               >

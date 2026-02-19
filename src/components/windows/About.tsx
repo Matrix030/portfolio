@@ -35,7 +35,7 @@ export default function About() {
         <div
           style={{
             color: "#c6d0f5",
-            fontSize: "1.4rem",
+            fontSize: "1.2rem",
             fontWeight: 600,
             lineHeight: 1.2,
           }}
@@ -45,7 +45,7 @@ export default function About() {
         <div
           style={{
             color: "#8caaee",
-            fontSize: "0.85rem",
+            fontSize: "0.78rem",
             marginTop: 4,
           }}
         >
@@ -61,7 +61,7 @@ export default function About() {
         <div
           style={{
             color: "#a5adce",
-            fontSize: "0.8rem",
+            fontSize: "0.73rem",
             lineHeight: 1.6,
           }}
         >
@@ -87,7 +87,7 @@ export default function About() {
               border: "1px solid #51576d",
               borderRadius: 5,
               padding: "4px 10px",
-              fontSize: "0.75rem",
+              fontSize: "0.68rem",
               color: "#c6d0f5",
               whiteSpace: "nowrap",
               overflow: "hidden",
@@ -112,7 +112,7 @@ export default function About() {
               borderRadius: 5,
               padding: "4px 12px",
               color: "#c6d0f5",
-              fontSize: "0.75rem",
+              fontSize: "0.68rem",
               textDecoration: "none",
               transition: "all 0.2s cubic-bezier(0.23,1,0.32,1)",
               whiteSpace: "nowrap",

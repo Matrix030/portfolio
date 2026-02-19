@@ -101,7 +101,7 @@ export default function Projects() {
             }}
           >
             <span
-              style={{ color: "#c6d0f5", fontSize: "0.85rem", fontWeight: 600 }}
+              style={{ color: "#c6d0f5", fontSize: "0.78rem", fontWeight: 600 }}
             >
               {p.name}
             </span>
@@ -115,7 +115,7 @@ export default function Projects() {
                 border: `1px solid ${p.status === "active" ? "rgba(166,209,137,0.3)" : "rgba(140,170,238,0.3)"}`,
                 borderRadius: 3,
                 padding: "2px 6px",
-                fontSize: "0.65rem",
+                fontSize: "0.6rem",
                 lineHeight: 1.3,
               }}
             >
@@ -127,7 +127,7 @@ export default function Projects() {
           <div
             style={{
               color: "#a5adce",
-              fontSize: "0.75rem",
+              fontSize: "0.68rem",
               lineHeight: 1.5,
               marginTop: 4,
             }}
@@ -152,7 +152,7 @@ export default function Projects() {
                   border: "1px solid #51576d",
                   borderRadius: 3,
                   padding: "1px 6px",
-                  fontSize: "0.65rem",
+                  fontSize: "0.62rem",
                   color: "#b5bfe2",
                 }}
               >

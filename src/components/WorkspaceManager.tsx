@@ -2,6 +2,7 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import Desktop from "./Desktop";
+import TechGraph from "./workspace2/TechGraph";
 
 const FADE_EASE: [number, number, number, number] = [0.5, 0.5, 0.75, 1.0];
 
@@ -53,7 +54,39 @@ export default function WorkspaceManager({
       >
         {activeWorkspace === 1 && <Desktop />}
         {activeWorkspace === 2 && (
-          <WorkspacePlaceholder label="workspace 2" />
+          <div
+            style={{
+              display: "flex",
+              width: "100%",
+              height: "100%",
+              background: "#232634",
+            }}
+          >
+            <div style={{ flex: "0 0 60%", minWidth: 0, height: "100%", position: "relative" }}>
+              <TechGraph />
+            </div>
+            <div
+              style={{
+                flex: "0 0 40%",
+                minWidth: 0,
+                height: "100%",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <span
+                style={{
+                  color: "#737994",
+                  fontSize: "0.85rem",
+                  fontFamily:
+                    '"CaskaydiaCove Nerd Font Mono", "JetBrains Mono", monospace',
+                }}
+              >
+                github activity coming soon
+              </span>
+            </div>
+          </div>
         )}
         {activeWorkspace === 3 && (
           <WorkspacePlaceholder label="workspace 3" />

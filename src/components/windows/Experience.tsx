@@ -67,7 +67,7 @@ export default function Experience() {
             }}
           >
             <span
-              style={{ color: "#c6d0f5", fontSize: "0.85rem", fontWeight: 600 }}
+              style={{ color: "#c6d0f5", fontSize: "0.78rem", fontWeight: 600 }}
             >
               {exp.company}
             </span>
@@ -80,7 +80,7 @@ export default function Experience() {
           <div
             style={{
               color: exp.color,
-              fontSize: "0.75rem",
+              fontSize: "0.68rem",
               marginTop: 2,
               fontWeight: 500,
             }}
@@ -102,7 +102,7 @@ export default function Experience() {
                 key={point}
                 style={{
                   color: "#a5adce",
-                  fontSize: "0.7rem",
+                  fontSize: "0.67rem",
                   lineHeight: 1.5,
                 }}
               >

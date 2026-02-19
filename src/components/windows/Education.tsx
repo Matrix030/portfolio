@@ -62,7 +62,7 @@ export default function Education() {
             {/* School */}
             <div
               style={{
-                fontSize: "0.9rem",
+                fontSize: "0.82rem",
                 fontWeight: 600,
                 color: "#c6d0f5",
               }}
@@ -71,17 +71,17 @@ export default function Education() {
             </div>
 
             {/* Degree */}
-            <div style={{ fontSize: "0.75rem", color: entry.color }}>
+            <div style={{ fontSize: "0.68rem", color: entry.color }}>
               {entry.degree}
             </div>
 
             {/* Period + GPA */}
             <div style={{ display: "flex", gap: 12 }}>
-              <span style={{ fontSize: "0.7rem", color: "#737994" }}>
+              <span style={{ fontSize: "0.65rem", color: "#737994" }}>
                 {entry.period}
               </span>
               {entry.gpa && (
-                <span style={{ fontSize: "0.7rem", color: "#a6d189" }}>
+                <span style={{ fontSize: "0.65rem", color: "#a6d189" }}>
                   GPA: {entry.gpa}
                 </span>
               )}
@@ -105,7 +105,7 @@ export default function Education() {
                       border: "1px solid rgba(140,170,238,0.25)",
                       borderRadius: 3,
                       padding: "2px 8px",
-                      fontSize: "0.7rem",
+                      fontSize: "0.63rem",
                       color: "#8caaee",
                     }}
                   >

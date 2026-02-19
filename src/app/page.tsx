@@ -24,7 +24,7 @@ export default function Home() {
       <div
         style={{
           position: "absolute",
-          top: 42,
+          top: "2.5rem",
           left: 0,
           right: 0,
           bottom: 0,

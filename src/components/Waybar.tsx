@@ -265,7 +265,7 @@ export default function Waybar({
         top: 2,
         left: 2,
         right: 2,
-        height: 32,
+        height: "2.5rem",
         zIndex: 50,
         display: "flex",
         alignItems: "center",
@@ -273,7 +273,7 @@ export default function Waybar({
         borderRadius: 5,
         fontFamily:
           '"CaskaydiaCove Nerd Font Mono", "JetBrains Mono", monospace',
-        fontSize: 13,
+        fontSize: "0.75rem",
         color: "#c6d0f5",
         boxShadow: "0 2px 8px rgba(35,38,52,0.8)",
       }}
@@ -336,7 +336,7 @@ export default function Waybar({
           style={{
             background: "#292c3c",
             borderRadius: 5,
-            padding: "0.5rem 1rem",
+            padding: "0.3rem 0.75rem",
             margin: "5px 0",
             color: "#8caaee",
             whiteSpace: "nowrap",
@@ -348,7 +348,7 @@ export default function Waybar({
           style={{
             background: "#292c3c",
             borderRadius: 5,
-            padding: "0.5rem 1rem",
+            padding: "0.3rem 0.75rem",
             margin: "5px 0 5px 0.5rem",
             color: "#f4b8e4",
             fontWeight: 600,
@@ -392,12 +392,12 @@ function Module({
     <div
       style={{
         background: "#292c3c",
-        padding: "0.5rem 1rem",
+        padding: "0.3rem 0.75rem",
         margin: "5px 0",
         color,
         borderRadius,
         whiteSpace: "nowrap",
-        fontSize: 13,
+        fontSize: "0.75rem",
         lineHeight: 1,
         transition: "color 0.4s ease",
       }}

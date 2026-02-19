@@ -57,20 +57,20 @@ export default function Window({
         {/* Title bar */}
         <div
           style={{
-            height: 28,
-            minHeight: 28,
+            height: "1.75rem",
+            minHeight: "1.75rem",
             background: "rgba(41,44,60,0.8)",
             borderBottom: "1px solid rgba(81,87,109,0.4)",
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
-            padding: "0 12px",
+            padding: "0 0.75rem",
           }}
         >
           <span
             style={{
               color: "#c6d0f5",
-              fontSize: 12,
+              fontSize: "0.72rem",
               fontFamily:
                 '"CaskaydiaCove Nerd Font Mono", "JetBrains Mono", monospace',
               whiteSpace: "nowrap",
@@ -85,8 +85,8 @@ export default function Window({
               <div
                 key={light.label}
                 style={{
-                  width: 10,
-                  height: 10,
+                  width: "0.6rem",
+                  height: "0.6rem",
                   borderRadius: "50%",
                   background: light.color,
                 }}
@@ -100,7 +100,7 @@ export default function Window({
           style={{
             flex: 1,
             overflow: "hidden",
-            padding: 12,
+            padding: "0.75rem",
             minHeight: 0,
           }}
         >
