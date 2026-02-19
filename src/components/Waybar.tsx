@@ -38,9 +38,9 @@ interface Workspace {
 }
 
 const workspaces: Workspace[] = [
-  { id: 1, activeIcon: "\uf444", inactiveIcon: "\uf4c3" },
-  { id: 2, activeIcon: "\uf444", inactiveIcon: "\uf4c3" },
-  { id: 3, activeIcon: "\uf444", inactiveIcon: "\uf4c3" },
+  { id: 1, activeIcon: "\u2B24", inactiveIcon: "\u25CB" },
+  { id: 2, activeIcon: "\u2B24", inactiveIcon: "\u25CB" },
+  { id: 3, activeIcon: "\u2B24", inactiveIcon: "\u25CB" },
 ];
 
 // --- CPU Module ---
@@ -99,7 +99,7 @@ function CpuModule() {
 
   return (
     <Module color={cpuColor(overall)} borderRadius="0">
-      {"\uf4bc"}{" "}
+      {"cpu"}{" "}
       {cores.map((c, i) => (
         <CpuBar key={i} value={c} prevValue={prevCores.current[i]} />
       ))}{" "}
@@ -142,7 +142,7 @@ function MemoryModule() {
         transition={{ duration: 0.3 }}
         style={{ display: "inline-block" }}
       >
-        {"\uf035b"} <AnimatedNumber value={used} decimals={1} />G/31.3G
+        {"mem"} <AnimatedNumber value={used} decimals={1} />G/31.3G
       </motion.span>
     </Module>
   );
@@ -169,7 +169,7 @@ function NetworkModule() {
 
   return (
     <Module color="#99d1db" borderRadius="0">
-      {"\udb82\udd22"} <AnimatedNumber value={bandwidth} decimals={1} />
+      {"net"} <AnimatedNumber value={bandwidth} decimals={1} />
       Mbits
     </Module>
   );
@@ -184,7 +184,7 @@ function AudioModule() {
         transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
         style={{ display: "inline-block" }}
       >
-        {"\uf028"}
+        {"vol"}
       </motion.span>{" "}
       75%
     </Module>

@@ -3,6 +3,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import Desktop from "./Desktop";
 import TechGraph from "./workspace2/TechGraph";
+import GitHubActivity from "./workspace2/GitHubActivity";
 
 const FADE_EASE: [number, number, number, number] = [0.5, 0.5, 0.75, 1.0];
 
@@ -70,21 +71,9 @@ export default function WorkspaceManager({
                 flex: "0 0 40%",
                 minWidth: 0,
                 height: "100%",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
               }}
             >
-              <span
-                style={{
-                  color: "#737994",
-                  fontSize: "0.85rem",
-                  fontFamily:
-                    '"CaskaydiaCove Nerd Font Mono", "JetBrains Mono", monospace',
-                }}
-              >
-                github activity coming soon
-              </span>
+              <GitHubActivity />
             </div>
           </div>
         )}
