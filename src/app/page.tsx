@@ -38,11 +38,11 @@ export default function Home() {
         <div
           style={{
             position: "absolute",
-            top: "2.5rem",
+            top: "2rem",
             left: 0,
             right: 0,
             bottom: 0,
-            height: "calc(100% - 2.5rem)",
+            height: "calc(100% - 2rem)",
           }}
         >
           <WorkspaceManager activeWorkspace={activeWorkspace} skipInitialAnimation={isLocked} />

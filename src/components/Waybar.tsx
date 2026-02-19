@@ -5,7 +5,6 @@ import {
   motion,
   useSpring,
   useTransform,
-  animate,
   useMotionValue,
 } from "framer-motion";
 
@@ -265,7 +264,7 @@ export default function Waybar({
         top: 2,
         left: 2,
         right: 2,
-        height: "2.5rem",
+        height: "2rem",
         zIndex: 50,
         display: "flex",
         alignItems: "center",
@@ -273,7 +272,7 @@ export default function Waybar({
         borderRadius: 5,
         fontFamily:
           '"CaskaydiaCove Nerd Font Mono", "JetBrains Mono", monospace',
-        fontSize: "0.75rem",
+        fontSize: "0.6rem",
         color: "#c6d0f5",
         boxShadow: "0 2px 8px rgba(35,38,52,0.8)",
       }}
@@ -299,7 +298,7 @@ export default function Waybar({
                 background: "#292c3c",
                 border: "none",
                 borderRadius: 5,
-                padding: "0.4rem",
+                padding: "0.3rem",
                 color: isActive ? "#99d1db" : "#babbf1",
                 cursor: "pointer",
                 fontFamily: "inherit",
@@ -336,8 +335,8 @@ export default function Waybar({
           style={{
             background: "#292c3c",
             borderRadius: 5,
-            padding: "0.3rem 0.75rem",
-            margin: "5px 0",
+            padding: "0.25rem 0.6rem",
+            margin: "4px 0",
             color: "#8caaee",
             whiteSpace: "nowrap",
           }}
@@ -348,8 +347,8 @@ export default function Waybar({
           style={{
             background: "#292c3c",
             borderRadius: 5,
-            padding: "0.3rem 0.75rem",
-            margin: "5px 0 5px 0.5rem",
+            padding: "0.25rem 0.6rem",
+            margin: "4px 0 4px 0.4rem",
             color: "#f4b8e4",
             fontWeight: 600,
             whiteSpace: "nowrap",
@@ -364,7 +363,7 @@ export default function Waybar({
         style={{
           display: "flex",
           alignItems: "center",
-          margin: "5px 2px 5px 0",
+          margin: "4px 2px 4px 0",
           marginLeft: "auto",
         }}
       >
@@ -392,12 +391,12 @@ function Module({
     <div
       style={{
         background: "#292c3c",
-        padding: "0.3rem 0.75rem",
-        margin: "5px 0",
+        padding: "0.25rem 0.6rem",
+        margin: "4px 0",
         color,
         borderRadius,
         whiteSpace: "nowrap",
-        fontSize: "0.75rem",
+        fontSize: "0.6rem",
         lineHeight: 1,
         transition: "color 0.4s ease",
       }}

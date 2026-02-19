@@ -105,31 +105,79 @@ function Skeleton() {
 
 // --- Heatmap ---
 
-function Heatmap({ events }: { events: GitHubEvent[] }) {
-    // Build date → count map from PushEvents
-    const counts: Record<string, number> = {};
-    events.forEach((e) => {
-        if (e.type === "PushEvent") {
-            const day = e.created_at.slice(0, 10);
-            counts[day] = (counts[day] || 0) + 1;
-        }
-    });
+interface ContribCell {
+    date: string;
+    level: number;
+}
 
-    // Generate 16 weeks x 7 days grid (today = end)
-    const today = new Date();
-    const cells: { date: string; count: number }[] = [];
-    for (let i = 16 * 7 - 1; i >= 0; i--) {
-        const d = new Date(today);
-        d.setDate(d.getDate() - i);
-        const key = d.toISOString().slice(0, 10);
-        cells.push({ date: key, count: counts[key] || 0 });
-    }
+function Heatmap() {
+    const [cells, setCells] = useState<ContribCell[]>([]);
 
-    function cellColor(count: number): string {
-        if (count === 0) return "#414559";
-        if (count === 1) return "rgba(166,209,137,0.3)";
-        if (count === 2) return "rgba(166,209,137,0.6)";
-        return "#a6d189";
+    useEffect(() => {
+        fetch("/api/contributions")
+            .then((r) => r.json())
+            .then((data: ContribCell[]) => {
+                if (Array.isArray(data)) {
+                    // Take last 16 weeks (112 days) of contribution data
+                    const today = new Date();
+                    const cutoff = new Date(today);
+                    cutoff.setDate(cutoff.getDate() - 16 * 7);
+                    const cutoffStr = cutoff.toISOString().slice(0, 10);
+
+                    // Build a map from fetched data
+                    const levelMap: Record<string, number> = {};
+                    data.forEach((c) => {
+                        levelMap[c.date] = c.level;
+                    });
+
+                    // Generate exactly 16 weeks x 7 days, filling from fetched data
+                    const grid: ContribCell[] = [];
+                    for (let i = 16 * 7 - 1; i >= 0; i--) {
+                        const d = new Date(today);
+                        d.setDate(d.getDate() - i);
+                        const key = d.toISOString().slice(0, 10);
+                        if (key >= cutoffStr) {
+                            grid.push({ date: key, level: levelMap[key] ?? 0 });
+                        }
+                    }
+                    setCells(grid);
+                }
+            })
+            .catch(() => {});
+    }, []);
+
+    const levelColors = [
+        "#414559",             // level 0: no contributions
+        "rgba(166,209,137,0.25)", // level 1
+        "rgba(166,209,137,0.5)",  // level 2
+        "rgba(166,209,137,0.75)", // level 3
+        "#a6d189",                // level 4
+    ];
+
+    if (cells.length === 0) {
+        return (
+            <div
+                style={{
+                    display: "grid",
+                    gridTemplateColumns: "repeat(16, 0.55rem)",
+                    gridTemplateRows: "repeat(7, 0.55rem)",
+                    gap: 2,
+                    gridAutoFlow: "column",
+                }}
+            >
+                {Array.from({ length: 112 }).map((_, i) => (
+                    <div
+                        key={i}
+                        style={{
+                            width: "0.55rem",
+                            height: "0.55rem",
+                            borderRadius: 1,
+                            background: "#414559",
+                        }}
+                    />
+                ))}
+            </div>
+        );
     }
 
     return (
@@ -145,12 +193,12 @@ function Heatmap({ events }: { events: GitHubEvent[] }) {
             {cells.map((c) => (
                 <div
                     key={c.date}
-                    title={`${c.date}: ${c.count} event${c.count !== 1 ? "s" : ""}`}
+                    title={`${c.date}: level ${c.level}`}
                     style={{
                         width: "0.55rem",
                         height: "0.55rem",
                         borderRadius: 1,
-                        background: cellColor(c.count),
+                        background: levelColors[c.level] ?? "#414559",
                     }}
                 />
             ))}
@@ -280,7 +328,7 @@ export default function GitHubActivity() {
             {/* Heatmap */}
             <div style={{ flex: "0 0 auto" }}>
                 <SectionLabel>contributions (last 16 weeks)</SectionLabel>
-                <Heatmap events={events} />
+                <Heatmap />
             </div>
         </div>
     );
