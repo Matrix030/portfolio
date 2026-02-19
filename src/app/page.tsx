@@ -1,11 +1,14 @@
 "use client";
 
 import { useState } from "react";
+import { AnimatePresence } from "framer-motion";
 import Waybar from "@/components/Waybar";
 import WorkspaceManager from "@/components/WorkspaceManager";
+import LockScreen from "@/components/LockScreen";
 
 export default function Home() {
   const [activeWorkspace, setActiveWorkspace] = useState(1);
+  const [isLocked, setIsLocked] = useState(true);
 
   return (
     <div
@@ -17,6 +20,7 @@ export default function Home() {
         background: "#232634",
       }}
     >
+      {/* Desktop always rendered underneath */}
       <Waybar
         activeWorkspace={activeWorkspace}
         onWorkspaceChange={setActiveWorkspace}
@@ -32,6 +36,13 @@ export default function Home() {
       >
         <WorkspaceManager activeWorkspace={activeWorkspace} />
       </div>
+
+      {/* Lock screen on top, exits upward */}
+      <AnimatePresence>
+        {isLocked && (
+          <LockScreen onUnlock={() => setIsLocked(false)} />
+        )}
+      </AnimatePresence>
     </div>
   );
 }
