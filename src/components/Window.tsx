@@ -10,12 +10,6 @@ interface WindowProps {
   style?: React.CSSProperties;
 }
 
-const trafficLights = [
-  { color: "#e78284", label: "close" },
-  { color: "#e5c890", label: "minimize" },
-  { color: "#a6d189", label: "maximize" },
-];
-
 export default function Window({
   title,
   isActive,
@@ -55,45 +49,23 @@ export default function Window({
           overflow: "hidden",
         }}
       >
-        {/* Title bar */}
+        {/* Terminal prompt title */}
         <div
           style={{
-            height: "1.75rem",
-            minHeight: "1.75rem",
-            background: "rgba(41,44,60,0.8)",
-            borderBottom: "1px solid rgba(81,87,109,0.4)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            padding: "0 0.75rem",
+            padding: "0.4rem 0.75rem 0",
+            fontFamily:
+              '"CaskaydiaCove Nerd Font Mono", "JetBrains Mono", monospace',
+            fontSize: "0.68rem",
+            whiteSpace: "nowrap",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
           }}
         >
-          <span
-            style={{
-              color: "#c6d0f5",
-              fontSize: "0.72rem",
-              fontFamily:
-                '"CaskaydiaCove Nerd Font Mono", "JetBrains Mono", monospace',
-              whiteSpace: "nowrap",
-              overflow: "hidden",
-              textOverflow: "ellipsis",
-            }}
-          >
-            {title}
-          </span>
-          <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-            {trafficLights.map((light) => (
-              <div
-                key={light.label}
-                style={{
-                  width: "0.6rem",
-                  height: "0.6rem",
-                  borderRadius: "50%",
-                  background: light.color,
-                }}
-              />
-            ))}
-          </div>
+          <span style={{ color: "#a6d189" }}>{"➜"}</span>
+          {"  "}
+          <span style={{ color: "#99d1db" }}>portfolio</span>
+          <span style={{ color: "#c6d0f5" }}>:</span>
+          <span style={{ color: "#ca9ee6" }}>({title.toUpperCase()})</span>
         </div>
 
         {/* Content */}
@@ -101,7 +73,7 @@ export default function Window({
           style={{
             flex: 1,
             overflow: "hidden",
-            padding: "0.75rem",
+            padding: "0.4rem 0.75rem 0.75rem",
             minHeight: 0,
           }}
         >
