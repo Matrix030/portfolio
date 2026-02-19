@@ -35,14 +35,16 @@ function WorkspacePlaceholder({ label }: { label: string }) {
 
 export default function WorkspaceManager({
   activeWorkspace,
+  skipInitialAnimation,
 }: {
   activeWorkspace: number;
+  skipInitialAnimation?: boolean;
 }) {
   return (
     <AnimatePresence mode="wait">
       <motion.div
         key={activeWorkspace}
-        initial={{ opacity: 0 }}
+        initial={skipInitialAnimation ? false : { opacity: 0 }}
         animate={{
           opacity: 1,
           transition: { duration: 0.15, ease: FADE_EASE },
@@ -51,7 +53,7 @@ export default function WorkspaceManager({
           opacity: 0,
           transition: { duration: 0.15, ease: FADE_EASE },
         }}
-        style={{ position: "absolute", inset: 0 }}
+        style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%" }}
       >
         {activeWorkspace === 1 && <Desktop />}
         {activeWorkspace === 2 && (

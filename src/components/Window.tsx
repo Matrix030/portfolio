@@ -35,9 +35,10 @@ export default function Window({
           ? "linear-gradient(45deg, #8caaee, #ca9ee6)"
           : "#51576d",
         boxShadow: "0 4px 32px rgba(35,38,52,0.8)",
-        backdropFilter: "blur(8px)",
         transition: "all 0.2s cubic-bezier(0.23,1,0.32,1)",
         overflow: "hidden",
+        transform: "translate3d(0,0,0)",
+        backfaceVisibility: "hidden",
         ...style,
       }}
       onMouseEnter={onMouseEnter}
@@ -45,7 +46,7 @@ export default function Window({
       {/* Inner container with actual background */}
       <div
         style={{
-          background: "rgba(48,52,70,0.85)",
+          background: "rgba(48,52,70,0.95)",
           borderRadius: 9,
           width: "100%",
           height: "100%",

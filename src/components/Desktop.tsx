@@ -63,6 +63,7 @@ export default function Desktop() {
         height: "100%",
         padding: "clamp(4px, 0.4vw, 8px)",
         background: "#232634",
+        transform: "translateZ(0)",
       }}
     >
       <div
@@ -72,6 +73,8 @@ export default function Desktop() {
           gridTemplateRows: "repeat(6, 1fr)",
           gap: "clamp(2px, 0.2vw, 4px)",
           height: "100%",
+          transform: "translate3d(0,0,0)",
+          backfaceVisibility: "hidden",
         }}
       >
         {windows.map((win) => (

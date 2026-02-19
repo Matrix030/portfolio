@@ -28,19 +28,12 @@ interface LockScreenProps {
 
 export default function LockScreen({ onUnlock }: LockScreenProps) {
   const [now, setNow] = useState(new Date());
-  const [blurred, setBlurred] = useState(false);
   const debounceRef = useRef(false);
 
   // Live clock
   useEffect(() => {
     const id = setInterval(() => setNow(new Date()), 1000);
     return () => clearInterval(id);
-  }, []);
-
-  // Blur delay
-  useEffect(() => {
-    const id = setTimeout(() => setBlurred(true), 100);
-    return () => clearTimeout(id);
   }, []);
 
   // Unlock handlers with 300ms debounce
@@ -65,26 +58,16 @@ export default function LockScreen({ onUnlock }: LockScreenProps) {
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1, transition: { duration: 0.4 } }}
-      exit={{ y: "-100%", transition: { duration: 0.6, ease: UNLOCK_EASE } }}
+      exit={{ opacity: 0, transition: { duration: 0.5, ease: UNLOCK_EASE } }}
       style={{
         position: "fixed",
         inset: 0,
         zIndex: 1000,
-        background: "#0a0a0a",
-        backdropFilter: blurred ? "blur(12px)" : "none",
-        transition: "backdrop-filter 0.3s ease",
+        background: "rgba(0,0,0,0.25)",
         fontFamily: '"CaskaydiaCove Nerd Font Mono", "JetBrains Mono", monospace',
         overflow: "hidden",
       }}
     >
-      {/* Dark overlay */}
-      <div
-        style={{
-          position: "absolute",
-          inset: 0,
-          background: "rgba(0,0,0,0.35)",
-        }}
-      />
 
       {/* Center content */}
       <div
