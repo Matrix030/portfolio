@@ -40,7 +40,7 @@ export default function Window({
       {/* Inner container with actual background */}
       <div
         style={{
-          background: "rgba(48,52,70,0.95)",
+          background: "rgba(30,33,47,0.95)",
           borderRadius: 9,
           width: "100%",
           height: "100%",
