@@ -4,6 +4,9 @@ import { useState, type ReactNode } from "react";
 import Window from "./Window";
 import About from "./windows/About";
 import Projects from "./windows/Projects";
+import Experience from "./windows/Experience";
+import Skills from "./windows/Skills";
+import Education from "./windows/Education";
 
 interface WindowDef {
   id: string;
@@ -33,23 +36,21 @@ const windows: WindowDef[] = [
     title: "experience",
     gridColumn: "9 / 13",
     gridRow: "1 / 3",
-    content: (
-      <span style={{ color: "#737994", fontSize: 12 }}>experience</span>
-    ),
+    content: <Experience />,
   },
   {
     id: "skills",
     title: "skills",
     gridColumn: "1 / 5",
     gridRow: "4 / 7",
-    content: <span style={{ color: "#737994", fontSize: 12 }}>skills</span>,
+    content: <Skills />,
   },
   {
     id: "education",
     title: "education",
     gridColumn: "9 / 13",
     gridRow: "3 / 7",
-    content: <span style={{ color: "#737994", fontSize: 12 }}>education</span>,
+    content: <Education />,
   },
 ];
 
