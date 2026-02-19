@@ -112,33 +112,26 @@ interface ContribCell {
 
 function Heatmap() {
     const [cells, setCells] = useState<ContribCell[]>([]);
+    const WEEKS = 52;
 
     useEffect(() => {
         fetch("/api/contributions")
             .then((r) => r.json())
             .then((data: ContribCell[]) => {
                 if (Array.isArray(data)) {
-                    // Take last 16 weeks (112 days) of contribution data
-                    const today = new Date();
-                    const cutoff = new Date(today);
-                    cutoff.setDate(cutoff.getDate() - 16 * 7);
-                    const cutoffStr = cutoff.toISOString().slice(0, 10);
-
-                    // Build a map from fetched data
                     const levelMap: Record<string, number> = {};
                     data.forEach((c) => {
                         levelMap[c.date] = c.level;
                     });
 
-                    // Generate exactly 16 weeks x 7 days, filling from fetched data
+                    // Generate full year: 52 weeks x 7 days (today = end)
+                    const today = new Date();
                     const grid: ContribCell[] = [];
-                    for (let i = 16 * 7 - 1; i >= 0; i--) {
+                    for (let i = WEEKS * 7 - 1; i >= 0; i--) {
                         const d = new Date(today);
                         d.setDate(d.getDate() - i);
                         const key = d.toISOString().slice(0, 10);
-                        if (key >= cutoffStr) {
-                            grid.push({ date: key, level: levelMap[key] ?? 0 });
-                        }
+                        grid.push({ date: key, level: levelMap[key] ?? 0 });
                     }
                     setCells(grid);
                 }
@@ -147,33 +140,35 @@ function Heatmap() {
     }, []);
 
     const levelColors = [
-        "#414559",             // level 0: no contributions
-        "rgba(166,209,137,0.25)", // level 1
-        "rgba(166,209,137,0.5)",  // level 2
-        "rgba(166,209,137,0.75)", // level 3
-        "#a6d189",                // level 4
+        "#414559",   // level 0: no contributions
+        "#4a6940",   // level 1
+        "#6b9a54",   // level 2
+        "#8ccf6a",   // level 3
+        "#a6d189",   // level 4
     ];
+
+    const gridStyle: React.CSSProperties = {
+        display: "grid",
+        gridTemplateColumns: `repeat(${WEEKS}, 1fr)`,
+        gridTemplateRows: "repeat(7, 1fr)",
+        gap: 2,
+        gridAutoFlow: "column",
+        width: "100%",
+    };
+
+    const cellStyle: React.CSSProperties = {
+        width: "100%",
+        aspectRatio: "1",
+        borderRadius: 1,
+    };
 
     if (cells.length === 0) {
         return (
-            <div
-                style={{
-                    display: "grid",
-                    gridTemplateColumns: "repeat(16, 0.55rem)",
-                    gridTemplateRows: "repeat(7, 0.55rem)",
-                    gap: 2,
-                    gridAutoFlow: "column",
-                }}
-            >
-                {Array.from({ length: 112 }).map((_, i) => (
+            <div style={gridStyle}>
+                {Array.from({ length: WEEKS * 7 }).map((_, i) => (
                     <div
                         key={i}
-                        style={{
-                            width: "0.55rem",
-                            height: "0.55rem",
-                            borderRadius: 1,
-                            background: "#414559",
-                        }}
+                        style={{ ...cellStyle, background: "#414559" }}
                     />
                 ))}
             </div>
@@ -181,23 +176,13 @@ function Heatmap() {
     }
 
     return (
-        <div
-            style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(16, 0.55rem)",
-                gridTemplateRows: "repeat(7, 0.55rem)",
-                gap: 2,
-                gridAutoFlow: "column",
-            }}
-        >
+        <div style={gridStyle}>
             {cells.map((c) => (
                 <div
                     key={c.date}
                     title={`${c.date}: level ${c.level}`}
                     style={{
-                        width: "0.55rem",
-                        height: "0.55rem",
-                        borderRadius: 1,
+                        ...cellStyle,
                         background: levelColors[c.level] ?? "#414559",
                     }}
                 />
@@ -327,7 +312,7 @@ export default function GitHubActivity() {
 
             {/* Heatmap */}
             <div style={{ flex: "0 0 auto" }}>
-                <SectionLabel>contributions (last 16 weeks)</SectionLabel>
+                <SectionLabel>contributions (last year)</SectionLabel>
                 <Heatmap />
             </div>
         </div>
