@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import { AnimatePresence } from "framer-motion";
 import Waybar from "@/components/Waybar";
 import WorkspaceManager from "@/components/WorkspaceManager";
@@ -10,6 +10,22 @@ export default function Home() {
   const [activeWorkspace, setActiveWorkspace] = useState(1);
   const [isLocked, setIsLocked] = useState(true);
   const desktopRef = useRef<HTMLDivElement>(null);
+
+  const handleKeyDown = useCallback(
+    (e: KeyboardEvent) => {
+      if (isLocked) return;
+      const num = parseInt(e.key, 10);
+      if (num >= 1 && num <= 3) {
+        setActiveWorkspace(num);
+      }
+    },
+    [isLocked]
+  );
+
+  useEffect(() => {
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [handleKeyDown]);
 
   return (
     <div
