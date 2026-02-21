@@ -1,9 +1,14 @@
 "use client";
 
+import { useRef } from "react";
+
 interface WindowProps {
   id: string;
   title: string;
   isActive: boolean;
+  forceActive?: boolean;
+  dimmed?: boolean;
+  onReveal?: () => void;
   onMouseEnter: () => void;
   children: React.ReactNode;
   className?: string;
@@ -13,11 +18,41 @@ interface WindowProps {
 export default function Window({
   title,
   isActive,
+  forceActive = false,
+  dimmed = false,
+  onReveal,
   onMouseEnter,
   children,
   className,
   style,
 }: WindowProps) {
+  const active = isActive || forceActive;
+  const hoverTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  function handleMouseEnter() {
+    onMouseEnter();
+    if (dimmed && onReveal) {
+      hoverTimer.current = setTimeout(() => {
+        onReveal();
+      }, 1500);
+    }
+  }
+
+  function handleMouseLeave() {
+    if (hoverTimer.current) {
+      clearTimeout(hoverTimer.current);
+      hoverTimer.current = null;
+    }
+  }
+
+  function handleClick() {
+    if (hoverTimer.current) {
+      clearTimeout(hoverTimer.current);
+      hoverTimer.current = null;
+    }
+    if (dimmed && onReveal) onReveal();
+  }
+
   return (
     <div
       className={className}
@@ -25,17 +60,24 @@ export default function Window({
         position: "relative",
         borderRadius: 10,
         padding: 1,
-        background: isActive
+        background: active
           ? "linear-gradient(45deg, #8caaee, #ca9ee6)"
           : "#51576d",
-        boxShadow: "0 4px 32px rgba(35,38,52,0.8)",
-        transition: "all 0.2s cubic-bezier(0.23,1,0.32,1)",
+        boxShadow: active
+          ? "0 4px 32px rgba(35,38,52,0.8), 0 0 20px rgba(140,170,238,0.15)"
+          : "0 4px 32px rgba(35,38,52,0.8)",
+        transition: "all 0.2s cubic-bezier(0.23,1,0.32,1), opacity 0.8s cubic-bezier(0.23,1,0.32,1), filter 0.8s cubic-bezier(0.23,1,0.32,1)",
         overflow: "hidden",
         transform: "translate3d(0,0,0)",
         backfaceVisibility: "hidden",
+        opacity: dimmed ? 0.45 : 1,
+        filter: dimmed ? "blur(3px)" : "none",
+        cursor: dimmed ? "pointer" : "default",
         ...style,
       }}
-      onMouseEnter={onMouseEnter}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      onClick={handleClick}
     >
       {/* Inner container with actual background */}
       <div
