@@ -5,11 +5,15 @@ import { AnimatePresence } from "framer-motion";
 import Waybar from "@/components/Waybar";
 import WorkspaceManager from "@/components/WorkspaceManager";
 import LockScreen from "@/components/LockScreen";
+import ContactFAB from "@/components/ContactFAB";
+import MobileLayout from "@/components/mobile/MobileLayout";
+import { useMediaQuery } from "@/hooks/useMediaQuery";
 
 export default function Home() {
   const [activeWorkspace, setActiveWorkspace] = useState(1);
   const [isLocked, setIsLocked] = useState(true);
   const desktopRef = useRef<HTMLDivElement>(null);
+  const isMobile = useMediaQuery("(max-width: 768px)");
 
   const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {
@@ -47,22 +51,31 @@ export default function Home() {
           transition: "filter 0.5s ease",
         }}
       >
-        <Waybar
-          activeWorkspace={activeWorkspace}
-          onWorkspaceChange={setActiveWorkspace}
-        />
-        <div
-          style={{
-            position: "absolute",
-            top: "2rem",
-            left: 0,
-            right: 0,
-            bottom: 0,
-            height: "calc(100% - 2rem)",
-          }}
-        >
-          <WorkspaceManager activeWorkspace={activeWorkspace} skipInitialAnimation={isLocked} />
-        </div>
+        {isMobile ? (
+          <MobileLayout />
+        ) : (
+          <>
+            <Waybar
+              activeWorkspace={activeWorkspace}
+              onWorkspaceChange={setActiveWorkspace}
+            />
+            <div
+              style={{
+                position: "absolute",
+                top: "2rem",
+                left: 0,
+                right: 0,
+                bottom: 0,
+                height: "calc(100% - 2rem)",
+              }}
+            >
+              <WorkspaceManager
+                activeWorkspace={activeWorkspace}
+                skipInitialAnimation={isLocked}
+              />
+            </div>
+          </>
+        )}
       </div>
 
       {/* Lock screen on top, fades out */}
@@ -71,6 +84,9 @@ export default function Home() {
           <LockScreen onUnlock={() => setIsLocked(false)} />
         )}
       </AnimatePresence>
+
+      {/* Persistent contact FAB — hidden while locked */}
+      {!isLocked && <ContactFAB />}
     </div>
   );
 }
