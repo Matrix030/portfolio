@@ -1,5 +1,5 @@
 'use client'
-
+import { useState } from 'react'
 import About from '@/components/windows/About'
 import Projects from '@/components/windows/Projects'
 import Experience from '@/components/windows/Experience'
@@ -43,6 +43,8 @@ export default function DwindleWindow({
   onFocus,
   onClose,
 }: DwindleWindowProps) {
+  const [dotsHovered, setDotsHovered] = useState(false)
+
   return (
     <div
       onMouseDown={onFocus}
@@ -100,9 +102,21 @@ export default function DwindleWindow({
           </span>
 
           {/* Traffic lights */}
-          <div style={{ display: 'flex', gap: '0.35rem', alignItems: 'center' }}>
+          <div
+            style={{
+              display: 'flex',
+              gap: '0.35rem',
+              alignItems: 'center',
+              transform: dotsHovered ? 'scale(1.1)' : 'scale(1)',
+              transition: 'transform 0.12s',
+            }}
+            onMouseEnter={() => setDotsHovered(true)}
+            onMouseLeave={() => setDotsHovered(false)}
+          >
+            {/* Red — closes window */}
             <button
-              onMouseDown={(e) => { e.stopPropagation(); onClose() }}
+              onMouseDown={(e) => e.stopPropagation()}
+              onClick={(e) => { e.stopPropagation(); onClose() }}
               style={{
                 width: 10,
                 height: 10,
@@ -113,6 +127,7 @@ export default function DwindleWindow({
                 padding: 0,
               }}
             />
+            {/* Yellow — decorative */}
             <div
               style={{
                 width: 10,
@@ -121,6 +136,7 @@ export default function DwindleWindow({
                 background: '#e5c890',
               }}
             />
+            {/* Green — decorative */}
             <div
               style={{
                 width: 10,
@@ -141,12 +157,7 @@ export default function DwindleWindow({
             scrollbarWidth: 'none',
           }}
         >
-          <style>{`
-            .dwindle-content::-webkit-scrollbar { display: none; }
-          `}</style>
-          <div className="dwindle-content" style={{ height: '100%' }}>
-            {windowContent[id] ?? null}
-          </div>
+          {windowContent[id] ?? null}
         </div>
       </div>
     </div>
