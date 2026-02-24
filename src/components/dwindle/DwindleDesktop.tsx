@@ -21,7 +21,6 @@ const AVAILABLE_WINDOWS = [
   { id: 'experience', label: 'experience.log', icon: '󰃭' },
   { id: 'skills',     label: 'skills.conf',    icon: '󰑴' },
   { id: 'education',  label: 'education.txt',  icon: '󰑴' },
-  { id: 'github',     label: 'github.live',    icon: '󰊤' },
 ]
 
 export const windowTitles: Record<string, string> = {
