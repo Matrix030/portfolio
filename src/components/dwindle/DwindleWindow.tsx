@@ -7,7 +7,7 @@ import Experience from '@/components/windows/Experience'
 import Skills from '@/components/windows/Skills'
 import Education from '@/components/windows/Education'
 import GitHubActivity from '@/components/workspace2/GitHubActivity'
-import type { Bounds } from '@/lib/dwindle'
+import type { Bounds, Edge } from '@/lib/dwindle'
 
 const FONT = '"CaskaydiaCove Nerd Font Mono", "JetBrains Mono", monospace'
 
@@ -45,6 +45,28 @@ const windowVariants = {
   },
 }
 
+// Edge overlay geometry and labels
+const edgeStyles: Record<Edge, React.CSSProperties> = {
+  left:   { left: 0,   top: 0,    width: '35%',  height: '100%' },
+  right:  { right: 0,  top: 0,    width: '35%',  height: '100%' },
+  top:    { left: 0,   top: 0,    width: '100%', height: '35%'  },
+  bottom: { left: 0,   bottom: 0, width: '100%', height: '35%'  },
+}
+
+const edgeBorder: Record<Edge, React.CSSProperties> = {
+  left:   { borderLeft:   '3px solid #8caaee' },
+  right:  { borderRight:  '3px solid #8caaee' },
+  top:    { borderTop:    '3px solid #8caaee' },
+  bottom: { borderBottom: '3px solid #8caaee' },
+}
+
+const edgeLabels: Record<Edge, string> = {
+  left:   '← left',
+  right:  '→ right',
+  top:    '↑ top',
+  bottom: '↓ bottom',
+}
+
 interface DwindleWindowProps {
   id: string
   bounds: Bounds
@@ -52,10 +74,13 @@ interface DwindleWindowProps {
   isFullscreen: boolean
   isDragging: boolean
   isDragTarget: boolean
+  targetEdge: Edge | null
+  isAnyDragging: boolean
   onFocus: () => void
   onClose: () => void
   onDragStart: (id: string, x: number, y: number) => void
-  onDragEnter: (id: string) => void
+  onDragEnter: (id: string, x: number, y: number) => void
+  onDragLeave: () => void
 }
 
 export default function DwindleWindow({
@@ -65,10 +90,13 @@ export default function DwindleWindow({
   isFullscreen,
   isDragging,
   isDragTarget,
+  targetEdge,
+  isAnyDragging,
   onFocus,
   onClose,
   onDragStart,
   onDragEnter,
+  onDragLeave,
 }: DwindleWindowProps) {
   const [dotsHovered, setDotsHovered] = useState(false)
 
@@ -87,7 +115,16 @@ export default function DwindleWindow({
       }
       exit="exit"
       transition={{ layout: { duration: 0.2, ease: EASE_OUT_QUINT } }}
-      onPointerEnter={() => { onFocus(); onDragEnter(id) }}
+      onPointerEnter={(e) => {
+        if (isAnyDragging) {
+          if (!isDragging) onDragEnter(id, e.clientX, e.clientY)
+        } else {
+          onFocus()
+        }
+      }}
+      onPointerLeave={() => {
+        if (isAnyDragging && !isDragging) onDragLeave()
+      }}
       style={{
         position: 'absolute',
         left: bounds.x,
@@ -101,14 +138,13 @@ export default function DwindleWindow({
         pointerEvents: isDragging ? 'none' : 'auto',
       }}
     >
-      {/* Base border — always visible at inactive color */}
+      {/* Base border */}
       <div
         style={{
           position: 'absolute',
           inset: 0,
           borderRadius: 10,
-          background: isDragTarget ? '#8caaee' : '#51576d',
-          transition: 'background 0.1s',
+          background: '#51576d',
         }}
       />
 
@@ -132,10 +168,9 @@ export default function DwindleWindow({
           inset: 1,
           borderRadius: 9,
           overflow: 'hidden',
-          background: isDragTarget ? 'rgba(140,170,238,0.06)' : 'rgba(48,52,70,0.85)',
+          background: 'rgba(48,52,70,0.85)',
           display: 'flex',
           flexDirection: 'column',
-          transition: 'background 0.1s',
         }}
       >
         {/* Title bar */}
@@ -214,32 +249,31 @@ export default function DwindleWindow({
         </div>
       </div>
 
-      {/* Drag target overlay */}
-      {isDragTarget && (
+      {/* Directional edge overlay — shown when this window is the drop target */}
+      {isDragTarget && targetEdge && (
         <div
           style={{
             position: 'absolute',
-            inset: 1,
-            borderRadius: 9,
-            background: 'rgba(140,170,238,0.05)',
-            border: '2px dashed rgba(140,170,238,0.4)',
+            ...edgeStyles[targetEdge],
+            ...edgeBorder[targetEdge],
+            background: 'rgba(140,170,238,0.12)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            zIndex: 5,
+            zIndex: 20,
             pointerEvents: 'none',
+            transition: 'all 0.1s ease',
           }}
         >
           <span
             style={{
               color: '#8caaee',
-              fontSize: '0.7rem',
+              fontSize: '0.62rem',
               fontFamily: FONT,
-              fontWeight: 600,
               userSelect: 'none',
             }}
           >
-            swap here
+            {edgeLabels[targetEdge]}
           </span>
         </div>
       )}

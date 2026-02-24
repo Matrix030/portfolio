@@ -3,9 +3,9 @@ import { useState, useRef, useEffect, useCallback, useLayoutEffect } from 'react
 import { AnimatePresence } from 'framer-motion'
 import {
   computeLayout, openWindow, closeWindow, getWindowIds,
-  getSplits, updateSplitRatio, swapWindows,
+  getSplits, updateSplitRatio, moveWindowToEdge,
 } from '@/lib/dwindle'
-import type { TreeNode, Bounds } from '@/lib/dwindle'
+import type { TreeNode, Bounds, Edge } from '@/lib/dwindle'
 import DwindleWindow from './DwindleWindow'
 import SplitHandle from './SplitHandle'
 import LauncherBar from './LauncherBar'
@@ -38,6 +38,19 @@ type DragState = {
   ghostX: number
   ghostY: number
   targetId: string | null
+  targetEdge: Edge | null
+}
+
+function getEdgeFromPosition(bounds: Bounds, x: number, y: number): Edge {
+  const distLeft   = x - bounds.x
+  const distRight  = (bounds.x + bounds.width) - x
+  const distTop    = y - bounds.y
+  const distBottom = (bounds.y + bounds.height) - y
+  const min = Math.min(distLeft, distRight, distTop, distBottom)
+  if (min === distLeft)   return 'left'
+  if (min === distRight)  return 'right'
+  if (min === distTop)    return 'top'
+  return 'bottom'
 }
 
 export default function DwindleDesktop() {
@@ -57,7 +70,7 @@ export default function DwindleDesktop() {
   const dragStateRef = useRef<DragState | null>(null)
   dragStateRef.current = dragState
 
-  // Measure container — exclude launcher bar from tiling area
+  // Measure container
   useEffect(() => {
     const el = containerRef.current
     if (!el) return
@@ -91,7 +104,7 @@ export default function DwindleDesktop() {
   windowIdsRef.current = windowIds
   layoutRef.current = layout
 
-  // handleFocus: no-op during drag to prevent focus changes while hovering drag targets
+  // handleFocus: no-op during drag
   const handleFocus = useCallback((id: string) => {
     if (dragStateRef.current) return
     setFocusedId(id)
@@ -117,18 +130,30 @@ export default function DwindleDesktop() {
   }, [])
 
   const handleDragStart = useCallback((id: string, x: number, y: number) => {
-    setDragState({ sourceId: id, ghostX: x, ghostY: y, targetId: null })
+    setDragState({ sourceId: id, ghostX: x, ghostY: y, targetId: null, targetEdge: null })
     setFocusedId(id)
   }, [])
 
-  const handleDragEnter = useCallback((id: string) => {
-    setDragState(prev => {
-      if (!prev || id === prev.sourceId) return prev
-      return { ...prev, targetId: id }
-    })
+  // Called from window's onPointerEnter during drag — converts client→desktop coords, computes edge
+  const handleDragEnter = useCallback((id: string, clientX: number, clientY: number) => {
+    const sourceId = dragStateRef.current?.sourceId
+    if (!sourceId || id === sourceId) return
+    const bounds = layoutRef.current[id]
+    if (!bounds) return
+    const containerEl = containerRef.current
+    if (!containerEl) return
+    const containerRect = containerEl.getBoundingClientRect()
+    const relX = clientX - containerRect.left
+    const relY = clientY - containerRect.top
+    const edge = getEdgeFromPosition(bounds, relX, relY)
+    setDragState(prev => prev ? { ...prev, targetId: id, targetEdge: edge } : null)
   }, [])
 
-  // Drag pointer tracking — runs only when drag starts/ends (not on every ghost update)
+  const handleDragLeave = useCallback(() => {
+    setDragState(prev => prev ? { ...prev, targetId: null, targetEdge: null } : null)
+  }, [])
+
+  // Drag pointer tracking — stable for entire drag session
   const isDraggingAny = dragState !== null
   useEffect(() => {
     if (!isDraggingAny) return
@@ -141,28 +166,33 @@ export default function DwindleDesktop() {
       const relY = e.clientY - rect.top
       const sourceId = dragStateRef.current?.sourceId
 
-      // Geometric hit test against window bounds
+      // Geometric hit test + edge computation in one pass
       let newTarget: string | null = null
+      let newEdge: Edge | null = null
+
       for (const id of windowIdsRef.current) {
         if (id === sourceId) continue
         const b = layoutRef.current[id]
         if (b && relX >= b.x && relX <= b.x + b.width && relY >= b.y && relY <= b.y + b.height) {
           newTarget = id
+          newEdge = getEdgeFromPosition(b, relX, relY)
           break
         }
       }
 
       setDragState(prev =>
-        prev ? { ...prev, ghostX: e.clientX, ghostY: e.clientY, targetId: newTarget } : null
+        prev ? { ...prev, ghostX: e.clientX, ghostY: e.clientY, targetId: newTarget, targetEdge: newEdge } : null
       )
     }
 
     const onUp = () => {
       const ds = dragStateRef.current
       setDragState(null)
-      if (ds?.targetId && ds.targetId !== ds.sourceId) {
-        setTree(prev => prev ? swapWindows(prev, ds.sourceId, ds.targetId!) : prev)
-        setFocusedId(ds.targetId)
+      if (ds?.targetId && ds.targetEdge && ds.targetId !== ds.sourceId) {
+        setTree(prev =>
+          prev ? moveWindowToEdge(prev, ds.sourceId, ds.targetId!, ds.targetEdge!) : prev
+        )
+        setFocusedId(ds.sourceId)
       }
     }
 
@@ -247,7 +277,6 @@ export default function DwindleDesktop() {
         overflow: 'hidden',
       }}
     >
-      {/* Tiled windows */}
       <AnimatePresence>
         {windowIds.map(id => {
           const bounds = getEffectiveBounds(id)
@@ -260,11 +289,14 @@ export default function DwindleDesktop() {
               isActive={focusedId === id}
               isFullscreen={fullscreenId === id}
               isDragging={dragState?.sourceId === id}
-              isDragTarget={dragState?.targetId === id && dragState.sourceId !== id}
+              isDragTarget={dragState?.targetId === id}
+              targetEdge={dragState?.targetId === id ? dragState.targetEdge : null}
+              isAnyDragging={isDraggingAny}
               onFocus={() => handleFocus(id)}
               onClose={() => handleClose(id)}
               onDragStart={handleDragStart}
               onDragEnter={handleDragEnter}
+              onDragLeave={handleDragLeave}
             />
           )
         })}
@@ -287,7 +319,6 @@ export default function DwindleDesktop() {
         focusedId={focusedId}
       />
 
-      {/* Drag ghost follows cursor */}
       {dragState && (
         <DragGhost
           x={dragState.ghostX}

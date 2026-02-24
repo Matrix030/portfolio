@@ -199,6 +199,90 @@ export function getSplits(
   return splits
 }
 
+export type Edge = 'left' | 'right' | 'top' | 'bottom'
+
+// Extract a window from the tree, replacing its parent split with the sibling
+// Returns [newTree, extractedNode]
+export function extractWindow(
+  tree: TreeNode,
+  targetId: string
+): [TreeNode | null, WindowNode | null] {
+  if (tree.type === 'window') {
+    if (tree.id === targetId) return [null, tree]
+    return [tree, null]
+  }
+
+  if (tree.first.type === 'window' && tree.first.id === targetId) {
+    return [tree.second, tree.first]
+  }
+  if (tree.second.type === 'window' && tree.second.id === targetId) {
+    return [tree.first, tree.second]
+  }
+
+  const [newFirst, extractedFromFirst] = extractWindow(tree.first, targetId)
+  if (extractedFromFirst) {
+    const newTree: TreeNode = newFirst
+      ? { ...tree, first: newFirst }
+      : tree.second
+    return [newTree, extractedFromFirst]
+  }
+
+  const [newSecond, extractedFromSecond] = extractWindow(tree.second, targetId)
+  if (extractedFromSecond) {
+    const newTree: TreeNode = newSecond
+      ? { ...tree, second: newSecond }
+      : tree.first
+    return [newTree, extractedFromSecond]
+  }
+
+  return [tree, null]
+}
+
+// Insert a window node by splitting the target window on a given edge
+export function insertOnEdge(
+  tree: TreeNode,
+  targetId: string,
+  nodeToInsert: WindowNode,
+  edge: Edge,
+  depth: number = 0
+): TreeNode {
+  if (tree.type === 'window') {
+    if (tree.id !== targetId) return tree
+    const direction = edge === 'left' || edge === 'right' ? 'horizontal' : 'vertical'
+    const insertFirst = edge === 'left' || edge === 'top'
+    return {
+      type: 'split',
+      direction,
+      ratio: 0.5,
+      depth,
+      first: insertFirst
+        ? { ...nodeToInsert, depth: depth + 1 }
+        : { ...tree, depth: depth + 1 },
+      second: insertFirst
+        ? { ...tree, depth: depth + 1 }
+        : { ...nodeToInsert, depth: depth + 1 },
+    }
+  }
+  return {
+    ...tree,
+    first: insertOnEdge(tree.first, targetId, nodeToInsert, edge, depth + 1),
+    second: insertOnEdge(tree.second, targetId, nodeToInsert, edge, depth + 1),
+  }
+}
+
+// Move a window to a new position by extracting it and re-inserting on an edge
+export function moveWindowToEdge(
+  tree: TreeNode,
+  sourceId: string,
+  targetId: string,
+  edge: Edge
+): TreeNode {
+  if (sourceId === targetId) return tree
+  const [treeWithoutSource, extractedNode] = extractWindow(tree, sourceId)
+  if (!extractedNode || !treeWithoutSource) return tree
+  return insertOnEdge(treeWithoutSource, targetId, extractedNode, edge)
+}
+
 // Swap two window nodes anywhere in the tree
 export function swapWindows(
   tree: TreeNode,
