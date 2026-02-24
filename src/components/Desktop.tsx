@@ -16,6 +16,10 @@ interface WindowDef {
   content: ReactNode;
 }
 
+// Module-level: persists across re-mounts (workspace switches), resets on full page reload
+const _revealedWindows = new Set<string>(["about"]);
+let _introComplete = false;
+
 const windows: WindowDef[] = [
   {
     id: "about",
@@ -56,20 +60,23 @@ const windows: WindowDef[] = [
 
 export default function Desktop() {
   const [activeWindow, setActiveWindow] = useState("about");
-  const [introComplete, setIntroComplete] = useState(false);
-  // about is always revealed; others start dimmed
+  const [introComplete, setIntroComplete] = useState(_introComplete);
   const [revealedWindows, setRevealedWindows] = useState<Set<string>>(
-    new Set(["about"])
+    new Set(_revealedWindows)
   );
 
-  // Turn off forceActive on about after 2.8s
   useEffect(() => {
-    const t = setTimeout(() => setIntroComplete(true), 1200);
+    if (_introComplete) return;
+    const t = setTimeout(() => {
+      _introComplete = true;
+      setIntroComplete(true);
+    }, 1200);
     return () => clearTimeout(t);
   }, []);
 
   function revealWindow(id: string) {
-    setRevealedWindows((prev) => new Set([...prev, id]));
+    _revealedWindows.add(id);
+    setRevealedWindows(new Set(_revealedWindows));
   }
 
   return (
