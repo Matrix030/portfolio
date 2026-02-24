@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import Desktop from "./Desktop";
+import DwindleDesktop from "./dwindle/DwindleDesktop";
 import TechGraph from "./workspace2/TechGraph";
 import GitHubActivity from "./workspace2/GitHubActivity";
 
@@ -55,7 +55,7 @@ export default function WorkspaceManager({
                 }}
                 style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%" }}
             >
-                {activeWorkspace === 1 && <Desktop />}
+                {activeWorkspace === 1 && <DwindleDesktop />}
                 {activeWorkspace === 2 && (
                     <div
                         style={{
