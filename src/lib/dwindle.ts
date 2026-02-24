@@ -199,6 +199,36 @@ export function getSplits(
   return splits
 }
 
+// Swap two window nodes anywhere in the tree
+export function swapWindows(
+  tree: TreeNode,
+  idA: string,
+  idB: string
+): TreeNode {
+  const nodeA = findWindow(tree, idA)
+  const nodeB = findWindow(tree, idB)
+  if (!nodeA || !nodeB) return tree
+  return replaceIds(tree, idA, idB)
+}
+
+function findWindow(tree: TreeNode, id: string): WindowNode | null {
+  if (tree.type === 'window') return tree.id === id ? tree : null
+  return findWindow(tree.first, id) ?? findWindow(tree.second, id)
+}
+
+function replaceIds(tree: TreeNode, idA: string, idB: string): TreeNode {
+  if (tree.type === 'window') {
+    if (tree.id === idA) return { ...tree, id: idB }
+    if (tree.id === idB) return { ...tree, id: idA }
+    return tree
+  }
+  return {
+    ...tree,
+    first: replaceIds(tree.first, idA, idB),
+    second: replaceIds(tree.second, idA, idB),
+  }
+}
+
 // Update ratio of a specific split node by path
 export function updateSplitRatio(
   tree: TreeNode,

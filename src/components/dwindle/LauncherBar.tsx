@@ -16,9 +16,6 @@ interface LauncherBarProps {
   focusedId: string | null
 }
 
-interface ButtonState {
-  hovered: boolean
-}
 
 export default function LauncherBar({
   availableWindows,
@@ -117,7 +114,7 @@ export default function LauncherBar({
           userSelect: 'none',
         }}
       >
-        Super+Space to launch • Super+Q to close
+        Q close • Tab focus • F fullscreen
       </span>
     </div>
   )
