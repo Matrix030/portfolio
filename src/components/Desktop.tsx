@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect, type ReactNode } from "react";
-import { AnimatePresence, motion } from "framer-motion";
 import Window from "./Window";
 import About from "./windows/About";
 import Projects from "./windows/Projects";
@@ -65,15 +64,13 @@ export default function Desktop() {
 
   // Turn off forceActive on about after 2.8s
   useEffect(() => {
-    const t = setTimeout(() => setIntroComplete(true), 2800);
+    const t = setTimeout(() => setIntroComplete(true), 1200);
     return () => clearTimeout(t);
   }, []);
 
   function revealWindow(id: string) {
     setRevealedWindows((prev) => new Set([...prev, id]));
   }
-
-  const allRevealed = windows.every((w) => revealedWindows.has(w.id));
 
   return (
     <div
@@ -116,38 +113,6 @@ export default function Desktop() {
         ))}
       </div>
 
-      {/* Hint text — shown until all windows revealed */}
-      <AnimatePresence>
-        {!allRevealed && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.6, ease: "easeInOut" }}
-            style={{
-              position: "absolute",
-              top: "calc(50% + 0.5rem)",
-              left: 0,
-              width: "33.3%",
-              display: "flex",
-              justifyContent: "center",
-              pointerEvents: "none",
-            }}
-          >
-            <span
-              style={{
-                color: "rgba(200,200,200,0.35)",
-                fontSize: "0.65rem",
-                fontFamily:
-                  '"CaskaydiaCove Nerd Font Mono", "JetBrains Mono", monospace',
-                letterSpacing: "0.05em",
-              }}
-            >
-              scroll to explore →
-            </span>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </div>
   );
 }
