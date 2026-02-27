@@ -143,6 +143,30 @@ export default function MasterDocViewer() {
         </span>
       </div>
 
+      {/* Recruiter tip */}
+      <div
+        style={{
+          background: "rgba(166,209,137,0.06)",
+          border: "1px solid rgba(166,209,137,0.15)",
+          borderRadius: 5,
+          padding: "0.45rem 0.65rem",
+          display: "flex",
+          flexDirection: "column",
+          gap: "0.15rem",
+        }}
+      >
+        <span
+          style={{ color: "#a6d189", fontSize: "0.65rem", fontWeight: 600 }}
+        >
+          For recruiters & AI tools
+        </span>
+        <span style={{ color: "#737994", fontSize: "0.63rem", lineHeight: 1.5 }}>
+          The panel on the right exposes a structured JSON endpoint of my full
+          background. Curl it or download it and paste into your AI of choice —
+          ask anything about my experience, skills, or projects.
+        </span>
+      </div>
+
       <div style={divider} />
 
       {/* Skills */}

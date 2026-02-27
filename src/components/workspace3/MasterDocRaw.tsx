@@ -245,6 +245,32 @@ export default function MasterDocRaw() {
         </div>
       </div>
 
+      {/* AI tip banner */}
+      <div
+        style={{
+          padding: "0.45rem 0.75rem",
+          background: "rgba(140,170,238,0.06)",
+          borderBottom: "1px solid rgba(140,170,238,0.12)",
+          flexShrink: 0,
+          display: "flex",
+          alignItems: "flex-start",
+          gap: "0.5rem",
+        }}
+      >
+        <span style={{ fontSize: "0.7rem", lineHeight: 1, marginTop: "0.05rem", flexShrink: 0 }}>
+          ✦
+        </span>
+        <div>
+          <span style={{ color: "#8caaee", fontSize: "0.68rem", fontWeight: 600 }}>
+            AI-ready context
+          </span>
+          <span style={{ color: "#737994", fontSize: "0.68rem" }}>
+            {" "}— curl or download this file and drop it into ChatGPT, Claude, or any LLM.
+            Ask it anything about my background, projects, or skills.
+          </span>
+        </div>
+      </div>
+
       {/* Curl block */}
       <div
         style={{
