@@ -47,7 +47,7 @@ const items = [
     icon: <IconDownload />,
     color: "#a6d189",
     action: "download" as const,
-    href: "/resume.pdf",
+    href: "/Portfolio_Rishikesh_Gharat_Resume.pdf",
   },
   {
     label: "LinkedIn",
@@ -79,7 +79,7 @@ export default function ContactFAB() {
     } else {
       const a = document.createElement("a");
       a.href = item.href;
-      a.download = "resume.pdf";
+      a.download = "Portfolio_Rishikesh_Gharat_Resume.pdf";
       a.click();
     }
   }
