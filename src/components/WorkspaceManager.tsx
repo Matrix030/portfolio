@@ -4,34 +4,10 @@ import { AnimatePresence, motion } from "framer-motion";
 import DwindleDesktop from "./dwindle/DwindleDesktop";
 import TechGraph from "./workspace2/TechGraph";
 import GitHubActivity from "./workspace2/GitHubActivity";
+import Workspace3 from "./workspace3/Workspace3";
 
 const FADE_EASE: [number, number, number, number] = [0.5, 0.5, 0.75, 1.0];
 
-function WorkspacePlaceholder({ label }: { label: string }) {
-    return (
-        <div
-            style={{
-                width: "100%",
-                height: "100%",
-                background: "#232634",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-            }}
-        >
-            <span
-                style={{
-                    color: "#737994",
-                    fontSize: "0.85rem",
-                    fontFamily:
-                        '"CaskaydiaCove Nerd Font Mono", "JetBrains Mono", monospace',
-                }}
-            >
-                {label}
-            </span>
-        </div>
-    );
-}
 
 export default function WorkspaceManager({
     activeWorkspace,
@@ -79,9 +55,7 @@ export default function WorkspaceManager({
                         </div>
                     </div>
                 )}
-                {activeWorkspace === 3 && (
-                    <WorkspacePlaceholder label="Developing more!" />
-                )}
+                {activeWorkspace === 3 && <Workspace3 />}
             </motion.div>
         </AnimatePresence>
     );
