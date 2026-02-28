@@ -8,7 +8,6 @@ import {
   useMotionValue,
 } from "framer-motion";
 
-const GRADUATION_DATE = new Date("2026-05-05T00:00:00").getTime();
 
 function formatClock(now: Date): string {
   const weekday = now.toLocaleDateString("en-US", { weekday: "long" });
@@ -19,16 +18,7 @@ function formatClock(now: Date): string {
   return `${weekday} | ${day} - ${h}:${m}:${s}`;
 }
 
-function formatCountdown(now: Date): string {
-  const diff = GRADUATION_DATE - now.getTime();
-  if (diff <= 0) return "\uD83C\uDF93 Graduated!";
-  const totalSec = Math.floor(diff / 1000);
-  const days = Math.floor(totalSec / 86400);
-  const hours = String(Math.floor((totalSec % 86400) / 3600)).padStart(2, "0");
-  const mins = String(Math.floor((totalSec % 3600) / 60)).padStart(2, "0");
-  const secs = String(totalSec % 60).padStart(2, "0");
-  return `\uD83C\uDF93 ${days}d ${hours}:${mins}:${secs}`;
-}
+
 
 interface Workspace {
   id: number;
