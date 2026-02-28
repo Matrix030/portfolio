@@ -354,7 +354,6 @@ export default function Waybar({
             whiteSpace: "nowrap",
           }}
         >
-          {now ? formatCountdown(now) : "\u00A0"}
         </div>
       </div>
 
