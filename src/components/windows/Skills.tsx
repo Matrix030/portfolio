@@ -62,26 +62,28 @@ export default function Skills() {
       {skills.map((group) => (
         <div
           key={group.category}
-          style={{ display: "flex", flexDirection: "column", gap: 6 }}
+          style={{ display: "flex", flexDirection: "column", gap: 5 }}
         >
           {/* Category label */}
           <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
             <div
               style={{
-                width: 6,
-                height: 6,
+                width: 3,
+                height: 12,
                 borderRadius: 2,
                 background: group.color,
+                boxShadow: `0 0 6px ${group.color}66`,
                 flexShrink: 0,
               }}
             />
             <span
               style={{
                 color: group.color,
-                fontSize: "0.65rem",
+                fontSize: "0.6rem",
                 fontWeight: 600,
-                letterSpacing: "0.05em",
+                letterSpacing: "0.1em",
                 textTransform: "uppercase",
+                opacity: 0.9,
               }}
             >
               {group.category}
@@ -89,17 +91,19 @@ export default function Skills() {
           </div>
 
           {/* Tags */}
-          <div style={{ display: "flex", flexWrap: "wrap", gap: 4 }}>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 3 }}>
             {group.items.map((item) => (
               <span
                 key={item}
                 style={{
-                  background: hexToRgba(group.color, 0.1),
-                  border: `1px solid ${hexToRgba(group.color, 0.25)}`,
+                  background: hexToRgba(group.color, 0.07),
+                  border: `1px solid ${hexToRgba(group.color, 0.2)}`,
                   borderRadius: 3,
                   padding: "2px 8px",
-                  fontSize: "0.63rem",
-                  color: hexToRgba(group.color, 0.9),
+                  fontSize: "0.6rem",
+                  color: hexToRgba(group.color, 0.85),
+                  letterSpacing: "0.02em",
+                  transition: "all 0.15s ease",
                 }}
               >
                 {item}

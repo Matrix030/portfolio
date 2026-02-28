@@ -138,25 +138,39 @@ export default function DwindleWindow({
         pointerEvents: isDragging ? 'none' : 'auto',
       }}
     >
-      {/* Base border */}
+      {/* Base border — inactive */}
       <div
         style={{
           position: 'absolute',
           inset: 0,
           borderRadius: 10,
-          background: '#51576d',
+          background: 'rgba(81,87,109,0.6)',
         }}
       />
 
       {/* Active gradient border — fades in on focus */}
       <motion.div
         animate={{ opacity: isActive && !isDragTarget ? 1 : 0 }}
-        transition={{ duration: 0.15, ease: EASE_OUT_QUINT }}
+        transition={{ duration: 0.2, ease: EASE_OUT_QUINT }}
         style={{
           position: 'absolute',
           inset: 0,
           borderRadius: 10,
-          background: 'linear-gradient(45deg, #8caaee, #ca9ee6)',
+          background: 'linear-gradient(135deg, #8caaee 0%, #ca9ee6 50%, #8caaee 100%)',
+          backgroundSize: '200% 200%',
+          pointerEvents: 'none',
+        }}
+      />
+
+      {/* Active outer glow */}
+      <motion.div
+        animate={{ opacity: isActive && !isDragTarget ? 1 : 0 }}
+        transition={{ duration: 0.25, ease: EASE_OUT_QUINT }}
+        style={{
+          position: 'absolute',
+          inset: -1,
+          borderRadius: 11,
+          boxShadow: '0 0 20px rgba(140,170,238,0.2), 0 8px 32px rgba(0,0,0,0.5)',
           pointerEvents: 'none',
         }}
       />
@@ -168,7 +182,9 @@ export default function DwindleWindow({
           inset: 1,
           borderRadius: 9,
           overflow: 'hidden',
-          background: 'rgba(48,52,70,0.85)',
+          background: 'rgba(35,38,52,0.97)',
+          backdropFilter: 'blur(8px)',
+          WebkitBackdropFilter: 'blur(8px)',
           display: 'flex',
           flexDirection: 'column',
         }}
@@ -182,10 +198,10 @@ export default function DwindleWindow({
             onDragStart(id, e.clientX, e.clientY)
           }}
           style={{
-            height: '1.75rem',
+            height: '1.85rem',
             flexShrink: 0,
-            background: 'rgba(41,44,60,0.8)',
-            borderBottom: '1px solid rgba(81,87,109,0.4)',
+            background: 'rgba(41,44,60,0.95)',
+            borderBottom: '1px solid rgba(81,87,109,0.35)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
@@ -194,25 +210,13 @@ export default function DwindleWindow({
             userSelect: 'none',
           }}
         >
-          <span
-            style={{
-              color: '#c6d0f5',
-              fontSize: '0.72rem',
-              fontFamily: FONT,
-              userSelect: 'none',
-            }}
-          >
-            {windowTitles[id] ?? id}
-          </span>
-
-          {/* Traffic lights */}
+          {/* Traffic lights LEFT */}
           <div
             style={{
               display: 'flex',
-              gap: '0.35rem',
+              gap: '0.3rem',
               alignItems: 'center',
-              transform: dotsHovered ? 'scale(1.1)' : 'scale(1)',
-              transition: 'transform 0.12s',
+              transition: 'opacity 0.12s',
             }}
             onMouseEnter={() => setDotsHovered(true)}
             onMouseLeave={() => setDotsHovered(false)}
@@ -221,25 +225,45 @@ export default function DwindleWindow({
               onMouseDown={(e) => e.stopPropagation()}
               onPointerDown={(e) => e.stopPropagation()}
               onClick={(e) => { e.stopPropagation(); onClose() }}
+              title="Close"
               style={{
                 width: 10,
                 height: 10,
                 borderRadius: '50%',
-                background: '#e78284',
+                background: dotsHovered ? '#e78284' : 'rgba(231,130,132,0.6)',
                 border: 'none',
                 cursor: 'pointer',
                 padding: 0,
+                transition: 'background 0.15s',
               }}
             />
-            <div style={{ width: 10, height: 10, borderRadius: '50%', background: '#e5c890' }} />
-            <div style={{ width: 10, height: 10, borderRadius: '50%', background: '#a6d189' }} />
+            <div style={{ width: 10, height: 10, borderRadius: '50%', background: dotsHovered ? '#e5c890' : 'rgba(229,200,144,0.4)', transition: 'background 0.15s' }} />
+            <div style={{ width: 10, height: 10, borderRadius: '50%', background: dotsHovered ? '#a6d189' : 'rgba(166,209,137,0.4)', transition: 'background 0.15s' }} />
           </div>
+
+          {/* Title CENTER */}
+          <span
+            style={{
+              position: 'absolute',
+              left: '50%',
+              transform: 'translateX(-50%)',
+              color: isActive ? '#c6d0f5' : '#626880',
+              fontSize: '0.65rem',
+              fontFamily: FONT,
+              userSelect: 'none',
+              letterSpacing: '0.04em',
+              transition: 'color 0.2s ease',
+              whiteSpace: 'nowrap',
+            }}
+          >
+            {windowTitles[id] ?? id}
+          </span>
         </div>
 
         {/* Content area */}
         <div
           style={{
-            height: 'calc(100% - 1.75rem)',
+            height: 'calc(100% - 1.85rem)',
             overflowY: 'auto',
             padding: '0.75rem',
             scrollbarWidth: 'none',

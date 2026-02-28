@@ -38,7 +38,7 @@ export default function Home() {
         width: "100vw",
         height: "100vh",
         overflow: "hidden",
-        background: "#232634",
+        background: "#1e2030",
       }}
     >
       {/* Desktop always rendered underneath, blurred when locked */}

@@ -45,15 +45,15 @@ export default function Experience() {
         <div
           key={`${exp.company}-${exp.role}`}
           style={{
-            background:
-              hovered === i
-                ? "#414559"
-                : "rgba(65,69,89,0.6)",
-            border: `1px solid ${hovered === i ? "#626880" : "#51576d"}`,
-            borderRadius: 5,
+            background: hovered === i
+              ? "rgba(65,69,89,0.65)"
+              : "rgba(48,52,70,0.5)",
+            border: `1px solid ${hovered === i ? `${exp.color}44` : "rgba(81,87,109,0.45)"}`,
+            borderRadius: 6,
             padding: "10px 12px",
-            transition: "all 0.2s cubic-bezier(0.23,1,0.32,1)",
+            transition: "all 0.18s cubic-bezier(0.23,1,0.32,1)",
             flexShrink: 0,
+            boxShadow: hovered === i ? "0 2px 12px rgba(0,0,0,0.3)" : "none",
           }}
           onMouseEnter={() => setHovered(i)}
           onMouseLeave={() => setHovered(null)}
@@ -63,15 +63,29 @@ export default function Experience() {
             style={{
               display: "flex",
               justifyContent: "space-between",
-              alignItems: "center",
+              alignItems: "flex-start",
+              gap: 8,
             }}
           >
             <span
-              style={{ color: "#c6d0f5", fontSize: "0.78rem", fontWeight: 600 }}
+              style={{
+                color: "#c6d0f5",
+                fontSize: "0.75rem",
+                fontWeight: 600,
+                letterSpacing: "0.01em",
+              }}
             >
               {exp.company}
             </span>
-            <span style={{ color: "#737994", fontSize: "0.65rem" }}>
+            <span
+              style={{
+                color: "#626880",
+                fontSize: "0.6rem",
+                whiteSpace: "nowrap",
+                flexShrink: 0,
+                marginTop: 1,
+              }}
+            >
               {exp.period}
             </span>
           </div>
@@ -80,30 +94,40 @@ export default function Experience() {
           <div
             style={{
               color: exp.color,
-              fontSize: "0.68rem",
+              fontSize: "0.65rem",
               marginTop: 2,
               fontWeight: 500,
+              letterSpacing: "0.02em",
             }}
           >
             {exp.role}
           </div>
 
+          {/* Divider */}
+          <div
+            style={{
+              height: 1,
+              background: "rgba(81,87,109,0.3)",
+              margin: "6px 0 5px",
+            }}
+          />
+
           {/* Points */}
           <div
             style={{
-              marginTop: 6,
               display: "flex",
               flexDirection: "column",
-              gap: 2,
+              gap: 3,
             }}
           >
             {exp.points.map((point) => (
               <div
                 key={point}
                 style={{
-                  color: "#a5adce",
-                  fontSize: "0.67rem",
-                  lineHeight: 1.5,
+                  color: "#737994",
+                  fontSize: "0.64rem",
+                  lineHeight: 1.55,
+                  paddingLeft: 4,
                 }}
               >
                 {point}

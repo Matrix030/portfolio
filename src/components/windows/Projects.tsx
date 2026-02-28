@@ -90,16 +90,16 @@ export default function Projects() {
                     key={p.name}
                     className="projects-scroll"
                     style={{
-                        background:
-                            hovered === i
-                                ? "#414559"
-                                : "rgba(65,69,89,0.6)",
-                        border: `1px solid ${hovered === i ? "#626880" : "#51576d"}`,
-                        borderRadius: 5,
-                        padding: "10px 12px",
+                        background: hovered === i
+                                ? "rgba(65,69,89,0.7)"
+                                : "rgba(48,52,70,0.5)",
+                        border: `1px solid ${hovered === i ? "rgba(140,170,238,0.3)" : "rgba(81,87,109,0.45)"}`,
+                        borderRadius: 6,
+                        padding: "9px 11px",
                         cursor: "pointer",
-                        transition: "all 0.2s cubic-bezier(0.23,1,0.32,1)",
+                        transition: "all 0.18s cubic-bezier(0.23,1,0.32,1)",
                         flexShrink: 0,
+                        boxShadow: hovered === i ? "0 2px 12px rgba(0,0,0,0.3)" : "none",
                     }}
                     onMouseEnter={() => setHovered(i)}
                     onMouseLeave={() => setHovered(null)}
@@ -113,25 +113,33 @@ export default function Projects() {
                             display: "flex",
                             justifyContent: "space-between",
                             alignItems: "center",
+                            gap: 6,
                         }}
                     >
                         <span
-                            style={{ color: "#c6d0f5", fontSize: "0.78rem", fontWeight: 600 }}
+                            style={{
+                                color: hovered === i ? "#c6d0f5" : "#b5bfe2",
+                                fontSize: "0.75rem",
+                                fontWeight: 600,
+                                letterSpacing: "0.01em",
+                                transition: "color 0.18s",
+                            }}
                         >
                             {p.name}
                         </span>
                         <span
                             style={{
-                                background:
-                                    p.status === "active"
-                                        ? "rgba(166,209,137,0.15)"
-                                        : "rgba(140,170,238,0.15)",
-                                color: p.status === "active" ? "#a6d189" : "#8caaee",
-                                border: `1px solid ${p.status === "active" ? "rgba(166,209,137,0.3)" : "rgba(140,170,238,0.3)"}`,
+                                background: p.status === "active"
+                                        ? "rgba(166,209,137,0.1)"
+                                        : "rgba(98,104,128,0.2)",
+                                color: p.status === "active" ? "#a6d189" : "#737994",
+                                border: `1px solid ${p.status === "active" ? "rgba(166,209,137,0.25)" : "rgba(81,87,109,0.4)"}`,
                                 borderRadius: 3,
-                                padding: "2px 6px",
-                                fontSize: "0.6rem",
-                                lineHeight: 1.3,
+                                padding: "1px 7px",
+                                fontSize: "0.56rem",
+                                lineHeight: 1.4,
+                                letterSpacing: "0.06em",
+                                flexShrink: 0,
                             }}
                         >
                             {p.status}
@@ -141,9 +149,9 @@ export default function Projects() {
                     {/* Row 2: description */}
                     <div
                         style={{
-                            color: "#a5adce",
-                            fontSize: "0.68rem",
-                            lineHeight: 1.5,
+                            color: "#737994",
+                            fontSize: "0.65rem",
+                            lineHeight: 1.55,
                             marginTop: 4,
                         }}
                     >
@@ -155,20 +163,21 @@ export default function Projects() {
                         style={{
                             display: "flex",
                             flexWrap: "wrap",
-                            gap: 4,
-                            marginTop: 4,
+                            gap: 3,
+                            marginTop: 6,
                         }}
                     >
                         {p.tags.map((tag) => (
                             <span
                                 key={tag}
                                 style={{
-                                    background: "#414559",
-                                    border: "1px solid #51576d",
+                                    background: "rgba(65,69,89,0.6)",
+                                    border: "1px solid rgba(81,87,109,0.4)",
                                     borderRadius: 3,
-                                    padding: "1px 6px",
-                                    fontSize: "0.62rem",
-                                    color: "#b5bfe2",
+                                    padding: "1px 7px",
+                                    fontSize: "0.58rem",
+                                    color: "#8caaee",
+                                    letterSpacing: "0.02em",
                                 }}
                             >
                                 {tag}

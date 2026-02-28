@@ -38,7 +38,7 @@ export default function WorkspaceManager({
                             display: "flex",
                             width: "100%",
                             height: "100%",
-                            background: "#232634",
+                            background: "#1e2030",
                         }}
                     >
                         <div style={{ flex: "0 0 60%", minWidth: 0, height: "100%", position: "relative" }}>

@@ -272,7 +272,9 @@ export default function DwindleDesktop() {
         position: 'relative',
         width: '100%',
         height: '100%',
-        background: '#232634',
+        background: '#1e2030',
+        backgroundImage: 'radial-gradient(rgba(140,170,238,0.07) 1px, transparent 1px)',
+        backgroundSize: '28px 28px',
         overflow: 'hidden',
       }}
     >

@@ -261,20 +261,23 @@ export default function Waybar({
     <div
       style={{
         position: "fixed",
-        top: 2,
-        left: 2,
-        right: 2,
-        height: "2rem",
+        top: 3,
+        left: 3,
+        right: 3,
+        height: "1.9rem",
         zIndex: 50,
         display: "flex",
         alignItems: "center",
-        background: "#292c3c",
-        borderRadius: 5,
+        background: "rgba(41,44,60,0.92)",
+        backdropFilter: "blur(12px)",
+        WebkitBackdropFilter: "blur(12px)",
+        borderRadius: 7,
+        border: "1px solid rgba(81,87,109,0.5)",
         fontFamily:
           '"CaskaydiaCove Nerd Font Mono", "JetBrains Mono", monospace',
         fontSize: "0.6rem",
         color: "#c6d0f5",
-        boxShadow: "0 2px 8px rgba(35,38,52,0.8)",
+        boxShadow: "0 2px 12px rgba(0,0,0,0.5), inset 0 1px 0 rgba(198,208,245,0.04)",
       }}
     >
       {/* LEFT: Workspaces */}
@@ -282,10 +285,11 @@ export default function Waybar({
         style={{
           display: "flex",
           alignItems: "center",
-          background: "#292c3c",
-          borderRadius: 5,
-          margin: 5,
-          marginLeft: 2,
+          gap: 1,
+          paddingLeft: 6,
+          paddingRight: 6,
+          borderRight: "1px solid rgba(81,87,109,0.4)",
+          height: "100%",
         }}
       >
         {workspaces.map((ws) => {
@@ -295,27 +299,32 @@ export default function Waybar({
               key={ws.id}
               onClick={() => onWorkspaceChange(ws.id)}
               style={{
-                background: "#292c3c",
-                border: "none",
-                borderRadius: 5,
-                padding: "0.3rem",
-                color: isActive ? "#99d1db" : "#babbf1",
+                background: isActive ? "rgba(140,170,238,0.12)" : "transparent",
+                border: isActive ? "1px solid rgba(140,170,238,0.3)" : "1px solid transparent",
+                borderRadius: 4,
+                padding: "0.15rem 0.45rem",
+                color: isActive ? "#8caaee" : "#737994",
                 cursor: "pointer",
                 fontFamily: "inherit",
-                fontSize: "inherit",
+                fontSize: "0.62rem",
                 lineHeight: 1,
-                transition: "background 0.15s",
+                transition: "all 0.15s ease",
+                letterSpacing: "0.03em",
               }}
               onMouseEnter={(e) => {
-                (e.currentTarget as HTMLButtonElement).style.background =
-                  "#414559";
+                if (!isActive) {
+                  (e.currentTarget as HTMLButtonElement).style.color = "#a5adce";
+                  (e.currentTarget as HTMLButtonElement).style.background = "rgba(81,87,109,0.3)";
+                }
               }}
               onMouseLeave={(e) => {
-                (e.currentTarget as HTMLButtonElement).style.background =
-                  "#292c3c";
+                if (!isActive) {
+                  (e.currentTarget as HTMLButtonElement).style.color = "#737994";
+                  (e.currentTarget as HTMLButtonElement).style.background = "transparent";
+                }
               }}
             >
-              {ws.id}: {isActive ? ws.activeIcon : ws.inactiveIcon}
+              {ws.id}
             </button>
           );
         })}
@@ -329,33 +338,17 @@ export default function Waybar({
           transform: "translateX(-50%)",
           display: "flex",
           alignItems: "center",
+          gap: "0.5rem",
         }}
       >
-        <div
-          style={{
-            background: "#292c3c",
-            borderRadius: 5,
-            padding: "0.25rem 0.6rem",
-            margin: "4px 0",
-            color: "#8caaee",
-            whiteSpace: "nowrap",
-          }}
-        >
+        <span style={{ color: "#737994", fontSize: "0.55rem" }}></span>
+        <span style={{ color: "#8caaee", whiteSpace: "nowrap", letterSpacing: "0.04em" }}>
           {now ? formatClock(now) : "\u00A0"}
-        </div>
-        <div
-          style={{
-            background: "#292c3c",
-            borderRadius: 5,
-            padding: "0.25rem 0.6rem",
-            margin: "4px 0 4px 0.4rem",
-            color: "#f4b8e4",
-            fontWeight: 600,
-            whiteSpace: "nowrap",
-          }}
-        >
+        </span>
+        <span style={{ color: "rgba(81,87,109,0.6)", fontSize: "0.5rem" }}>|</span>
+        <span style={{ color: "#f4b8e4", fontWeight: 600, whiteSpace: "nowrap" }}>
           {now ? formatCountdown(now) : "\u00A0"}
-        </div>
+        </span>
       </div>
 
       {/* RIGHT: System modules */}
@@ -363,42 +356,59 @@ export default function Waybar({
         style={{
           display: "flex",
           alignItems: "center",
-          margin: "4px 2px 4px 0",
           marginLeft: "auto",
+          paddingRight: 6,
+          paddingLeft: 6,
+          borderLeft: "1px solid rgba(81,87,109,0.4)",
+          height: "100%",
+          gap: 0,
         }}
       >
         <AudioModule />
+        <Separator />
         <UptimeModule />
+        <Separator />
         <NetworkModule />
+        <Separator />
         <CpuModule />
         <MemoryModule />
-        <div style={{ width: 16, height: 16, marginLeft: 4 }} />
       </div>
     </div>
   );
 }
 
+function Separator() {
+  return (
+    <div
+      style={{
+        width: 1,
+        height: "0.9rem",
+        background: "rgba(81,87,109,0.5)",
+        margin: "0 0.1rem",
+        flexShrink: 0,
+      }}
+    />
+  );
+}
+
 function Module({
   color,
-  borderRadius,
   children,
 }: {
   color: string;
-  borderRadius: string;
+  borderRadius?: string;
   children: React.ReactNode;
 }) {
   return (
     <div
       style={{
-        background: "#292c3c",
-        padding: "0.25rem 0.6rem",
-        margin: "4px 0",
+        padding: "0 0.5rem",
         color,
-        borderRadius,
         whiteSpace: "nowrap",
-        fontSize: "0.6rem",
+        fontSize: "0.58rem",
         lineHeight: 1,
         transition: "color 0.4s ease",
+        letterSpacing: "0.03em",
       }}
     >
       {children}

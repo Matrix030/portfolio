@@ -153,20 +153,24 @@ export default function ContactFAB() {
                 onMouseEnter={() => setHoveredLabel(item.label)}
                 onMouseLeave={() => setHoveredLabel(null)}
                 style={{
-                  width: "2.5rem",
-                  height: "2.5rem",
+                  width: "2.25rem",
+                  height: "2.25rem",
                   borderRadius: "50%",
-                  background: hoveredLabel === item.label ? "#51576d" : "#414559",
-                  border: `1px solid ${hoveredLabel === item.label ? item.color : item.color + "66"}`,
+                  background: hoveredLabel === item.label
+                    ? `rgba(${parseInt(item.color.slice(1,3),16)},${parseInt(item.color.slice(3,5),16)},${parseInt(item.color.slice(5,7),16)},0.15)`
+                    : "rgba(41,44,60,0.95)",
+                  border: `1px solid ${hoveredLabel === item.label ? item.color + "88" : "rgba(81,87,109,0.6)"}`,
+                  backdropFilter: "blur(8px)",
+                  WebkitBackdropFilter: "blur(8px)",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
                   cursor: "pointer",
-                  color: item.color,
+                  color: hoveredLabel === item.label ? item.color : "#737994",
                   transition: "all 0.2s cubic-bezier(0.23,1,0.32,1)",
                   boxShadow: hoveredLabel === item.label
-                    ? `0 4px 16px rgba(35,38,52,0.6), 0 0 12px ${item.color}33`
-                    : "0 4px 16px rgba(35,38,52,0.6)",
+                    ? `0 4px 16px rgba(0,0,0,0.5), 0 0 16px ${item.color}22`
+                    : "0 4px 16px rgba(0,0,0,0.4)",
                   outline: "none",
                 }}
               >
@@ -181,18 +185,22 @@ export default function ContactFAB() {
         onMouseEnter={() => setMainHovered(true)}
         onMouseLeave={() => setMainHovered(false)}
         style={{
-          width: "2.5rem",
-          height: "2.5rem",
+          width: "2.25rem",
+          height: "2.25rem",
           borderRadius: "50%",
-          background: "#414559",
-          border: `1px solid ${mainHovered ? "#8caaee" : "#51576d"}`,
+          background: mainHovered ? "rgba(140,170,238,0.15)" : "rgba(41,44,60,0.95)",
+          border: `1px solid ${mainHovered ? "rgba(140,170,238,0.5)" : "rgba(81,87,109,0.6)"}`,
+          backdropFilter: "blur(8px)",
+          WebkitBackdropFilter: "blur(8px)",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
           cursor: "pointer",
-          color: mainHovered ? "#8caaee" : "#c6d0f5",
+          color: mainHovered ? "#8caaee" : "#737994",
           transition: "all 0.2s cubic-bezier(0.23,1,0.32,1)",
-          boxShadow: "0 4px 16px rgba(35,38,52,0.6)",
+          boxShadow: mainHovered
+            ? "0 4px 20px rgba(0,0,0,0.5), 0 0 16px rgba(140,170,238,0.15)"
+            : "0 4px 16px rgba(0,0,0,0.4)",
           outline: "none",
         }}
       >
