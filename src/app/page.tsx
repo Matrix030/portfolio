@@ -7,6 +7,7 @@ import WorkspaceManager from "@/components/WorkspaceManager";
 import LockScreen from "@/components/LockScreen";
 import ContactFAB from "@/components/ContactFAB";
 import MobileLayout from "@/components/mobile/MobileLayout";
+import OnboardingHint from "@/components/OnboardingHint";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 
 export default function Home() {
@@ -87,6 +88,9 @@ export default function Home() {
 
       {/* Persistent contact FAB — hidden while locked */}
       {!isLocked && <ContactFAB />}
+
+      {/* First-visit onboarding hint */}
+      {!isLocked && !isMobile && <OnboardingHint />}
     </div>
   );
 }
