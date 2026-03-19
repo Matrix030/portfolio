@@ -3,12 +3,14 @@
 const skills = [
   {
     category: "Languages",
-    color: "#8caaee",
+    color: "#3B82F6",
+    bg: "#DBEAFE",
     items: ["TypeScript", "JavaScript", "Python", "SQL", "Go"],
   },
   {
     category: "Backend",
-    color: "#a6d189",
+    color: "#22C55E",
+    bg: "#DCFCE7",
     items: [
       "Node.js",
       "Express.js",
@@ -20,32 +22,29 @@ const skills = [
   },
   {
     category: "Frontend",
-    color: "#ca9ee6",
+    color: "#A855F7",
+    bg: "#F3E8FF",
     items: ["React.js", "Next.js", "CSS"],
   },
   {
     category: "Databases",
-    color: "#e5c890",
+    color: "#FBBF24",
+    bg: "#FEF9C3",
     items: ["PostgreSQL", "DynamoDB", "MongoDB", "MySQL", "Redis"],
   },
   {
     category: "Cloud & Infra",
-    color: "#99d1db",
+    color: "#06B6D4",
+    bg: "#CFFAFE",
     items: ["AWS", "Docker", "Terraform", "CI/CD", "EC2", "S3", "Lambda"],
   },
   {
     category: "Data",
-    color: "#ea999c",
+    color: "#F43F5E",
+    bg: "#FFE4E6",
     items: ["Pandas", "NumPy", "Dask", "ETL Pipelines"],
   },
 ];
-
-function hexToRgba(hex: string, alpha: number): string {
-  const r = parseInt(hex.slice(1, 3), 16);
-  const g = parseInt(hex.slice(3, 5), 16);
-  const b = parseInt(hex.slice(5, 7), 16);
-  return `rgba(${r},${g},${b},${alpha})`;
-}
 
 export default function Skills() {
   return (
@@ -68,18 +67,19 @@ export default function Skills() {
           <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
             <div
               style={{
-                width: 6,
-                height: 6,
+                width: 8,
+                height: 8,
                 borderRadius: 2,
                 background: group.color,
+                border: "2px solid #1a1a2e",
                 flexShrink: 0,
               }}
             />
             <span
               style={{
-                color: group.color,
+                color: "#1a1a2e",
                 fontSize: "0.65rem",
-                fontWeight: 600,
+                fontWeight: 800,
                 letterSpacing: "0.05em",
                 textTransform: "uppercase",
               }}
@@ -94,12 +94,13 @@ export default function Skills() {
               <span
                 key={item}
                 style={{
-                  background: hexToRgba(group.color, 0.1),
-                  border: `1px solid ${hexToRgba(group.color, 0.25)}`,
+                  background: group.bg,
+                  border: "2px solid #1a1a2e",
                   borderRadius: 3,
                   padding: "2px 8px",
                   fontSize: "0.63rem",
-                  color: hexToRgba(group.color, 0.9),
+                  color: "#1a1a2e",
+                  fontWeight: 700,
                 }}
               >
                 {item}

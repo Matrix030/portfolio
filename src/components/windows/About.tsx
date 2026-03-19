@@ -1,10 +1,10 @@
 "use client";
 
 const stats = [
-    "📍 New York, NY",
-    "🎓 NYU Tandon — May 2026",
-    "💼 Open to work",
-    "🖥 Go · Python · TypeScript",
+    "New York, NY",
+    "NYU Tandon — May 2026",
+    "Open to work",
+    "Go · Python · TypeScript",
 ];
 
 const socials = [
@@ -34,9 +34,9 @@ export default function About() {
             <div>
                 <div
                     style={{
-                        color: "#c6d0f5",
+                        color: "#1a1a2e",
                         fontSize: "1.2rem",
-                        fontWeight: 600,
+                        fontWeight: 800,
                         lineHeight: 1.2,
                     }}
                 >
@@ -44,25 +44,27 @@ export default function About() {
                 </div>
                 <div
                     style={{
-                        color: "#8caaee",
+                        color: "#3B82F6",
                         fontSize: "0.78rem",
                         marginTop: 4,
+                        fontWeight: 700,
                     }}
                 >
                     Full Stack - Backend Leaning Software Engineer
                 </div>
                 <div
                     style={{
-                        height: 1,
-                        background: "#414559",
+                        height: 3,
+                        background: "#1a1a2e",
                         margin: "10px 0",
                     }}
                 />
                 <div
                     style={{
-                        color: "#a5adce",
+                        color: "#374151",
                         fontSize: "0.73rem",
                         lineHeight: 1.6,
+                        fontWeight: 500,
                     }}
                 >
                     NYU CS grad student finishing May 2026. I build full-stack systems and
@@ -83,15 +85,17 @@ export default function About() {
                     <div
                         key={s}
                         style={{
-                            background: "#414559",
-                            border: "1px solid #51576d",
-                            borderRadius: 5,
+                            background: "#FBBF24",
+                            border: "2px solid #1a1a2e",
+                            borderRadius: 4,
                             padding: "4px 10px",
                             fontSize: "0.68rem",
-                            color: "#c6d0f5",
+                            color: "#1a1a2e",
                             whiteSpace: "nowrap",
                             overflow: "hidden",
                             textOverflow: "ellipsis",
+                            fontWeight: 700,
+                            boxShadow: "2px 2px 0px #1a1a2e",
                         }}
                     >
                         {s}
@@ -108,24 +112,29 @@ export default function About() {
                         target="_blank"
                         rel="noopener noreferrer"
                         style={{
-                            border: "1px solid #51576d",
-                            borderRadius: 5,
+                            border: "2px solid #1a1a2e",
+                            borderRadius: 4,
                             padding: "4px 12px",
-                            color: "#c6d0f5",
+                            color: "#1a1a2e",
                             fontSize: "0.68rem",
                             textDecoration: "none",
-                            transition: "all 0.2s cubic-bezier(0.23,1,0.32,1)",
+                            transition: "all 0.1s",
                             whiteSpace: "nowrap",
+                            fontWeight: 700,
+                            background: "#FFFFFF",
+                            boxShadow: "2px 2px 0px #1a1a2e",
                         }}
                         onMouseEnter={(e) => {
                             const t = e.currentTarget;
-                            t.style.borderColor = "#8caaee";
-                            t.style.color = "#8caaee";
+                            t.style.background = "#E0F2FE";
+                            t.style.boxShadow = "3px 3px 0px #1a1a2e";
+                            t.style.transform = "translate(-1px, -1px)";
                         }}
                         onMouseLeave={(e) => {
                             const t = e.currentTarget;
-                            t.style.borderColor = "#51576d";
-                            t.style.color = "#c6d0f5";
+                            t.style.background = "#FFFFFF";
+                            t.style.boxShadow = "2px 2px 0px #1a1a2e";
+                            t.style.transform = "translate(0, 0)";
                         }}
                     >
                         {s.label}

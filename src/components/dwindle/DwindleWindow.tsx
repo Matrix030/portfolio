@@ -45,7 +45,6 @@ const windowVariants = {
   },
 }
 
-// Edge overlay geometry and labels
 const edgeStyles: Record<Edge, React.CSSProperties> = {
   left:   { left: 0,   top: 0,    width: '35%',  height: '100%' },
   right:  { right: 0,  top: 0,    width: '35%',  height: '100%' },
@@ -54,10 +53,10 @@ const edgeStyles: Record<Edge, React.CSSProperties> = {
 }
 
 const edgeBorder: Record<Edge, React.CSSProperties> = {
-  left:   { borderLeft:   '3px solid #8caaee' },
-  right:  { borderRight:  '3px solid #8caaee' },
-  top:    { borderTop:    '3px solid #8caaee' },
-  bottom: { borderBottom: '3px solid #8caaee' },
+  left:   { borderLeft:   '4px solid #3B82F6' },
+  right:  { borderRight:  '4px solid #3B82F6' },
+  top:    { borderTop:    '4px solid #3B82F6' },
+  bottom: { borderBottom: '4px solid #3B82F6' },
 }
 
 const edgeLabels: Record<Edge, string> = {
@@ -102,6 +101,17 @@ export default function DwindleWindow({
 
   const zIndex = isFullscreen ? 100 : isActive ? 10 : 1
 
+  // Pick a unique accent color per window for active state
+  const accentColors: Record<string, string> = {
+    about: '#3B82F6',
+    projects: '#A855F7',
+    experience: '#22C55E',
+    skills: '#F97316',
+    education: '#EC4899',
+    github: '#06B6D4',
+  }
+  const accent = accentColors[id] ?? '#3B82F6'
+
   return (
     <motion.div
       layout
@@ -131,46 +141,27 @@ export default function DwindleWindow({
         top: bounds.y,
         width: bounds.width,
         height: bounds.height,
-        borderRadius: 10,
+        borderRadius: 8,
         zIndex,
-        boxShadow: '0 4px 24px rgba(35,38,52,0.8)',
+        border: isActive ? `3px solid ${accent}` : '3px solid #1a1a2e',
+        boxShadow: isActive
+          ? `5px 5px 0px ${accent}`
+          : '4px 4px 0px #1a1a2e',
         boxSizing: 'border-box',
         pointerEvents: isDragging ? 'none' : 'auto',
+        background: '#FFFFFF',
+        overflow: 'hidden',
+        transition: 'border-color 0.15s, box-shadow 0.15s',
       }}
     >
-      {/* Base border */}
+      {/* Content area */}
       <div
         style={{
-          position: 'absolute',
-          inset: 0,
-          borderRadius: 10,
-          background: '#51576d',
-        }}
-      />
-
-      {/* Active gradient border — fades in on focus */}
-      <motion.div
-        animate={{ opacity: isActive && !isDragTarget ? 1 : 0 }}
-        transition={{ duration: 0.15, ease: EASE_OUT_QUINT }}
-        style={{
-          position: 'absolute',
-          inset: 0,
-          borderRadius: 10,
-          background: 'linear-gradient(45deg, #8caaee, #ca9ee6)',
-          pointerEvents: 'none',
-        }}
-      />
-
-      {/* Content — 1px inset exposes border layers */}
-      <div
-        style={{
-          position: 'absolute',
-          inset: 1,
-          borderRadius: 9,
-          overflow: 'hidden',
-          background: 'rgba(48,52,70,0.85)',
+          width: '100%',
+          height: '100%',
           display: 'flex',
           flexDirection: 'column',
+          overflow: 'hidden',
         }}
       >
         {/* Title bar */}
@@ -184,22 +175,24 @@ export default function DwindleWindow({
           style={{
             height: '1.75rem',
             flexShrink: 0,
-            background: 'rgba(41,44,60,0.8)',
-            borderBottom: '1px solid rgba(81,87,109,0.4)',
+            background: isActive ? accent : '#F5F0E8',
+            borderBottom: '2px solid #1a1a2e',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
             padding: '0 0.75rem',
             cursor: 'grab',
             userSelect: 'none',
+            transition: 'background 0.15s',
           }}
         >
           <span
             style={{
-              color: '#c6d0f5',
+              color: isActive ? '#FFFFFF' : '#1a1a2e',
               fontSize: '0.72rem',
               fontFamily: FONT,
               userSelect: 'none',
+              fontWeight: 700,
             }}
           >
             {windowTitles[id] ?? id}
@@ -222,17 +215,17 @@ export default function DwindleWindow({
               onPointerDown={(e) => e.stopPropagation()}
               onClick={(e) => { e.stopPropagation(); onClose() }}
               style={{
-                width: 10,
-                height: 10,
-                borderRadius: '50%',
-                background: '#e78284',
-                border: 'none',
+                width: 12,
+                height: 12,
+                borderRadius: 3,
+                background: '#EF4444',
+                border: '2px solid #1a1a2e',
                 cursor: 'pointer',
                 padding: 0,
               }}
             />
-            <div style={{ width: 10, height: 10, borderRadius: '50%', background: '#e5c890' }} />
-            <div style={{ width: 10, height: 10, borderRadius: '50%', background: '#a6d189' }} />
+            <div style={{ width: 12, height: 12, borderRadius: 3, background: '#FBBF24', border: '2px solid #1a1a2e' }} />
+            <div style={{ width: 12, height: 12, borderRadius: 3, background: '#22C55E', border: '2px solid #1a1a2e' }} />
           </div>
         </div>
 
@@ -249,14 +242,14 @@ export default function DwindleWindow({
         </div>
       </div>
 
-      {/* Directional edge overlay — shown when this window is the drop target */}
+      {/* Directional edge overlay */}
       {isDragTarget && targetEdge && (
         <div
           style={{
             position: 'absolute',
             ...edgeStyles[targetEdge],
             ...edgeBorder[targetEdge],
-            background: 'rgba(140,170,238,0.12)',
+            background: 'rgba(59,130,246,0.15)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -267,10 +260,11 @@ export default function DwindleWindow({
         >
           <span
             style={{
-              color: '#8caaee',
+              color: '#3B82F6',
               fontSize: '0.62rem',
               fontFamily: FONT,
               userSelect: 'none',
+              fontWeight: 700,
             }}
           >
             {edgeLabels[targetEdge]}

@@ -32,9 +32,9 @@ export default function LauncherBar({
         bottom: 0,
         left: 0,
         right: 0,
-        height: 44,
-        background: '#292c3c',
-        borderTop: '1px solid #414559',
+        height: 48,
+        background: '#FFFFFF',
+        borderTop: '3px solid #1a1a2e',
         display: 'flex',
         alignItems: 'center',
         padding: '0 1rem',
@@ -44,11 +44,12 @@ export default function LauncherBar({
     >
       <span
         style={{
-          color: '#737994',
+          color: '#6B7280',
           fontSize: '0.65rem',
           fontFamily: FONT,
           marginRight: '0.5rem',
           userSelect: 'none',
+          fontWeight: 700,
         }}
       >
         windows
@@ -59,23 +60,24 @@ export default function LauncherBar({
         const isFocused = focusedId === id
         const isHovered = hovered === id
 
-        // Determine colors based on state
-        let bg = '#414559'
-        let color = '#a5adce'
-        let borderColor = '#51576d'
+        let bg = '#FFFFFF'
+        let color = '#374151'
+        const borderColor = '#1a1a2e'
+        let shadow = 'none'
 
         if (isFocused) {
-          bg = 'rgba(140,170,238,0.15)'
-          color = '#8caaee'
-          borderColor = '#8caaee'
+          bg = '#FBBF24'
+          color = '#1a1a2e'
+          shadow = '2px 2px 0px #1a1a2e'
         } else if (isOpen) {
-          color = '#c6d0f5'
+          bg = '#F5F0E8'
+          color = '#1a1a2e'
         }
 
-        // Override with hover (if not focused)
         if (isHovered && !isFocused) {
-          color = '#8caaee'
-          borderColor = '#8caaee'
+          bg = '#E0F2FE'
+          color = '#3B82F6'
+          shadow = '2px 2px 0px #1a1a2e'
         }
 
         return (
@@ -86,17 +88,19 @@ export default function LauncherBar({
             onMouseLeave={() => setHovered(null)}
             style={{
               padding: '0.25rem 0.75rem',
-              borderRadius: 5,
+              borderRadius: 4,
               fontSize: '0.7rem',
               fontFamily: FONT,
-              border: `1px solid ${borderColor}`,
+              border: `2px solid ${borderColor}`,
               background: bg,
               color,
               cursor: 'pointer',
-              transition: 'all 0.15s cubic-bezier(0.23,1,0.32,1)',
+              transition: 'all 0.1s',
               display: 'flex',
               alignItems: 'center',
               gap: '0.35rem',
+              fontWeight: 700,
+              boxShadow: shadow,
             }}
           >
             <span>{icon}</span>
@@ -107,14 +111,19 @@ export default function LauncherBar({
 
       <span
         style={{
-          color: '#737994',
+          color: '#6B7280',
           fontSize: '0.6rem',
           fontFamily: FONT,
           marginLeft: 'auto',
           userSelect: 'none',
+          fontWeight: 600,
+          background: '#F5F0E8',
+          border: '2px solid #1a1a2e',
+          borderRadius: 4,
+          padding: '0.2rem 0.5rem',
         }}
       >
-        Q close • Tab focus • F fullscreen
+        Q close · Tab focus · F fullscreen
       </span>
     </div>
   )

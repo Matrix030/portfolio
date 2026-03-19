@@ -7,69 +7,62 @@ const FONT = '"CaskaydiaCove Nerd Font Mono", "JetBrains Mono", monospace';
 
 function StaticWindow({
   title,
+  accent,
   children,
 }: {
   title: string;
+  accent: string;
   children: React.ReactNode;
 }) {
   return (
     <div
       style={{
-        background: "#51576d",
-        borderRadius: 10,
+        background: "#FFFFFF",
+        borderRadius: 8,
         height: "100%",
         overflow: "hidden",
-        boxShadow: "0 4px 24px rgba(35,38,52,0.8)",
+        border: "3px solid #1a1a2e",
+        boxShadow: "4px 4px 0px #1a1a2e",
         position: "relative",
+        display: "flex",
+        flexDirection: "column",
       }}
     >
-      {/* inner inset */}
+      {/* Title bar */}
       <div
         style={{
-          position: "absolute",
-          inset: 1,
-          borderRadius: 9,
-          overflow: "hidden",
-          background: "rgba(48,52,70,0.85)",
+          height: "1.75rem",
+          flexShrink: 0,
+          background: accent,
+          borderBottom: "3px solid #1a1a2e",
           display: "flex",
-          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "space-between",
+          padding: "0 0.75rem",
+          userSelect: "none",
         }}
       >
-        {/* Title bar */}
-        <div
+        <span
           style={{
-            height: "1.75rem",
-            flexShrink: 0,
-            background: "rgba(41,44,60,0.8)",
-            borderBottom: "1px solid rgba(81,87,109,0.4)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            padding: "0 0.75rem",
-            userSelect: "none",
+            color: "#FFFFFF",
+            fontSize: "0.72rem",
+            fontFamily: FONT,
+            fontWeight: 700,
           }}
         >
-          <span
-            style={{
-              color: "#c6d0f5",
-              fontSize: "0.72rem",
-              fontFamily: FONT,
-            }}
-          >
-            {title}
-          </span>
-          {/* Traffic lights (decorative) */}
-          <div style={{ display: "flex", gap: "0.35rem", alignItems: "center" }}>
-            <div style={{ width: 10, height: 10, borderRadius: "50%", background: "#e78284" }} />
-            <div style={{ width: 10, height: 10, borderRadius: "50%", background: "#e5c890" }} />
-            <div style={{ width: 10, height: 10, borderRadius: "50%", background: "#a6d189" }} />
-          </div>
+          {title}
+        </span>
+        {/* Traffic lights (decorative) */}
+        <div style={{ display: "flex", gap: "0.35rem", alignItems: "center" }}>
+          <div style={{ width: 12, height: 12, borderRadius: 3, background: "#EF4444", border: "2px solid #1a1a2e" }} />
+          <div style={{ width: 12, height: 12, borderRadius: 3, background: "#FBBF24", border: "2px solid #1a1a2e" }} />
+          <div style={{ width: 12, height: 12, borderRadius: 3, background: "#22C55E", border: "2px solid #1a1a2e" }} />
         </div>
+      </div>
 
-        {/* Content */}
-        <div style={{ flex: 1, overflow: "hidden" }}>
-          {children}
-        </div>
+      {/* Content */}
+      <div style={{ flex: 1, overflow: "hidden" }}>
+        {children}
       </div>
     </div>
   );
@@ -81,22 +74,22 @@ export default function Workspace3() {
       style={{
         display: "flex",
         height: "100%",
-        gap: 4,
-        padding: 5,
-        background: "#232634",
+        gap: 6,
+        padding: 6,
+        background: "#FEF9EF",
         boxSizing: "border-box",
       }}
     >
       {/* Left — human-readable doc */}
       <div style={{ flex: "0 0 58%", minWidth: 0, height: "100%" }}>
-        <StaticWindow title="master.doc">
+        <StaticWindow title="master.doc" accent="#3B82F6">
           <MasterDocViewer />
         </StaticWindow>
       </div>
 
       {/* Right — raw JSON */}
       <div style={{ flex: "0 0 42%", minWidth: 0, height: "100%" }}>
-        <StaticWindow title="master.json">
+        <StaticWindow title="master.json" accent="#A855F7">
           <MasterDocRaw />
         </StaticWindow>
       </div>

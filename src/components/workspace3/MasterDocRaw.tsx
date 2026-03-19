@@ -30,7 +30,6 @@ function tokenizeJSON(json: string): Token[] {
   while (i < json.length) {
     const ch = json[i];
 
-    // Whitespace
     if (/\s/.test(ch)) {
       let ws = "";
       while (i < json.length && /\s/.test(json[i])) ws += json[i++];
@@ -38,14 +37,12 @@ function tokenizeJSON(json: string): Token[] {
       continue;
     }
 
-    // Punctuation
     if ("{}[]:,".includes(ch)) {
       tokens.push({ type: "punctuation", value: ch });
       i++;
       continue;
     }
 
-    // String — could be a key or a value; we decide after
     if (ch === '"') {
       let str = '"';
       i++;
@@ -61,7 +58,6 @@ function tokenizeJSON(json: string): Token[] {
         }
         i++;
       }
-      // Peek ahead past whitespace to see if a ':' follows → it's a key
       let j = i;
       while (j < json.length && /\s/.test(json[j])) j++;
       const isKey = json[j] === ":";
@@ -69,7 +65,6 @@ function tokenizeJSON(json: string): Token[] {
       continue;
     }
 
-    // Number
     if (ch === "-" || /\d/.test(ch)) {
       let num = "";
       while (i < json.length && /[-\d.eE+]/.test(json[i])) num += json[i++];
@@ -77,7 +72,6 @@ function tokenizeJSON(json: string): Token[] {
       continue;
     }
 
-    // true / false / null
     if (json.startsWith("true", i)) {
       tokens.push({ type: "boolean", value: "true" });
       i += 4;
@@ -94,7 +88,6 @@ function tokenizeJSON(json: string): Token[] {
       continue;
     }
 
-    // Fallback: unknown char — treat as punctuation
     tokens.push({ type: "punctuation", value: ch });
     i++;
   }
@@ -103,12 +96,12 @@ function tokenizeJSON(json: string): Token[] {
 }
 
 const TOKEN_COLORS: Record<TokenType, string> = {
-  key: "#8caaee",
-  string: "#a6d189",
-  number: "#ef9f76",
-  boolean: "#ca9ee6",
-  null: "#737994",
-  punctuation: "#626880",
+  key: "#3B82F6",
+  string: "#22C55E",
+  number: "#F97316",
+  boolean: "#A855F7",
+  null: "#6B7280",
+  punctuation: "#374151",
   whitespace: "inherit",
 };
 
@@ -127,7 +120,7 @@ function SyntaxHighlight({ json }: { json: string }) {
       }}
     >
       {tokens.map((tok, i) => (
-        <span key={i} style={{ color: TOKEN_COLORS[tok.type] }}>
+        <span key={i} style={{ color: TOKEN_COLORS[tok.type], fontWeight: tok.type === "key" ? 700 : 500 }}>
           {tok.value}
         </span>
       ))}
@@ -136,7 +129,7 @@ function SyntaxHighlight({ json }: { json: string }) {
 }
 
 // ---------------------------------------------------------------------------
-// CopyIcon — tiny SVG
+// CopyIcon
 // ---------------------------------------------------------------------------
 
 function CopyIcon() {
@@ -160,18 +153,20 @@ function CopyIcon() {
 // ---------------------------------------------------------------------------
 
 const btnBase: React.CSSProperties = {
-  background: "#414559",
-  border: "1px solid #51576d",
+  background: "#FFFFFF",
+  border: "2px solid #1a1a2e",
   borderRadius: 4,
   padding: "3px 10px",
   fontSize: "0.65rem",
-  color: "#c6d0f5",
+  color: "#1a1a2e",
   cursor: "pointer",
   fontFamily: FONT,
   lineHeight: 1,
   display: "flex",
   alignItems: "center",
   gap: 4,
+  fontWeight: 700,
+  boxShadow: "2px 2px 0px #1a1a2e",
 };
 
 // ---------------------------------------------------------------------------
@@ -223,8 +218,8 @@ export default function MasterDocRaw() {
       <div
         style={{
           height: "2.5rem",
-          background: "rgba(41,44,60,0.6)",
-          borderBottom: "1px solid #51576d",
+          background: "#F5F0E8",
+          borderBottom: "2px solid #1a1a2e",
           padding: "0 0.75rem",
           display: "flex",
           alignItems: "center",
@@ -232,7 +227,7 @@ export default function MasterDocRaw() {
           flexShrink: 0,
         }}
       >
-        <span style={{ color: "#737994", fontSize: "0.7rem" }}>
+        <span style={{ color: "#1a1a2e", fontSize: "0.7rem", fontWeight: 700 }}>
           master.json
         </span>
         <div style={{ display: "flex", gap: "0.5rem" }}>
@@ -249,8 +244,8 @@ export default function MasterDocRaw() {
       <div
         style={{
           padding: "0.45rem 0.75rem",
-          background: "rgba(140,170,238,0.06)",
-          borderBottom: "1px solid rgba(140,170,238,0.12)",
+          background: "#DBEAFE",
+          borderBottom: "2px solid #1a1a2e",
           flexShrink: 0,
           display: "flex",
           alignItems: "flex-start",
@@ -258,13 +253,13 @@ export default function MasterDocRaw() {
         }}
       >
         <span style={{ fontSize: "0.7rem", lineHeight: 1, marginTop: "0.05rem", flexShrink: 0 }}>
-          ✦
+          *
         </span>
         <div>
-          <span style={{ color: "#8caaee", fontSize: "0.68rem", fontWeight: 600 }}>
+          <span style={{ color: "#1a1a2e", fontSize: "0.68rem", fontWeight: 800 }}>
             AI-ready context
           </span>
-          <span style={{ color: "#737994", fontSize: "0.68rem" }}>
+          <span style={{ color: "#374151", fontSize: "0.68rem", fontWeight: 500 }}>
             {" "}— curl or download this file and drop it into ChatGPT, Claude, or any LLM.
             Ask it anything about my background, projects, or skills.
           </span>
@@ -275,8 +270,8 @@ export default function MasterDocRaw() {
       <div
         style={{
           padding: "0.5rem 0.75rem",
-          background: "rgba(35,38,52,0.8)",
-          borderBottom: "1px solid #414559",
+          background: "#F5F0E8",
+          borderBottom: "2px solid #1a1a2e",
           flexShrink: 0,
         }}
       >
@@ -285,23 +280,26 @@ export default function MasterDocRaw() {
             fontSize: "0.6rem",
             textTransform: "uppercase",
             letterSpacing: "0.08em",
-            color: "#737994",
+            color: "#1a1a2e",
             marginBottom: "0.3rem",
+            fontWeight: 800,
           }}
         >
           curl endpoint
         </div>
         <div
           style={{
-            background: "#414559",
+            background: "#FFFFFF",
+            border: "2px solid #1a1a2e",
             borderRadius: 5,
             padding: "0.4rem 0.75rem",
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
+            boxShadow: "2px 2px 0px #1a1a2e",
           }}
         >
-          <span style={{ fontSize: "0.7rem", color: "#a6d189" }}>
+          <span style={{ fontSize: "0.7rem", color: "#22C55E", fontWeight: 700 }}>
             {CURL_CMD}
           </span>
           <button
@@ -310,7 +308,7 @@ export default function MasterDocRaw() {
               background: "transparent",
               border: "none",
               cursor: "pointer",
-              color: curlCopied ? "#a6d189" : "#737994",
+              color: curlCopied ? "#22C55E" : "#6B7280",
               padding: "2px 4px",
               display: "flex",
               alignItems: "center",

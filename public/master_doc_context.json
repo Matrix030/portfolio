@@ -1,24 +1,83 @@
 {
-  "_schema": "resume_context_v2",
-  "_purpose": "Source of truth for all resume content. Every claim in a tailored resume MUST trace back to a field in this file. If it is not here, do not write it.",
-
   "skills": {
-    "languages": ["Python", "Go", "TypeScript", "JavaScript", "Java", "PHP", "SQL", "C/C++", "Bash"],
-    "frameworks": ["Next.js", "React", "Node.js", "Express.js", "Django", "Bootstrap", "jQuery", "PyTorch", "HuggingFace Transformers", "Tailwind CSS"],
-    "databases": ["PostgreSQL", "MongoDB", "MySQL", "ChromaDB", "Redis"],
-    "infra_devops": ["Docker", "Apache", "Linux (Ubuntu)", "Nginx", "VM deployment", "Travis CI", "AWS Elastic Beanstalk"],
-    "cloud_tools": ["AWS", "AWS S3", "Git", "VS Code", "PGAdmin", "Mapbox"],
-    "ai_ml": ["CUDA", "GPU-accelerated inference", "RAG pipelines", "Ollama", "Claude API", "local LLM tooling", "NLP pipelines", "Transformer models", "Dask", "Sentence Transformers", "LightGBM"],
-    "concepts": ["RBAC", "REST APIs", "Concurrency (Go)", "System Design", "Agile", "Software Documentation (SRS/SDD)", "WebSocket", "GTFS/Protobuf", "TDD"]
+    "languages": [
+      "Python",
+      "Go",
+      "TypeScript",
+      "JavaScript",
+      "Java",
+      "PHP",
+      "SQL",
+      "C/C++",
+      "Bash"
+    ],
+    "frameworks": [
+      "Next.js",
+      "React",
+      "Node.js",
+      "Express.js",
+      "Django",
+      "Bootstrap",
+      "jQuery",
+      "PyTorch",
+      "HuggingFace Transformers",
+      "Tailwind CSS"
+    ],
+    "databases": [
+      "PostgreSQL",
+      "MongoDB",
+      "MySQL",
+      "ChromaDB",
+      "Redis"
+    ],
+    "infra_devops": [
+      "Docker",
+      "Apache",
+      "Linux (Ubuntu)",
+      "Nginx",
+      "VM deployment",
+      "Travis CI",
+      "AWS Elastic Beanstalk"
+    ],
+    "cloud_tools": [
+      "AWS",
+      "AWS S3",
+      "Git",
+      "VS Code",
+      "PGAdmin",
+      "Mapbox"
+    ],
+    "ai_ml": [
+      "CUDA",
+      "GPU-accelerated inference",
+      "RAG pipelines",
+      "Ollama",
+      "Claude API",
+      "local LLM tooling",
+      "NLP pipelines",
+      "Transformer models",
+      "Dask",
+      "Sentence Transformers",
+      "LightGBM"
+    ],
+    "concepts": [
+      "RBAC",
+      "REST APIs",
+      "Concurrency (Go)",
+      "System Design",
+      "Agile",
+      "Software Documentation (SRS/SDD)",
+      "WebSocket",
+      "GTFS/Protobuf",
+      "TDD"
+    ]
   },
-
   "internship": {
     "org": "National Informatics Centre",
     "parent_org": "Government of India, Ministry of Electronics & IT",
     "location": "Maharashtra State Centre, Mantralaya, Mumbai",
     "total_duration": "April 2022 – September 2023",
     "extension_context": "Merit-based extension after performance review by senior scientists. Transitioned from user management system to leading data engineering work on reporting pipeline.",
-
     "roles": {
       "swe": {
         "title": "Software Development Intern",
@@ -31,13 +90,21 @@
         "order": 1
       }
     },
-
     "projects": {
       "fads": {
         "name": "FADS: Digitization of Accounting System",
         "client": "Financial Advisor and Deputy Secretary, Government of Maharashtra",
         "summary": "Digitized manual proforma accounting system. Handles consolidated accounting from district offices, calculates financial ratios, generates adjustment entries.",
-        "stack": ["PHP 8.1", "PostgreSQL 12.6", "Apache 2.4", "Bootstrap 5", "jQuery", "CryptoJS", "Axios", "jQuery DataTables"],
+        "stack": [
+          "PHP 8.1",
+          "PostgreSQL 12.6",
+          "Apache 2.4",
+          "Bootstrap 5",
+          "jQuery",
+          "CryptoJS",
+          "Axios",
+          "jQuery DataTables"
+        ],
         "deployment": "Ubuntu 20 VMs on government infrastructure",
         "features": {
           "rbac": {
@@ -68,43 +135,61 @@
         },
         "verifiable_metrics": {
           "security_features_count": 4,
-          "security_features": ["RBAC", "CAPTCHA", "account lockout", "audit trail"]
-        },
-        "do_not_claim": ["Did not architect the system alone: worked under senior scientists", "Did not deploy to production independently"]
+          "security_features": [
+            "RBAC",
+            "CAPTCHA",
+            "account lockout",
+            "audit trail"
+          ]
+        }
       },
-
       "mail_tracking": {
         "name": "Mail Tracking System (Letter Management)",
         "summary": "Internal mail/letter tracking for NIC. Captures letter images, stores metadata, sends email with embedded tracking pixel, updates status to 'Opened' when recipient views.",
-        "stack": ["Node.js", "Express.js", "EJS", "MongoDB", "Mongoose", "Nodemailer", "Multer", "bcrypt", "connect-mongodb-session", "ngrok"],
+        "stack": [
+          "Node.js",
+          "Express.js",
+          "EJS",
+          "MongoDB",
+          "Mongoose",
+          "Nodemailer",
+          "Multer",
+          "bcrypt",
+          "connect-mongodb-session",
+          "ngrok"
+        ],
         "features": {
           "image_capture": "Base64 image POST to /letter/captureLetter, saved to disk, filename returned",
           "email_tracking": "Tracking pixel (/letter/opened/:id) updates letter status to 'Opened' in MongoDB",
           "url_rewriting": "localhost image URLs rewritten to ngrok PROD_URL for external tracking",
           "auth": "Session-based with bcrypt password hashing, MongoDB session store"
-        },
-        "do_not_claim": ["Did not handle production deployment of this system"]
+        }
       }
     },
-
     "shared_facts": {
       "documentation": "Co-authored SRS and SDD documentation approved by Senior Director (Scientist F), NIC Mumbai",
       "deployment_env": "Government infrastructure (Ubuntu VMs, Apache)"
-    },
-
-    "tailoring_angles": {
-      "swe_fullstack_backend": "Lead with FADS (PHP + PostgreSQL, RBAC, CAPTCHA, audit logging, gov-scale deployment) + mail tracking (Node.js + MongoDB)",
-      "data_engineering_etl": "Lead with CSV module (ETL: CSV ingestion → parsing → PostgreSQL → financial ratio calc)",
-      "nodejs_mongodb_express": "Lead with mail tracking system",
-      "general_swe": "Combine both projects"
     }
   },
-
   "projects": {
     "steamlensai": {
       "name": "SteamLensAI",
-      "domains": ["Data Engineering", "Distributed Computing", "NLP"],
-      "stack": ["Python", "Dask", "CUDA", "PyTorch", "HuggingFace Transformers", "Sentence Transformers", "Streamlit", "Parquet", "uv"],
+      "domains": [
+        "Data Engineering",
+        "Distributed Computing",
+        "NLP"
+      ],
+      "stack": [
+        "Python",
+        "Dask",
+        "CUDA",
+        "PyTorch",
+        "HuggingFace Transformers",
+        "Sentence Transformers",
+        "Streamlit",
+        "Parquet",
+        "uv"
+      ],
       "summary": "Distributed GPU-accelerated pipeline for analyzing Steam game reviews at scale. Semantic topic assignment + hierarchical text summarization using transformers distributed across Dask workers sharing a single GPU.",
       "pipeline": {
         "phase1": "Topic Assignment: all-MiniLM-L6-v2 → review embeddings → semantic match against game themes. 1.2M reviews in ~2.5 min.",
@@ -125,18 +210,39 @@
         "dataset_size": "40GB published on Kaggle",
         "speedup": "~10x over sequential baseline",
         "benchmarks": [
-          {"reviews": "140,794", "sequential": "11 min", "dask": "1 min 8 sec"},
-          {"reviews": "380,774", "sequential": "30 min 55 sec", "dask": "2 min 25 sec"},
-          {"reviews": "575,391", "sequential": "47 min", "dask": "3 min 42 sec"}
+          {
+            "reviews": "140,794",
+            "sequential": "11 min",
+            "dask": "1 min 8 sec"
+          },
+          {
+            "reviews": "380,774",
+            "sequential": "30 min 55 sec",
+            "dask": "2 min 25 sec"
+          },
+          {
+            "reviews": "575,391",
+            "sequential": "47 min",
+            "dask": "3 min 42 sec"
+          }
         ]
-      },
-      "do_not_claim": ["Did not train custom models from scratch: used pretrained transformers", "Did not use multiple GPUs: single GPU with multi-worker pattern"]
+      }
     },
-
     "nyc_transit_hub": {
       "name": "NYC Transit Hub",
-      "domains": ["Full Stack Web Development"],
-      "stack": ["Next.js 15 (App Router)", "React 19", "TypeScript", "Tailwind CSS v4", "Mapbox GL JS", "react-map-gl", "MTA GTFS Realtime (protobuf)", "gtfs-realtime-bindings"],
+      "domains": [
+        "Full Stack Web Development"
+      ],
+      "stack": [
+        "Next.js 15 (App Router)",
+        "React 19",
+        "TypeScript",
+        "Tailwind CSS v4",
+        "Mapbox GL JS",
+        "react-map-gl",
+        "MTA GTFS Realtime (protobuf)",
+        "gtfs-realtime-bindings"
+      ],
       "achievement": "Won 1st Place at NYU Leetcode Bootcamp Hackathon",
       "summary": "Real-time NYC transit system covering subway, LIRR, Metro-North. Interactive Mapbox map with live arrivals, service alerts, per-line/per-feed detail pages. Parses static GTFS (~500MB) and live GTFS-RT protobuf feeds.",
       "features": {
@@ -149,30 +255,43 @@
       "verifiable_metrics": {
         "static_data_size": "500MB+",
         "refresh_interval": "30 seconds",
-        "feeds_covered": ["subway", "LIRR", "Metro-North"],
+        "feeds_covered": [
+          "subway",
+          "LIRR",
+          "Metro-North"
+        ],
         "typescript_strict": true
-      },
-      "do_not_claim": ["Did not deploy to production: hackathon project"]
+      }
     },
-
     "campusnest": {
       "name": "CampusNest",
-      "domains": ["Full Stack Web Development", "Backend Systems"],
+      "domains": [
+        "Full Stack Web Development",
+        "Backend Systems"
+      ],
       "context": "Capstone project",
       "summary": "University housing platform for NYC students (NYU, Columbia, Fordham, CUNY, Pace, The New School). Roommates, housing listings, buy/sell marketplace, messaging. Enforces .edu email registration.",
       "stacks": {
         "v2": {
           "label": "Go + Next.js (DEFAULT)",
-          "tech": ["Go", "PostgreSQL", "Next.js"],
-          "use_when": "JD mentions Go, React, Next.js, TypeScript, modern web, or is stack-agnostic"
+          "tech": [
+            "Go",
+            "PostgreSQL",
+            "Next.js"
+          ]
         },
         "v1": {
           "label": "Django + AWS",
-          "tech": ["Django", "PostgreSQL", "AWS S3", "AWS Elastic Beanstalk", "Mapbox", "Travis CI"],
-          "use_when": "JD mentions Python, Django, REST APIs, AWS, CI/CD"
+          "tech": [
+            "Django",
+            "PostgreSQL",
+            "AWS S3",
+            "AWS Elastic Beanstalk",
+            "Mapbox",
+            "Travis CI"
+          ]
         }
       },
-      "stack_rule": "Both have identical features. Pick ONE based on JD. Never present both.",
       "features": {
         "auth": {
           "what": "Custom .edu email authentication",
@@ -206,15 +325,26 @@
           "what": "Comprehensive security",
           "detail": "@login_required on all views, thread authorization (403), CSRF, XSS prevention"
         }
-      },
-      "do_not_claim": ["v2 Go rewrite is in progress: do not claim it is deployed or complete unless presenting v1"]
+      }
     },
-
     "numerai": {
       "name": "Numerai Stock Market Prediction Pipeline",
       "resume_header": "Numerai Stock Prediction | Python, LightGBM, PyTorch, scikit-learn, CUDA, Jupyter",
-      "domains": ["Machine Learning", "Financial Data Science"],
-      "stack": ["Python", "LightGBM (GPU)", "Random Forest", "Linear Regression", "scikit-learn", "PyTorch (CUDA 12.1)", "numerapi", "Jupyter", "uv"],
+      "domains": [
+        "Machine Learning",
+        "Financial Data Science"
+      ],
+      "stack": [
+        "Python",
+        "LightGBM (GPU)",
+        "Random Forest",
+        "Linear Regression",
+        "scikit-learn",
+        "PyTorch (CUDA 12.1)",
+        "numerapi",
+        "Jupyter",
+        "uv"
+      ],
       "context": "ML course final project (NeurIPS-style report). Submitted to Numerai Tournament.",
       "summary": "End-to-end ML pipeline for stock return ranking prediction. Compares Linear Regression, Random Forest, LightGBM with era-based time-series validation, GPU acceleration, ensemble averaging.",
       "features": {
@@ -246,15 +376,22 @@
         "gpu_speedup": "10.1x (152s → 15s)",
         "ensemble_sharpe": 2.42,
         "training_time": "~50s total on GPU"
-      },
-      "do_not_claim": ["Did not build a production trading system", "Did not use custom neural architectures"]
+      }
     },
-
     "xv6_tracer": {
       "name": "xv6 Syscall Tracer",
       "resume_header": "xv6 Syscall Tracer | C, xv6, QEMU, x86 Assembly, ANSI C",
-      "domains": ["Operating Systems", "Systems Programming"],
-      "stack": ["C", "xv6", "QEMU", "x86 Assembly", "ANSI C"],
+      "domains": [
+        "Operating Systems",
+        "Systems Programming"
+      ],
+      "stack": [
+        "C",
+        "xv6",
+        "QEMU",
+        "x86 Assembly",
+        "ANSI C"
+      ],
       "context": "OS course project: extended MIT's xv6 teaching OS",
       "summary": "Extended xv6 with 6 new kernel syscalls implementing Linux strace-like tracing: per-process trace enable/disable, circular dump buffer, filter flags.",
       "features": {
@@ -267,14 +404,24 @@
         "syscalls_added": 6,
         "buffer_size": "36KB",
         "filter_types": 3
-      },
-      "do_not_claim": ["Did not modify the xv6 scheduler or memory subsystem"]
+      }
     },
-
     "personality_prediction": {
       "name": "Personality Prediction for CV Analysis",
-      "domains": ["Machine Learning", "NLP Research"],
-      "stack": ["Python", "Logistic Regression", "SVM", "KNN", "Naive Bayes", "pyresparser", "spaCy", "NLTK"],
+      "domains": [
+        "Machine Learning",
+        "NLP Research"
+      ],
+      "stack": [
+        "Python",
+        "Logistic Regression",
+        "SVM",
+        "KNN",
+        "Naive Bayes",
+        "pyresparser",
+        "spaCy",
+        "NLTK"
+      ],
       "published": "ICRMIR-2023",
       "summary": "ML system predicting OCEAN personality traits from CV/resume to assist recruiters. Resume parsing + psychometric questionnaire + ML classification.",
       "features": {
@@ -283,33 +430,58 @@
         "ml_module": "Classifies candidates into personality types using OCEAN values scaled 1-10."
       },
       "verifiable_metrics": {
-        "models_evaluated": ["Logistic Regression", "SVM", "KNN + Naive Bayes", "Multinomial Naive Bayes"],
+        "models_evaluated": [
+          "Logistic Regression",
+          "SVM",
+          "KNN + Naive Bayes",
+          "Multinomial Naive Bayes"
+        ],
         "best_model": "Logistic Regression",
         "accuracy": "74%",
         "f1": 0.75,
         "keyword_dataset": "Extended from 50 to 306 OCEAN elements"
-      },
-      "do_not_claim": ["Did not collect original OCEAN data: extended existing dataset"]
+      }
     },
-
     "patchbotai": {
       "name": "PatchbotAI",
-      "domains": ["AI Agents", "Developer Tooling"],
-      "stack": ["Python", "Google Gemini API (gemini-2.0-flash-001)", "function calling", "sandboxed code execution", "uv"],
+      "domains": [
+        "AI Agents",
+        "Developer Tooling"
+      ],
+      "stack": [
+        "Python",
+        "Google Gemini API (gemini-2.0-flash-001)",
+        "function calling",
+        "sandboxed code execution",
+        "uv"
+      ],
       "summary": "Minimal agentic coding assistant using Gemini function calling to autonomously read, write, and execute code in a sandboxed directory.",
       "features": {
         "agent_loop": "Up to 20 steps: call Gemini → dispatch function_call → append tool results → repeat until plain text or step limit",
-        "tools": ["get_files_info", "get_file_content", "write_file", "run_python_file"],
+        "tools": [
+          "get_files_info",
+          "get_file_content",
+          "write_file",
+          "run_python_file"
+        ],
         "safety": "Path containment enforced: no traversal outside sandbox directory",
         "abstraction": "Each function exports callable + typed Gemini FunctionDeclaration schema for automatic registration"
-      },
-      "do_not_claim": ["Did not build multi-model or multi-agent orchestration"]
+      }
     },
-
     "localpilotai": {
       "name": "LocalPilotAI",
-      "domains": ["AI Tooling", "VSCode Extension", "Developer Tools"],
-      "stack": ["TypeScript", "VSCode Extension API", "Ollama (qwen2.5-coder:7b)", "Node.js", "ESLint"],
+      "domains": [
+        "AI Tooling",
+        "VSCode Extension",
+        "Developer Tools"
+      ],
+      "stack": [
+        "TypeScript",
+        "VSCode Extension API",
+        "Ollama (qwen2.5-coder:7b)",
+        "Node.js",
+        "ESLint"
+      ],
       "summary": "Fully offline AI code autocompletion VSCode extension. Runs qwen2.5-coder:7b locally via Ollama. No external API, complete privacy, sub-200ms completions.",
       "features": {
         "manual_completion": "Ctrl+Space: captures full context line 0 to cursor, ollama.generate(), inserts as snippet",
@@ -321,14 +493,24 @@
         "multi_line_latency": "50-200ms",
         "min_vram": "5GB+",
         "external_api_calls": 0
-      },
-      "do_not_claim": ["Did not fine-tune the model", "Did not support multi-file context"]
+      }
     },
-
     "simplifyjobsdaemon": {
       "name": "SimplifyJobsDaemon",
-      "domains": ["Automation", "Developer Tooling", "Systems Programming"],
-      "stack": ["Go", "Python", "Flask", "Ollama (local LLM)", "odfpy", "goquery", "notify-send"],
+      "domains": [
+        "Automation",
+        "Developer Tooling",
+        "Systems Programming"
+      ],
+      "stack": [
+        "Go",
+        "Python",
+        "Flask",
+        "Ollama (local LLM)",
+        "odfpy",
+        "goquery",
+        "notify-send"
+      ],
       "platform": "Linux (Hyprland, runs as exec-once daemon)",
       "summary": "Background daemon monitoring SimplifyJobs GitHub feed every 30 min, scrapes new postings, uses local LLM to select projects, generates tailored resume PDF, sends desktop notification. Fully automated + offline.",
       "features": {
@@ -348,19 +530,15 @@
         "poll_interval": "30 minutes",
         "architecture": "Go + Python hybrid",
         "llm_mode": "Fully offline (local Ollama)"
-      },
-      "do_not_claim": ["Did not build a web UI for this tool"]
+      }
     }
   },
-
   "achievements": [
     {
-      "text": "Won 1st Place at NYU Leetcode Bootcamp Hackathon",
-      "always_include": true
+      "text": "Won 1st Place at NYU Leetcode Bootcamp Hackathon"
     },
     {
-      "text": "Co-authored and published \"Personality Prediction for CV Analysis\" in ICRMIR-2023",
-      "always_include": true
+      "text": "Co-authored and published \"Personality Prediction for CV Analysis\" in ICRMIR-2023"
     }
   ]
 }
