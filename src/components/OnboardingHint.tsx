@@ -48,21 +48,21 @@ const STEPS = [
   },
 ] as const;
 
+// --- Small inline helpers (defined before use) ---
+
 function Kbd({ children }: { children: React.ReactNode }) {
   return (
     <span
       style={{
         display: "inline-block",
-        background: "#FBBF24",
-        border: "2px solid #1a1a2e",
+        background: "#414559",
+        border: "1px solid #51576d",
         borderRadius: 3,
         padding: "0px 5px",
         fontSize: "0.62rem",
-        color: "#1a1a2e",
+        color: "#c6d0f5",
         fontFamily: FONT,
         lineHeight: 1.6,
-        fontWeight: 700,
-        boxShadow: "1px 1px 0px #1a1a2e",
       }}
     >
       {children}
@@ -71,12 +71,14 @@ function Kbd({ children }: { children: React.ReactNode }) {
 }
 
 function Dim({ children }: { children: React.ReactNode }) {
-  return <span style={{ color: "#6B7280", fontWeight: 600 }}>{children}</span>;
+  return <span style={{ color: "#737994" }}>{children}</span>;
 }
 
 function Accent({ children }: { children: React.ReactNode }) {
-  return <span style={{ color: "#22C55E", fontWeight: 700 }}>{children}</span>;
+  return <span style={{ color: "#a6d189" }}>{children}</span>;
 }
+
+// --- Main component ---
 
 export default function OnboardingHint() {
   const [visible, setVisible] = useState(false);
@@ -119,20 +121,21 @@ export default function OnboardingHint() {
             transform: "translateX(-50%)",
             zIndex: 400,
             width: "clamp(320px, 38vw, 460px)",
-            background: "#FFFFFF",
-            border: "3px solid #1a1a2e",
-            borderRadius: 8,
-            boxShadow: "6px 6px 0px #1a1a2e",
+            background: "rgba(41,44,60,0.97)",
+            border: "1px solid #51576d",
+            borderRadius: 10,
+            boxShadow: "0 8px 32px rgba(0,0,0,0.55)",
             fontFamily: FONT,
             overflow: "hidden",
+            backdropFilter: "blur(8px)",
           }}
         >
           {/* Title bar */}
           <div
             style={{
               height: "1.9rem",
-              background: "#A855F7",
-              borderBottom: "3px solid #1a1a2e",
+              background: "rgba(35,38,52,0.8)",
+              borderBottom: "1px solid rgba(81,87,109,0.4)",
               display: "flex",
               alignItems: "center",
               justifyContent: "space-between",
@@ -141,30 +144,29 @@ export default function OnboardingHint() {
             }}
           >
             <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-              <span style={{ color: "#FFFFFF", fontSize: "0.62rem", fontWeight: 700 }}>
+              <span style={{ color: "#737994", fontSize: "0.62rem" }}>
                 hyprland
               </span>
-              <span style={{ color: "rgba(255,255,255,0.6)", fontSize: "0.62rem" }}>·</span>
-              <span style={{ color: "#FBBF24", fontSize: "0.62rem", fontWeight: 700 }}>
+              <span style={{ color: "#51576d", fontSize: "0.62rem" }}>·</span>
+              <span style={{ color: "#8caaee", fontSize: "0.62rem" }}>
                 {current.tag}
               </span>
             </div>
             <button
               onClick={dismiss}
               style={{
-                background: "#FFFFFF",
-                border: "2px solid #1a1a2e",
-                color: "#1a1a2e",
+                background: "none",
+                border: "none",
+                color: "#737994",
                 cursor: "pointer",
-                fontSize: "0.7rem",
+                fontSize: "0.75rem",
                 lineHeight: 1,
-                padding: "1px 5px",
+                padding: "2px 4px",
                 borderRadius: 3,
                 fontFamily: FONT,
-                fontWeight: 700,
               }}
             >
-              x
+              ×
             </button>
           </div>
 
@@ -179,9 +181,9 @@ export default function OnboardingHint() {
             >
               <div
                 style={{
-                  color: "#1a1a2e",
+                  color: "#c6d0f5",
                   fontSize: "0.75rem",
-                  fontWeight: 800,
+                  fontWeight: 600,
                   marginBottom: "0.4rem",
                 }}
               >
@@ -189,10 +191,9 @@ export default function OnboardingHint() {
               </div>
               <div
                 style={{
-                  color: "#374151",
+                  color: "#a5adce",
                   fontSize: "0.68rem",
                   lineHeight: 1.65,
-                  fontWeight: 500,
                 }}
               >
                 {current.body}
@@ -201,14 +202,12 @@ export default function OnboardingHint() {
                 <div
                   style={{
                     marginTop: "0.5rem",
-                    background: "#F5F0E8",
-                    border: "2px solid #1a1a2e",
+                    background: "rgba(65,69,89,0.5)",
                     borderRadius: 4,
                     padding: "0.25rem 0.5rem",
                     fontSize: "0.6rem",
-                    color: "#1a1a2e",
+                    color: "#737994",
                     display: "inline-block",
-                    fontWeight: 700,
                   }}
                 >
                   {current.hint}
@@ -232,12 +231,11 @@ export default function OnboardingHint() {
                 <div
                   key={i}
                   style={{
-                    width: i === step ? 18 : 8,
-                    height: 8,
+                    width: i === step ? 16 : 6,
+                    height: 6,
                     borderRadius: 3,
-                    background: i === step ? "#3B82F6" : "#F5F0E8",
-                    border: "2px solid #1a1a2e",
-                    transition: "all 0.2s",
+                    background: i === step ? "#8caaee" : "#414559",
+                    transition: "all 0.2s cubic-bezier(0.23,1,0.32,1)",
                   }}
                 />
               ))}
@@ -247,17 +245,15 @@ export default function OnboardingHint() {
             <button
               onClick={next}
               style={{
-                background: step === STEPS.length - 1 ? "#22C55E" : "#FBBF24",
-                border: "2px solid #1a1a2e",
-                borderRadius: 4,
+                background: step === STEPS.length - 1 ? "rgba(140,170,238,0.15)" : "#414559",
+                border: `1px solid ${step === STEPS.length - 1 ? "#8caaee" : "#51576d"}`,
+                borderRadius: 5,
                 padding: "0.25rem 0.75rem",
                 fontSize: "0.65rem",
-                color: "#1a1a2e",
+                color: step === STEPS.length - 1 ? "#8caaee" : "#c6d0f5",
                 cursor: "pointer",
                 fontFamily: FONT,
-                fontWeight: 700,
-                boxShadow: "2px 2px 0px #1a1a2e",
-                transition: "all 0.1s",
+                transition: "all 0.15s",
               }}
             >
               {step === STEPS.length - 1 ? "got it" : "next →"}

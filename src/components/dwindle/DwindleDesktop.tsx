@@ -11,9 +11,9 @@ import SplitHandle from './SplitHandle'
 import LauncherBar from './LauncherBar'
 import DragGhost from './DragGhost'
 
-const GAP = 6
-const PADDING = 6
-const LAUNCHER_HEIGHT = 48
+const GAP = 4
+const PADDING = 5
+const LAUNCHER_HEIGHT = 44
 
 const AVAILABLE_WINDOWS = [
   { id: 'about',      label: 'about.md',       icon: '󰈚' },
@@ -60,6 +60,7 @@ export default function DwindleDesktop() {
   const [fullscreenId, setFullscreenId] = useState<string | null>(null)
   const [dragState, setDragState] = useState<DragState | null>(null)
 
+  // Refs for stable closures in effects
   const focusedIdRef = useRef<string | null>(null)
   useLayoutEffect(() => { focusedIdRef.current = focusedId }, [focusedId])
 
@@ -68,6 +69,7 @@ export default function DwindleDesktop() {
   const dragStateRef = useRef<DragState | null>(null)
   dragStateRef.current = dragState
 
+  // Measure container
   useEffect(() => {
     const el = containerRef.current
     if (!el) return
@@ -84,6 +86,7 @@ export default function DwindleDesktop() {
     return () => ro.disconnect()
   }, [])
 
+  // Open about window once bounds are ready
   useEffect(() => {
     if (containerBounds.width > 0 && !tree) {
       setTree(openWindow(null, null, 'about'))
@@ -91,13 +94,16 @@ export default function DwindleDesktop() {
     }
   }, [containerBounds.width])
 
+  // Compute layout from tree
   const layout = tree ? computeLayout(tree, containerBounds, GAP) : {}
   const splits = tree ? getSplits(tree, containerBounds, GAP) : []
   const windowIds = getWindowIds(tree)
 
+  // Keep refs in sync every render
   windowIdsRef.current = windowIds
   layoutRef.current = layout
 
+  // handleFocus: no-op during drag
   const handleFocus = useCallback((id: string) => {
     if (dragStateRef.current) return
     setFocusedId(id)
@@ -127,6 +133,7 @@ export default function DwindleDesktop() {
     setFocusedId(id)
   }, [])
 
+  // Called from window's onPointerEnter during drag — converts client→desktop coords, computes edge
   const handleDragEnter = useCallback((id: string, clientX: number, clientY: number) => {
     const sourceId = dragStateRef.current?.sourceId
     if (!sourceId || id === sourceId) return
@@ -145,6 +152,7 @@ export default function DwindleDesktop() {
     setDragState(prev => prev ? { ...prev, targetId: null, targetEdge: null } : null)
   }, [])
 
+  // Drag pointer tracking — stable for entire drag session
   const isDraggingAny = dragState !== null
   useEffect(() => {
     if (!isDraggingAny) return
@@ -157,6 +165,7 @@ export default function DwindleDesktop() {
       const relY = e.clientY - rect.top
       const sourceId = dragStateRef.current?.sourceId
 
+      // Geometric hit test + edge computation in one pass
       let newTarget: string | null = null
       let newEdge: Edge | null = null
 
@@ -203,6 +212,7 @@ export default function DwindleDesktop() {
     }
   }, [isDraggingAny])
 
+  // Keyboard shortcuts
   useEffect(() => {
     function onKeyDown(e: KeyboardEvent) {
       if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return
@@ -262,7 +272,7 @@ export default function DwindleDesktop() {
         position: 'relative',
         width: '100%',
         height: '100%',
-        background: '#FEF9EF',
+        background: '#232634',
         overflow: 'hidden',
       }}
     >
@@ -291,6 +301,7 @@ export default function DwindleDesktop() {
         })}
       </AnimatePresence>
 
+      {/* Split handles — hidden during fullscreen or drag */}
       {!fullscreenId && !dragState && splits.map(split => (
         <SplitHandle
           key={split.path}

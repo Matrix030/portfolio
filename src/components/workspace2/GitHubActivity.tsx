@@ -3,6 +3,10 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
+// GitHub public API — 60 req/hour unauthenticated.
+// For higher limits in production, add a GITHUB_TOKEN env var and pass
+// Authorization: `token ${process.env.NEXT_PUBLIC_GITHUB_TOKEN}` in headers.
+
 const USERNAME = "Matrix030";
 const API = "https://api.github.com";
 
@@ -31,12 +35,12 @@ interface GitHubEvent {
 // --- Helpers ---
 
 const langColors: Record<string, string> = {
-    TypeScript: "#3B82F6",
-    Python: "#22C55E",
-    Go: "#06B6D4",
-    JavaScript: "#FBBF24",
-    Rust: "#F97316",
-    Java: "#F43F5E",
+    TypeScript: "#8caaee",
+    Python: "#a6d189",
+    Go: "#99d1db",
+    JavaScript: "#e5c890",
+    Rust: "#ef9f76",
+    Java: "#ea999c",
 };
 
 function timeAgo(dateStr: string): string {
@@ -62,10 +66,10 @@ const eventConfig: Record<
     string,
     { icon: string; verb: string; color: string }
 > = {
-    PushEvent: { icon: "\u2191", verb: "pushed to", color: "#22C55E" },
-    CreateEvent: { icon: "+", verb: "created", color: "#3B82F6" },
-    WatchEvent: { icon: "\u2605", verb: "starred", color: "#FBBF24" },
-    ForkEvent: { icon: "\u2442", verb: "forked", color: "#A855F7" },
+    PushEvent: { icon: "\u2191", verb: "pushed to", color: "#a6d189" },
+    CreateEvent: { icon: "+", verb: "created", color: "#8caaee" },
+    WatchEvent: { icon: "\u2605", verb: "starred", color: "#e5c890" },
+    ForkEvent: { icon: "\u2442", verb: "forked", color: "#ca9ee6" },
 };
 
 // --- Skeleton ---
@@ -88,8 +92,7 @@ function Skeleton() {
                     animate={{ opacity: [0.4, 0.7, 0.4] }}
                     transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
                     style={{
-                        background: "#F5F0E8",
-                        border: "2px solid #1a1a2e",
+                        background: "#414559",
                         borderRadius: 3,
                         height: "0.7rem",
                         width: w,
@@ -121,6 +124,7 @@ function Heatmap() {
                         levelMap[c.date] = c.level;
                     });
 
+                    // Generate full year: 52 weeks x 7 days (today = end)
                     const today = new Date();
                     const grid: ContribCell[] = [];
                     for (let i = WEEKS * 7 - 1; i >= 0; i--) {
@@ -136,11 +140,11 @@ function Heatmap() {
     }, []);
 
     const levelColors = [
-        "#F5F0E8",
-        "#BBF7D0",
-        "#86EFAC",
-        "#4ADE80",
-        "#22C55E",
+        "#414559",   // level 0: no contributions
+        "#4a6940",   // level 1
+        "#6b9a54",   // level 2
+        "#8ccf6a",   // level 3
+        "#a6d189",   // level 4
     ];
 
     const gridStyle: React.CSSProperties = {
@@ -156,7 +160,6 @@ function Heatmap() {
         width: "100%",
         aspectRatio: "1",
         borderRadius: 1,
-        border: "1px solid #1a1a2e",
     };
 
     if (cells.length === 0) {
@@ -165,7 +168,7 @@ function Heatmap() {
                 {Array.from({ length: WEEKS * 7 }).map((_, i) => (
                     <div
                         key={i}
-                        style={{ ...cellStyle, background: "#F5F0E8" }}
+                        style={{ ...cellStyle, background: "#414559" }}
                     />
                 ))}
             </div>
@@ -180,7 +183,7 @@ function Heatmap() {
                     title={`${c.date}: level ${c.level}`}
                     style={{
                         ...cellStyle,
-                        background: levelColors[c.level] ?? "#F5F0E8",
+                        background: levelColors[c.level] ?? "#414559",
                     }}
                 />
             ))}
@@ -239,18 +242,7 @@ export default function GitHubActivity() {
                     fontFamily: FONT,
                 }}
             >
-                <span
-                    style={{
-                        color: "#1a1a2e",
-                        fontSize: "0.72rem",
-                        fontWeight: 700,
-                        background: "#FEE2E2",
-                        border: "2px solid #1a1a2e",
-                        borderRadius: 4,
-                        padding: "0.3rem 0.6rem",
-                        boxShadow: "2px 2px 0px #1a1a2e",
-                    }}
-                >
+                <span style={{ color: "#ea999c", fontSize: "0.72rem" }}>
                     {"!"} failed to load github data
                 </span>
             </div>
@@ -284,16 +276,16 @@ export default function GitHubActivity() {
                     }}
                 >
                     <div>
-                        <div style={{ color: "#1a1a2e", fontSize: "0.82rem", fontWeight: 800 }}>
+                        <div style={{ color: "#c6d0f5", fontSize: "0.82rem", fontWeight: 600 }}>
                             {"@"}{USERNAME}
                         </div>
-                        <div style={{ color: "#6B7280", fontSize: "0.65rem", fontWeight: 600 }}>
+                        <div style={{ color: "#737994", fontSize: "0.65rem" }}>
                             github activity
                         </div>
                     </div>
                     <div style={{ display: "flex", gap: "0.5rem" }}>
-                        <Pill icon="repo" value={`${stats.public_repos}`} color="#3B82F6" bg="#DBEAFE" />
-                        <Pill icon="flwr" value={`${stats.followers}`} color="#22C55E" bg="#DCFCE7" />
+                        <Pill icon="repo" value={`${stats.public_repos}`} color="#8caaee" />
+                        <Pill icon="flwr" value={`${stats.followers}`} color="#a6d189" />
                     </div>
                 </div>
             </div>
@@ -333,24 +325,21 @@ function Pill({
     icon,
     value,
     color,
-    bg,
 }: {
     icon: string;
     value: string;
     color: string;
-    bg: string;
 }) {
     return (
         <span
             style={{
-                background: bg,
-                border: "2px solid #1a1a2e",
+                background: "#414559",
+                border: "1px solid #51576d",
                 borderRadius: 3,
                 padding: "2px 8px",
                 color,
                 fontSize: "0.62rem",
                 whiteSpace: "nowrap",
-                fontWeight: 700,
             }}
         >
             {icon} {value}
@@ -362,12 +351,11 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
     return (
         <div
             style={{
-                color: "#1a1a2e",
+                color: "#737994",
                 fontSize: "0.62rem",
                 textTransform: "uppercase",
                 letterSpacing: "0.08em",
                 marginBottom: "0.4rem",
-                fontWeight: 800,
             }}
         >
             {children}
@@ -377,7 +365,7 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
 
 function RepoRow({ repo }: { repo: Repo }) {
     const [hovered, setHovered] = useState(false);
-    const langColor = langColors[repo.language ?? ""] ?? "#6B7280";
+    const langColor = langColors[repo.language ?? ""] ?? "#626880";
 
     return (
         <div
@@ -387,9 +375,8 @@ function RepoRow({ repo }: { repo: Repo }) {
                 alignItems: "center",
                 padding: "0.35rem 0.5rem",
                 borderRadius: 3,
-                background: hovered ? "#F5F0E8" : "transparent",
-                borderBottom: "1px solid #1a1a2e",
-                transition: "background 0.1s",
+                background: hovered ? "#414559" : "transparent",
+                transition: "background 0.15s",
                 cursor: "default",
             }}
             onMouseEnter={() => setHovered(true)}
@@ -398,9 +385,9 @@ function RepoRow({ repo }: { repo: Repo }) {
             <div style={{ display: "flex", flexDirection: "column", gap: 2, minWidth: 0 }}>
                 <span
                     style={{
-                        color: "#1a1a2e",
+                        color: "#c6d0f5",
                         fontSize: "0.72rem",
-                        fontWeight: 700,
+                        fontWeight: 500,
                         whiteSpace: "nowrap",
                         overflow: "hidden",
                         textOverflow: "ellipsis",
@@ -408,7 +395,7 @@ function RepoRow({ repo }: { repo: Repo }) {
                 >
                     {repo.name}
                 </span>
-                <span style={{ color: "#6B7280", fontSize: "0.62rem", fontWeight: 500 }}>
+                <span style={{ color: "#737994", fontSize: "0.62rem" }}>
                     {truncate(repo.description, 40)}
                 </span>
             </div>
@@ -427,18 +414,17 @@ function RepoRow({ repo }: { repo: Repo }) {
                             style={{
                                 width: 8,
                                 height: 8,
-                                borderRadius: 2,
+                                borderRadius: "50%",
                                 background: langColor,
-                                border: "1px solid #1a1a2e",
                                 flexShrink: 0,
                             }}
                         />
-                        <span style={{ color: "#374151", fontSize: "0.62rem", fontWeight: 600 }}>
+                        <span style={{ color: "#737994", fontSize: "0.62rem" }}>
                             {repo.language}
                         </span>
                     </>
                 )}
-                <span style={{ color: "#6B7280", fontSize: "0.6rem", fontWeight: 600 }}>
+                <span style={{ color: "#737994", fontSize: "0.6rem" }}>
                     {timeAgo(repo.pushed_at)}
                 </span>
             </div>
@@ -459,31 +445,29 @@ function EventRow({ event }: { event: GitHubEvent }) {
                 gap: "0.5rem",
                 alignItems: "center",
                 padding: "0.25rem 0",
-                borderBottom: "1px solid rgba(26,26,46,0.15)",
+                borderBottom: "1px solid rgba(255,255,255,0.04)",
             }}
         >
-            <span style={{ color: cfg.color, fontSize: "0.68rem", flexShrink: 0, fontWeight: 700 }}>
+            <span style={{ color: cfg.color, fontSize: "0.68rem", flexShrink: 0 }}>
                 {cfg.icon}
             </span>
             <span
                 style={{
-                    color: "#374151",
+                    color: "#a5adce",
                     fontSize: "0.68rem",
                     flex: 1,
                     whiteSpace: "nowrap",
                     overflow: "hidden",
                     textOverflow: "ellipsis",
-                    fontWeight: 600,
                 }}
             >
                 {cfg.verb} {shortRepo}
             </span>
             <span
                 style={{
-                    color: "#6B7280",
+                    color: "#737994",
                     fontSize: "0.6rem",
                     flexShrink: 0,
-                    fontWeight: 600,
                 }}
             >
                 {timeAgo(event.created_at)}

@@ -39,16 +39,16 @@ export default function Home() {
         width: "100vw",
         height: "100vh",
         overflow: "hidden",
-        background: "#FEF9EF",
+        background: "#232634",
       }}
     >
-      {/* Desktop always rendered underneath */}
+      {/* Desktop always rendered underneath, blurred when locked */}
       <div
         ref={desktopRef}
         style={{
           width: "100%",
           height: "100%",
-          filter: isLocked ? "blur(8px) brightness(0.95)" : "none",
+          filter: isLocked ? "blur(12px) brightness(0.6)" : "none",
           transition: "filter 0.5s ease",
         }}
       >
@@ -63,11 +63,11 @@ export default function Home() {
             <div
               style={{
                 position: "absolute",
-                top: "2.6rem",
+                top: "2rem",
                 left: 0,
                 right: 0,
                 bottom: 0,
-                height: "calc(100% - 2.6rem)",
+                height: "calc(100% - 2rem)",
               }}
             >
               <WorkspaceManager

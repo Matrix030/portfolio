@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
+// Place your resume PDF at /public/resume.pdf for the download to work
+
 const FONT = '"CaskaydiaCove Nerd Font Mono", "JetBrains Mono", monospace';
 
 function IconGitHub() {
@@ -43,29 +45,27 @@ const items = [
   {
     label: "Resume",
     icon: <IconDownload />,
-    color: "#22C55E",
-    bg: "#DCFCE7",
+    color: "#a6d189",
     action: "download" as const,
     href: "/Portfolio_Rishikesh_Gharat_Resume.pdf",
   },
   {
     label: "LinkedIn",
     icon: <IconLinkedIn />,
-    color: "#3B82F6",
-    bg: "#DBEAFE",
+    color: "#8caaee",
     action: "link" as const,
     href: "https://linkedin.com/in/rishikesh-gharat",
   },
   {
     label: "GitHub",
     icon: <IconGitHub />,
-    color: "#A855F7",
-    bg: "#F3E8FF",
+    color: "#ca9ee6",
     action: "link" as const,
     href: "https://github.com/Matrix030",
   },
 ];
 
+// Reversed so GitHub is closest to the trigger button
 const reversedItems = [...items].reverse();
 
 export default function ContactFAB() {
@@ -128,20 +128,18 @@ export default function ContactFAB() {
                     transition={{ duration: 0.1 }}
                     style={{
                       position: "absolute",
-                      right: "3.2rem",
+                      right: "3rem",
                       top: "50%",
                       transform: "translateY(-50%)",
-                      background: "#FFFFFF",
-                      border: "2px solid #1a1a2e",
+                      background: "#292c3c",
+                      border: "1px solid #51576d",
                       borderRadius: 4,
                       padding: "3px 8px",
                       fontSize: "0.65rem",
-                      color: "#1a1a2e",
+                      color: "#c6d0f5",
                       whiteSpace: "nowrap",
                       fontFamily: FONT,
-                      fontWeight: 700,
                       pointerEvents: "none",
-                      boxShadow: "2px 2px 0px #1a1a2e",
                     }}
                   >
                     {item.label}
@@ -157,18 +155,18 @@ export default function ContactFAB() {
                 style={{
                   width: "2.5rem",
                   height: "2.5rem",
-                  borderRadius: 8,
-                  background: hoveredLabel === item.label ? item.bg : "#FFFFFF",
-                  border: "3px solid #1a1a2e",
+                  borderRadius: "50%",
+                  background: hoveredLabel === item.label ? "#51576d" : "#414559",
+                  border: `1px solid ${hoveredLabel === item.label ? item.color : item.color + "66"}`,
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
                   cursor: "pointer",
                   color: item.color,
-                  transition: "all 0.1s",
+                  transition: "all 0.2s cubic-bezier(0.23,1,0.32,1)",
                   boxShadow: hoveredLabel === item.label
-                    ? "3px 3px 0px #1a1a2e"
-                    : "2px 2px 0px #1a1a2e",
+                    ? `0 4px 16px rgba(35,38,52,0.6), 0 0 12px ${item.color}33`
+                    : "0 4px 16px rgba(35,38,52,0.6)",
                   outline: "none",
                 }}
               >
@@ -185,16 +183,16 @@ export default function ContactFAB() {
         style={{
           width: "2.5rem",
           height: "2.5rem",
-          borderRadius: 8,
-          background: mainHovered ? "#FBBF24" : "#FFFFFF",
-          border: "3px solid #1a1a2e",
+          borderRadius: "50%",
+          background: "#414559",
+          border: `1px solid ${mainHovered ? "#8caaee" : "#51576d"}`,
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
           cursor: "pointer",
-          color: "#1a1a2e",
-          transition: "all 0.1s",
-          boxShadow: mainHovered ? "3px 3px 0px #1a1a2e" : "2px 2px 0px #1a1a2e",
+          color: mainHovered ? "#8caaee" : "#c6d0f5",
+          transition: "all 0.2s cubic-bezier(0.23,1,0.32,1)",
+          boxShadow: "0 4px 16px rgba(35,38,52,0.6)",
           outline: "none",
         }}
       >
