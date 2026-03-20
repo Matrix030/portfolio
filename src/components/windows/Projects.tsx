@@ -68,6 +68,12 @@ const projects = [
         status: "complete",
     },
 ];
+
+const statusColors: Record<string, { bg: string; color: string }> = {
+    active: { bg: "#DCFCE7", color: "#16A34A" },
+    complete: { bg: "#DBEAFE", color: "#2563EB" },
+};
+
 export default function Projects() {
     const [hovered, setHovered] = useState<number | null>(null);
 
@@ -85,98 +91,104 @@ export default function Projects() {
             <style>{`
         .projects-scroll::-webkit-scrollbar { display: none; }
       `}</style>
-            {projects.map((p, i) => (
-                <div
-                    key={p.name}
-                    className="projects-scroll"
-                    style={{
-                        background:
-                            hovered === i
-                                ? "#414559"
-                                : "rgba(65,69,89,0.6)",
-                        border: `1px solid ${hovered === i ? "#626880" : "#51576d"}`,
-                        borderRadius: 5,
-                        padding: "10px 12px",
-                        cursor: "pointer",
-                        transition: "all 0.2s cubic-bezier(0.23,1,0.32,1)",
-                        flexShrink: 0,
-                    }}
-                    onMouseEnter={() => setHovered(i)}
-                    onMouseLeave={() => setHovered(null)}
-                    onClick={() => {
-                        if (p.url !== "#") window.open(p.url, "_blank");
-                    }}
-                >
-                    {/* Row 1: name + status */}
+            {projects.map((p, i) => {
+                const sc = statusColors[p.status] ?? statusColors.complete;
+                return (
                     <div
+                        key={p.name}
+                        className="projects-scroll"
                         style={{
-                            display: "flex",
-                            justifyContent: "space-between",
-                            alignItems: "center",
+                            background: "#FFFFFF",
+                            border: "2px solid #1a1a2e",
+                            borderRadius: 6,
+                            padding: "10px 12px",
+                            cursor: "pointer",
+                            transition: "all 0.1s",
+                            flexShrink: 0,
+                            boxShadow: hovered === i
+                                ? "4px 4px 0px #1a1a2e"
+                                : "2px 2px 0px #1a1a2e",
+                            transform: hovered === i
+                                ? "translate(-2px, -2px)"
+                                : "translate(0, 0)",
+                        }}
+                        onMouseEnter={() => setHovered(i)}
+                        onMouseLeave={() => setHovered(null)}
+                        onClick={() => {
+                            if (p.url !== "#") window.open(p.url, "_blank");
                         }}
                     >
-                        <span
-                            style={{ color: "#c6d0f5", fontSize: "0.78rem", fontWeight: 600 }}
-                        >
-                            {p.name}
-                        </span>
-                        <span
+                        {/* Row 1: name + status */}
+                        <div
                             style={{
-                                background:
-                                    p.status === "active"
-                                        ? "rgba(166,209,137,0.15)"
-                                        : "rgba(140,170,238,0.15)",
-                                color: p.status === "active" ? "#a6d189" : "#8caaee",
-                                border: `1px solid ${p.status === "active" ? "rgba(166,209,137,0.3)" : "rgba(140,170,238,0.3)"}`,
-                                borderRadius: 3,
-                                padding: "2px 6px",
-                                fontSize: "0.6rem",
-                                lineHeight: 1.3,
+                                display: "flex",
+                                justifyContent: "space-between",
+                                alignItems: "center",
                             }}
                         >
-                            {p.status}
-                        </span>
-                    </div>
-
-                    {/* Row 2: description */}
-                    <div
-                        style={{
-                            color: "#a5adce",
-                            fontSize: "0.68rem",
-                            lineHeight: 1.5,
-                            marginTop: 4,
-                        }}
-                    >
-                        {p.description}
-                    </div>
-
-                    {/* Row 3: tags */}
-                    <div
-                        style={{
-                            display: "flex",
-                            flexWrap: "wrap",
-                            gap: 4,
-                            marginTop: 4,
-                        }}
-                    >
-                        {p.tags.map((tag) => (
                             <span
-                                key={tag}
+                                style={{ color: "#1a1a2e", fontSize: "0.78rem", fontWeight: 800 }}
+                            >
+                                {p.name}
+                            </span>
+                            <span
                                 style={{
-                                    background: "#414559",
-                                    border: "1px solid #51576d",
+                                    background: sc.bg,
+                                    color: sc.color,
+                                    border: "2px solid #1a1a2e",
                                     borderRadius: 3,
-                                    padding: "1px 6px",
-                                    fontSize: "0.62rem",
-                                    color: "#b5bfe2",
+                                    padding: "2px 6px",
+                                    fontSize: "0.6rem",
+                                    lineHeight: 1.3,
+                                    fontWeight: 700,
                                 }}
                             >
-                                {tag}
+                                {p.status}
                             </span>
-                        ))}
+                        </div>
+
+                        {/* Row 2: description */}
+                        <div
+                            style={{
+                                color: "#374151",
+                                fontSize: "0.68rem",
+                                lineHeight: 1.5,
+                                marginTop: 4,
+                                fontWeight: 500,
+                            }}
+                        >
+                            {p.description}
+                        </div>
+
+                        {/* Row 3: tags */}
+                        <div
+                            style={{
+                                display: "flex",
+                                flexWrap: "wrap",
+                                gap: 4,
+                                marginTop: 4,
+                            }}
+                        >
+                            {p.tags.map((tag) => (
+                                <span
+                                    key={tag}
+                                    style={{
+                                        background: "#F5F0E8",
+                                        border: "2px solid #1a1a2e",
+                                        borderRadius: 3,
+                                        padding: "1px 6px",
+                                        fontSize: "0.62rem",
+                                        color: "#1a1a2e",
+                                        fontWeight: 600,
+                                    }}
+                                >
+                                    {tag}
+                                </span>
+                            ))}
+                        </div>
                     </div>
-                </div>
-            ))}
+                );
+            })}
         </div>
     );
 }

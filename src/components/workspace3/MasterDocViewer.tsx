@@ -4,21 +4,24 @@ import masterDoc from "@/../public/master.json";
 
 const FONT = '"CaskaydiaCove Nerd Font Mono", "JetBrains Mono", monospace';
 
-function hexToRgba(hex: string, alpha: number): string {
-  const r = parseInt(hex.slice(1, 3), 16);
-  const g = parseInt(hex.slice(3, 5), 16);
-  const b = parseInt(hex.slice(5, 7), 16);
-  return `rgba(${r},${g},${b},${alpha})`;
-}
-
 const SKILL_COLORS: Record<string, string> = {
-  languages: "#8caaee",
-  frameworks: "#ca9ee6",
-  databases: "#e5c890",
-  infra_devops: "#99d1db",
-  cloud_tools: "#a6d189",
-  ai_ml: "#ea999c",
-  concepts: "#ef9f76",
+  languages: "#3B82F6",
+  frameworks: "#A855F7",
+  databases: "#FBBF24",
+  infra_devops: "#06B6D4",
+  cloud_tools: "#22C55E",
+  ai_ml: "#F43F5E",
+  concepts: "#F97316",
+};
+
+const SKILL_BG: Record<string, string> = {
+  languages: "#DBEAFE",
+  frameworks: "#F3E8FF",
+  databases: "#FEF9C3",
+  infra_devops: "#CFFAFE",
+  cloud_tools: "#DCFCE7",
+  ai_ml: "#FFE4E6",
+  concepts: "#FFEDD5",
 };
 
 const SKILL_LABELS: Record<string, string> = {
@@ -35,35 +38,38 @@ const sectionLabel: React.CSSProperties = {
   fontSize: "0.62rem",
   textTransform: "uppercase",
   letterSpacing: "0.08em",
-  color: "#737994",
+  color: "#1a1a2e",
   marginBottom: "0.4rem",
   fontFamily: FONT,
+  fontWeight: 800,
 };
 
 const divider: React.CSSProperties = {
-  height: 1,
-  background: "rgba(255,255,255,0.06)",
+  height: 3,
+  background: "#1a1a2e",
   margin: "0.25rem 0",
 };
 
 function Tag({
   children,
-  color,
+  bg,
 }: {
   children: React.ReactNode;
-  color: string;
+  color?: string;
+  bg: string;
 }) {
   return (
     <span
       style={{
-        background: hexToRgba(color, 0.1),
-        border: `1px solid ${hexToRgba(color, 0.25)}`,
+        background: bg,
+        border: "2px solid #1a1a2e",
         borderRadius: 3,
         padding: "1px 7px",
         fontSize: "0.61rem",
-        color: hexToRgba(color, 0.9),
+        color: "#1a1a2e",
         fontFamily: FONT,
         flexShrink: 0,
+        fontWeight: 700,
       }}
     >
       {children}
@@ -75,14 +81,15 @@ function MetricPill({ children }: { children: React.ReactNode }) {
   return (
     <span
       style={{
-        background: "rgba(166,209,137,0.1)",
-        border: "1px solid rgba(166,209,137,0.25)",
+        background: "#DCFCE7",
+        border: "2px solid #1a1a2e",
         borderRadius: 3,
         padding: "1px 7px",
         fontSize: "0.6rem",
-        color: "#a6d189",
+        color: "#1a1a2e",
         fontFamily: FONT,
         flexShrink: 0,
+        fontWeight: 700,
       }}
     >
       {children}
@@ -134,11 +141,11 @@ export default function MasterDocViewer() {
       {/* Header */}
       <div style={{ display: "flex", flexDirection: "column", gap: "0.2rem" }}>
         <span
-          style={{ fontSize: "1.1rem", fontWeight: 600, color: "#c6d0f5" }}
+          style={{ fontSize: "1.1rem", fontWeight: 800, color: "#1a1a2e" }}
         >
           Rishikesh Gharat
         </span>
-        <span style={{ fontSize: "0.75rem", color: "#8caaee" }}>
+        <span style={{ fontSize: "0.75rem", color: "#3B82F6", fontWeight: 700 }}>
           Software Engineer · NYU CS · May 2026
         </span>
       </div>
@@ -146,21 +153,22 @@ export default function MasterDocViewer() {
       {/* Recruiter tip */}
       <div
         style={{
-          background: "rgba(166,209,137,0.06)",
-          border: "1px solid rgba(166,209,137,0.15)",
-          borderRadius: 5,
+          background: "#DCFCE7",
+          border: "2px solid #1a1a2e",
+          borderRadius: 6,
           padding: "0.45rem 0.65rem",
           display: "flex",
           flexDirection: "column",
           gap: "0.15rem",
+          boxShadow: "2px 2px 0px #1a1a2e",
         }}
       >
         <span
-          style={{ color: "#a6d189", fontSize: "0.65rem", fontWeight: 600 }}
+          style={{ color: "#1a1a2e", fontSize: "0.65rem", fontWeight: 800 }}
         >
           For recruiters & AI tools
         </span>
-        <span style={{ color: "#737994", fontSize: "0.63rem", lineHeight: 1.5 }}>
+        <span style={{ color: "#374151", fontSize: "0.63rem", lineHeight: 1.5, fontWeight: 500 }}>
           The panel on the right exposes a structured JSON endpoint of my full
           background. Curl it or download it and paste into your AI of choice —
           ask anything about my experience, skills, or projects.
@@ -176,7 +184,8 @@ export default function MasterDocViewer() {
           style={{ display: "flex", flexDirection: "column", gap: "0.55rem" }}
         >
           {Object.entries(SKILL_LABELS).map(([key, label]) => {
-            const color = SKILL_COLORS[key] ?? "#c6d0f5";
+            const color = SKILL_COLORS[key] ?? "#1a1a2e";
+            const bg = SKILL_BG[key] ?? "#F5F0E8";
             const items = skills[key] ?? [];
             return (
               <div key={key}>
@@ -190,18 +199,19 @@ export default function MasterDocViewer() {
                 >
                   <div
                     style={{
-                      width: 5,
-                      height: 5,
+                      width: 7,
+                      height: 7,
                       borderRadius: 2,
                       background: color,
+                      border: "2px solid #1a1a2e",
                       flexShrink: 0,
                     }}
                   />
                   <span
                     style={{
-                      color,
+                      color: "#1a1a2e",
                       fontSize: "0.6rem",
-                      fontWeight: 600,
+                      fontWeight: 800,
                       letterSpacing: "0.05em",
                       textTransform: "uppercase",
                     }}
@@ -211,7 +221,7 @@ export default function MasterDocViewer() {
                 </div>
                 <div style={{ display: "flex", flexWrap: "wrap", gap: 3 }}>
                   {items.map((item) => (
-                    <Tag key={item} color={color}>
+                    <Tag key={item} color={color} bg={bg}>
                       {item}
                     </Tag>
                   ))}
@@ -229,13 +239,13 @@ export default function MasterDocViewer() {
         <div style={sectionLabel}>Experience</div>
         <div
           style={{
-            background: "rgba(65,69,89,0.4)",
-            border: "1px solid #51576d",
+            background: "#FFFFFF",
+            border: "2px solid #1a1a2e",
             borderRadius: 6,
             padding: "0.6rem 0.75rem",
+            boxShadow: "2px 2px 0px #1a1a2e",
           }}
         >
-          {/* Org header */}
           <div
             style={{
               display: "flex",
@@ -246,23 +256,22 @@ export default function MasterDocViewer() {
             <div>
               <div
                 style={{
-                  color: "#c6d0f5",
+                  color: "#1a1a2e",
                   fontSize: "0.78rem",
-                  fontWeight: 600,
+                  fontWeight: 800,
                 }}
               >
                 {internship.org}
               </div>
-              <div style={{ color: "#737994", fontSize: "0.65rem" }}>
+              <div style={{ color: "#6B7280", fontSize: "0.65rem", fontWeight: 600 }}>
                 {internship.parent_org}
               </div>
             </div>
-            <span style={{ color: "#a5adce", fontSize: "0.65rem", flexShrink: 0, marginLeft: 8 }}>
+            <span style={{ color: "#374151", fontSize: "0.65rem", flexShrink: 0, marginLeft: 8, fontWeight: 600 }}>
               {internship.total_duration}
             </span>
           </div>
 
-          {/* Roles */}
           <div
             style={{
               display: "flex",
@@ -279,30 +288,34 @@ export default function MasterDocViewer() {
                   alignItems: "center",
                   gap: 6,
                   fontSize: "0.67rem",
-                  color: "#a5adce",
+                  color: "#374151",
+                  fontWeight: 600,
                 }}
               >
-                <span style={{ color: "#8caaee" }}>▸</span>
+                <span style={{ color: "#3B82F6", fontWeight: 700 }}>▸</span>
                 <span>{role.title}</span>
-                <span style={{ color: "#51576d" }}>·</span>
-                <span style={{ color: "#737994" }}>{role.dates}</span>
+                <span style={{ color: "#1a1a2e" }}>·</span>
+                <span style={{ color: "#6B7280" }}>{role.dates}</span>
               </div>
             ))}
           </div>
 
-          {/* Merit note */}
           <div
             style={{
-              color: "#a6d189",
+              color: "#22C55E",
               fontSize: "0.68rem",
-              fontStyle: "italic",
+              fontWeight: 700,
               marginTop: "0.35rem",
+              background: "#DCFCE7",
+              display: "inline-block",
+              padding: "2px 8px",
+              border: "2px solid #1a1a2e",
+              borderRadius: 3,
             }}
           >
             Merit-based extension after performance review
           </div>
 
-          {/* Project cards */}
           <div
             style={{
               display: "flex",
@@ -314,17 +327,17 @@ export default function MasterDocViewer() {
             {/* FADS */}
             <div
               style={{
-                background: "rgba(65,69,89,0.5)",
-                border: "1px solid #51576d",
+                background: "#F5F0E8",
+                border: "2px solid #1a1a2e",
                 borderRadius: 5,
                 padding: "0.5rem 0.75rem",
               }}
             >
               <div
                 style={{
-                  color: "#c6d0f5",
+                  color: "#1a1a2e",
                   fontSize: "0.75rem",
-                  fontWeight: 600,
+                  fontWeight: 800,
                   marginBottom: "0.3rem",
                 }}
               >
@@ -332,7 +345,7 @@ export default function MasterDocViewer() {
               </div>
               <div style={{ display: "flex", flexWrap: "wrap", gap: 3, marginBottom: "0.3rem" }}>
                 {internship.projects.fads.stack.map((t) => (
-                  <Tag key={t} color="#8caaee">
+                  <Tag key={t} color="#3B82F6" bg="#DBEAFE">
                     {t}
                   </Tag>
                 ))}
@@ -346,17 +359,17 @@ export default function MasterDocViewer() {
             {/* Mail Tracking */}
             <div
               style={{
-                background: "rgba(65,69,89,0.5)",
-                border: "1px solid #51576d",
+                background: "#F5F0E8",
+                border: "2px solid #1a1a2e",
                 borderRadius: 5,
                 padding: "0.5rem 0.75rem",
               }}
             >
               <div
                 style={{
-                  color: "#c6d0f5",
+                  color: "#1a1a2e",
                   fontSize: "0.75rem",
-                  fontWeight: 600,
+                  fontWeight: 800,
                   marginBottom: "0.3rem",
                 }}
               >
@@ -364,7 +377,7 @@ export default function MasterDocViewer() {
               </div>
               <div style={{ display: "flex", flexWrap: "wrap", gap: 3, marginBottom: "0.3rem" }}>
                 {internship.projects.mail_tracking.stack.map((t) => (
-                  <Tag key={t} color="#a6d189">
+                  <Tag key={t} color="#22C55E" bg="#DCFCE7">
                     {t}
                   </Tag>
                 ))}
@@ -394,13 +407,13 @@ export default function MasterDocViewer() {
               <div
                 key={key}
                 style={{
-                  background: "rgba(65,69,89,0.4)",
-                  border: "1px solid #51576d",
+                  background: "#FFFFFF",
+                  border: "2px solid #1a1a2e",
                   borderRadius: 5,
                   padding: "0.5rem 0.75rem",
+                  boxShadow: "2px 2px 0px #1a1a2e",
                 }}
               >
-                {/* Header */}
                 <div
                   style={{
                     display: "flex",
@@ -412,9 +425,9 @@ export default function MasterDocViewer() {
                 >
                   <span
                     style={{
-                      color: "#c6d0f5",
+                      color: "#1a1a2e",
                       fontSize: "0.8rem",
-                      fontWeight: 600,
+                      fontWeight: 800,
                     }}
                   >
                     {proj.name}
@@ -424,13 +437,14 @@ export default function MasterDocViewer() {
                       <span
                         key={d}
                         style={{
-                          background: "rgba(202,158,230,0.1)",
-                          border: "1px solid rgba(202,158,230,0.25)",
+                          background: "#F3E8FF",
+                          border: "2px solid #1a1a2e",
                           borderRadius: 3,
                           padding: "1px 6px",
                           fontSize: "0.58rem",
-                          color: "#ca9ee6",
+                          color: "#1a1a2e",
                           fontFamily: FONT,
+                          fontWeight: 700,
                         }}
                       >
                         {d}
@@ -439,7 +453,6 @@ export default function MasterDocViewer() {
                   </div>
                 </div>
 
-                {/* Stack */}
                 {stack.length > 0 && (
                   <div
                     style={{
@@ -453,13 +466,14 @@ export default function MasterDocViewer() {
                       <span
                         key={t}
                         style={{
-                          background: "#414559",
-                          border: "1px solid #51576d",
+                          background: "#F5F0E8",
+                          border: "2px solid #1a1a2e",
                           borderRadius: 3,
                           padding: "1px 6px",
                           fontSize: "0.6rem",
-                          color: "#b5bfe2",
+                          color: "#1a1a2e",
                           fontFamily: FONT,
+                          fontWeight: 700,
                         }}
                       >
                         {t}
@@ -468,12 +482,11 @@ export default function MasterDocViewer() {
                   </div>
                 )}
 
-                {/* Metrics */}
                 {metrics.length > 0 && (
                   <div
                     style={{
-                      background: "rgba(166,209,137,0.06)",
-                      borderLeft: "2px solid #a6d189",
+                      background: "#DCFCE7",
+                      borderLeft: "4px solid #22C55E",
                       borderRadius: "0 4px 4px 0",
                       padding: "0.35rem 0.6rem",
                       marginBottom: "0.3rem",
@@ -484,8 +497,9 @@ export default function MasterDocViewer() {
                         key={m}
                         style={{
                           fontSize: "0.68rem",
-                          color: "#a6d189",
+                          color: "#1a1a2e",
                           lineHeight: 1.6,
+                          fontWeight: 700,
                         }}
                       >
                         {m}
@@ -494,12 +508,12 @@ export default function MasterDocViewer() {
                   </div>
                 )}
 
-                {/* Summary */}
                 <div
                   style={{
-                    color: "#a5adce",
+                    color: "#374151",
                     fontSize: "0.7rem",
                     lineHeight: 1.5,
+                    fontWeight: 500,
                   }}
                 >
                   {proj.summary}
@@ -519,14 +533,22 @@ export default function MasterDocViewer() {
           style={{ display: "flex", flexDirection: "column", gap: "0.4rem" }}
         >
           {achievements.map((a, i) => (
-            <div key={i} style={{ fontSize: "0.75rem", color: "#e5c890" }}>
-              🏆 {a.text}
+            <div key={i} style={{
+              fontSize: "0.75rem",
+              color: "#1a1a2e",
+              fontWeight: 700,
+              background: "#FEF9C3",
+              border: "2px solid #1a1a2e",
+              borderRadius: 4,
+              padding: "0.25rem 0.5rem",
+              boxShadow: "2px 2px 0px #1a1a2e",
+            }}>
+              {a.text}
             </div>
           ))}
         </div>
       </div>
 
-      {/* bottom padding */}
       <div style={{ height: "0.5rem", flexShrink: 0 }} />
     </div>
   );

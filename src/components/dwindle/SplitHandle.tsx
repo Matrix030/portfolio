@@ -2,8 +2,8 @@
 import { useState } from 'react'
 import type { SplitInfo, Bounds } from '@/lib/dwindle'
 
-const GAP = 4
-const HIT_SIZE = 12 // wider hit area than the visual 4px gap
+const GAP = 6
+const HIT_SIZE = 14
 
 interface SplitHandleProps {
   split: SplitInfo
@@ -16,10 +16,9 @@ export default function SplitHandle({ split, onRatioChange }: SplitHandleProps) 
   const { node, bounds } = split
   const isHorizontal = node.direction === 'horizontal'
 
-  // Position the handle centered over the gap between the two children
   const firstWidth = Math.floor((bounds.width - GAP) * node.ratio)
   const firstHeight = Math.floor((bounds.height - GAP) * node.ratio)
-  const offset = GAP / 2 - HIT_SIZE / 2 // centers hit area on the gap
+  const offset = GAP / 2 - HIT_SIZE / 2
 
   const style: React.CSSProperties = isHorizontal
     ? {
@@ -30,7 +29,7 @@ export default function SplitHandle({ split, onRatioChange }: SplitHandleProps) 
         height: bounds.height,
         cursor: 'col-resize',
         zIndex: 50,
-        background: hovered ? 'rgba(139,165,238,0.3)' : 'transparent',
+        background: hovered ? 'rgba(59,130,246,0.3)' : 'transparent',
         transition: 'background 0.15s',
       }
     : {
@@ -41,7 +40,7 @@ export default function SplitHandle({ split, onRatioChange }: SplitHandleProps) 
         height: HIT_SIZE,
         cursor: 'row-resize',
         zIndex: 50,
-        background: hovered ? 'rgba(139,165,238,0.3)' : 'transparent',
+        background: hovered ? 'rgba(59,130,246,0.3)' : 'transparent',
         transition: 'background 0.15s',
       }
 

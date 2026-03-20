@@ -90,7 +90,6 @@ export default function Window({
   const pctLabel = `${Math.round(progress)}%`;
 
   return (
-    // Outer wrapper: handles grid placement + events, never blurred
     <div
       className={className}
       style={{
@@ -102,72 +101,57 @@ export default function Window({
       onMouseLeave={handleMouseLeave}
       onClick={handleClick}
     >
-      {/* Blurred content — blur + opacity applied here so overlay escapes it */}
+      {/* Main window content */}
       <div
         style={{
           position: "absolute",
           inset: 0,
-          borderRadius: 10,
-          padding: 1,
-          background: active
-            ? "linear-gradient(45deg, #8caaee, #ca9ee6)"
-            : "#51576d",
+          borderRadius: 8,
+          background: "#FFFFFF",
+          border: active ? "3px solid #3B82F6" : "3px solid #1a1a2e",
           boxShadow: active
-            ? "0 4px 32px rgba(35,38,52,0.8), 0 0 20px rgba(140,170,238,0.15)"
-            : "0 4px 32px rgba(35,38,52,0.8)",
-          transition:
-            "all 0.2s cubic-bezier(0.23,1,0.32,1), opacity 0.8s cubic-bezier(0.23,1,0.32,1), filter 0.8s cubic-bezier(0.23,1,0.32,1)",
+            ? "5px 5px 0px #3B82F6"
+            : "4px 4px 0px #1a1a2e",
+          transition: "all 0.15s ease",
           overflow: "hidden",
-          transform: "translate3d(0,0,0)",
-          backfaceVisibility: "hidden",
           opacity: dimmed ? 0.45 : 1,
-          filter: dimmed ? "blur(3px)" : "none",
+          filter: dimmed ? "blur(2px)" : "none",
+          display: "flex",
+          flexDirection: "column",
         }}
       >
+        {/* Terminal prompt title */}
         <div
           style={{
-            background: "rgba(30,33,47,0.95)",
-            borderRadius: 9,
-            width: "100%",
-            height: "100%",
-            display: "flex",
-            flexDirection: "column",
+            padding: "0.4rem 0.75rem 0",
+            fontFamily: FONT,
+            fontSize: "0.68rem",
+            whiteSpace: "nowrap",
             overflow: "hidden",
+            textOverflow: "ellipsis",
           }}
         >
-          {/* Terminal prompt title */}
-          <div
-            style={{
-              padding: "0.4rem 0.75rem 0",
-              fontFamily: FONT,
-              fontSize: "0.68rem",
-              whiteSpace: "nowrap",
-              overflow: "hidden",
-              textOverflow: "ellipsis",
-            }}
-          >
-            <span style={{ color: "#a6d189" }}>{"➜"}</span>
-            {"  "}
-            <span style={{ color: "#99d1db" }}>portfolio</span>
-            <span style={{ color: "#c6d0f5" }}>:</span>
-            <span style={{ color: "#ca9ee6" }}>({title.toUpperCase()})</span>
-          </div>
+          <span style={{ color: "#22C55E", fontWeight: 700 }}>{"➜"}</span>
+          {"  "}
+          <span style={{ color: "#06B6D4", fontWeight: 600 }}>portfolio</span>
+          <span style={{ color: "#1a1a2e" }}>:</span>
+          <span style={{ color: "#A855F7", fontWeight: 600 }}>({title.toUpperCase()})</span>
+        </div>
 
-          {/* Content */}
-          <div
-            style={{
-              flex: 1,
-              overflow: "hidden",
-              padding: "0.4rem 0.75rem 0.75rem",
-              minHeight: 0,
-            }}
-          >
-            {children}
-          </div>
+        {/* Content */}
+        <div
+          style={{
+            flex: 1,
+            overflow: "hidden",
+            padding: "0.4rem 0.75rem 0.75rem",
+            minHeight: 0,
+          }}
+        >
+          {children}
         </div>
       </div>
 
-      {/* Loading overlay — sibling of blurred div, so it's never blurred */}
+      {/* Loading overlay */}
       <AnimatePresence>
         {dimmed && isHovering && (
           <motion.div
@@ -183,37 +167,41 @@ export default function Window({
               alignItems: "center",
               justifyContent: "center",
               gap: "0.3rem",
-              background: "rgba(30,33,47,0.6)",
-              borderRadius: 10,
+              background: "rgba(254,249,239,0.7)",
+              borderRadius: 8,
+              border: "3px solid #1a1a2e",
               pointerEvents: "none",
               zIndex: 1,
             }}
           >
             <span
               style={{
-                color: "#a5adce",
+                color: "#374151",
                 fontFamily: FONT,
                 fontSize: "0.6rem",
                 letterSpacing: "0.12em",
+                fontWeight: 700,
               }}
             >
               loading...
             </span>
             <span
               style={{
-                color: "#8caaee",
+                color: "#3B82F6",
                 fontFamily: FONT,
                 fontSize: "0.62rem",
                 letterSpacing: "0.04em",
+                fontWeight: 700,
               }}
             >
               {bar}
             </span>
             <span
               style={{
-                color: "#626880",
+                color: "#6B7280",
                 fontFamily: FONT,
                 fontSize: "0.58rem",
+                fontWeight: 600,
               }}
             >
               {pctLabel}

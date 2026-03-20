@@ -20,12 +20,6 @@ const mobileWorkspaces = [
   { id: "github",     label: "GitHub",     component: <MobileGitHub /> },
 ];
 
-const trafficLights = [
-  { color: "#e78284" },
-  { color: "#e5c890" },
-  { color: "#a6d189" },
-];
-
 const variants = {
   enter: (dir: "left" | "right") => ({
     opacity: 0,
@@ -73,17 +67,18 @@ function MobileWaybar({
         left: 0,
         right: 0,
         height: "2.5rem",
-        background: "#292c3c",
+        background: "#FFFFFF",
+        borderBottom: "3px solid #1a1a2e",
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
         padding: "0 1rem",
         zIndex: 100,
-        boxShadow: "0 2px 8px rgba(35,38,52,0.6)",
+        boxShadow: "0 3px 0px #1a1a2e",
         fontFamily: FONT,
       }}
     >
-      <span style={{ color: "#8caaee", fontSize: "0.72rem", fontWeight: 600 }}>
+      <span style={{ color: "#3B82F6", fontSize: "0.72rem", fontWeight: 800 }}>
         rgmatr1x
       </span>
 
@@ -94,20 +89,20 @@ function MobileWaybar({
             key={ws.id}
             onClick={() => onDotClick(i)}
             style={{
-              width: i === activeIndex ? 6 : 5,
-              height: i === activeIndex ? 6 : 5,
-              borderRadius: "50%",
-              background: i === activeIndex ? "#99d1db" : "#51576d",
-              border: "none",
+              width: i === activeIndex ? 8 : 6,
+              height: i === activeIndex ? 8 : 6,
+              borderRadius: 2,
+              background: i === activeIndex ? "#FBBF24" : "#F5F0E8",
+              border: "2px solid #1a1a2e",
               padding: 0,
               cursor: "pointer",
-              transition: "all 0.2s ease",
+              transition: "all 0.1s",
             }}
           />
         ))}
       </div>
 
-      <span style={{ color: "#8caaee", fontSize: "0.72rem" }}>{time}</span>
+      <span style={{ color: "#1a1a2e", fontSize: "0.72rem", fontWeight: 700 }}>{time}</span>
     </div>
   );
 }
@@ -119,7 +114,6 @@ export default function MobileLayout() {
   const [showHint, setShowHint] = useState(true);
   const touchStartX = useRef(0);
 
-  // Hide swipe hint after 3s
   useEffect(() => {
     const t = setTimeout(() => setShowHint(false), 3000);
     return () => clearTimeout(t);
@@ -163,7 +157,7 @@ export default function MobileLayout() {
           right: 0,
           bottom: 0,
           overflow: "hidden",
-          background: "#232634",
+          background: "#FEF9EF",
         }}
         onTouchStart={handleTouchStart}
         onTouchEnd={handleTouchEnd}
@@ -186,10 +180,10 @@ export default function MobileLayout() {
             {/* Window wrapper */}
             <div
               style={{
-                background: "#303446",
-                borderRadius: 10,
-                border: "1px solid #51576d",
-                boxShadow: "0 4px 24px rgba(35,38,52,0.6)",
+                background: "#FFFFFF",
+                borderRadius: 8,
+                border: "3px solid #1a1a2e",
+                boxShadow: "4px 4px 0px #1a1a2e",
                 minHeight: "100%",
                 display: "flex",
                 flexDirection: "column",
@@ -201,9 +195,9 @@ export default function MobileLayout() {
                 style={{
                   height: "1.75rem",
                   minHeight: "1.75rem",
-                  background: "rgba(41,44,60,0.8)",
-                  borderBottom: "1px solid rgba(81,87,109,0.4)",
-                  borderRadius: "10px 10px 0 0",
+                  background: "#3B82F6",
+                  borderBottom: "3px solid #1a1a2e",
+                  borderRadius: "5px 5px 0 0",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "space-between",
@@ -212,15 +206,15 @@ export default function MobileLayout() {
                 }}
               >
                 <div style={{ display: "flex", alignItems: "center", gap: "0.3rem" }}>
-                  <span style={{ color: "#a6d189" }}>➜</span>
-                  <span style={{ color: "#99d1db", fontSize: "0.68rem" }}>portfolio</span>
-                  <span style={{ color: "#c6d0f5", fontSize: "0.68rem" }}>:</span>
-                  <span style={{ color: "#ca9ee6", fontSize: "0.68rem" }}>({ws.label.toUpperCase()})</span>
+                  <span style={{ color: "#FBBF24", fontWeight: 800 }}>➜</span>
+                  <span style={{ color: "#FFFFFF", fontSize: "0.68rem", fontWeight: 700 }}>portfolio</span>
+                  <span style={{ color: "rgba(255,255,255,0.7)", fontSize: "0.68rem" }}>:</span>
+                  <span style={{ color: "#FBBF24", fontSize: "0.68rem", fontWeight: 700 }}>({ws.label.toUpperCase()})</span>
                 </div>
                 <div style={{ display: "flex", gap: 5 }}>
-                  {trafficLights.map((l, i) => (
-                    <div key={i} style={{ width: "0.55rem", height: "0.55rem", borderRadius: "50%", background: l.color }} />
-                  ))}
+                  <div style={{ width: 10, height: 10, borderRadius: 2, background: "#EF4444", border: "2px solid #1a1a2e" }} />
+                  <div style={{ width: 10, height: 10, borderRadius: 2, background: "#FBBF24", border: "2px solid #1a1a2e" }} />
+                  <div style={{ width: 10, height: 10, borderRadius: 2, background: "#22C55E", border: "2px solid #1a1a2e" }} />
                 </div>
               </div>
 
@@ -246,12 +240,18 @@ export default function MobileLayout() {
               bottom: "1rem",
               left: "50%",
               transform: "translateX(-50%)",
-              color: "rgba(200,200,200,0.3)",
+              color: "#1a1a2e",
               fontSize: "0.65rem",
               fontFamily: FONT,
+              fontWeight: 700,
               pointerEvents: "none",
               whiteSpace: "nowrap",
               zIndex: 200,
+              background: "#FBBF24",
+              border: "2px solid #1a1a2e",
+              borderRadius: 4,
+              padding: "0.3rem 0.8rem",
+              boxShadow: "2px 2px 0px #1a1a2e",
             }}
           >
             swipe to explore →

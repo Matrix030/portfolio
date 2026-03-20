@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Desktop",
-  description: "Hyprland-themed portfolio",
+  description: "Neo-brutalist portfolio",
 };
 
 export default function RootLayout({

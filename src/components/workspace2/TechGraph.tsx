@@ -18,7 +18,6 @@ interface LinkDatum extends d3.SimulationLinkDatum<NodeDatum> {
 }
 
 // --- Cluster targets ---
-// 6 clusters arranged in a 3x2 grid
 const clusterPositions: Record<string, { x: number; y: number }> = {
     webdev: { x: 0.22, y: 0.28 },
     ml: { x: 0.5, y: 0.18 },
@@ -28,24 +27,21 @@ const clusterPositions: Record<string, { x: number; y: number }> = {
     research: { x: 0.78, y: 0.72 },
 };
 
-// --- Cluster colors (IBM colorblind-safe palette) ---
-// Safe for deuteranopia/protanopia — avoids red/green confusion
-// Clusters: blue, amber, magenta, vivid orange, purple, white
+// Neo-brutalism bold colors
 const clusterColors: Record<string, string> = {
-    webdev: "#648fff", // blue
-    ml: "#ffb000", // amber
-    aitools: "#dc267f", // magenta
-    distributed: "#fe6100", // vivid orange
-    infra: "#785ef0", // purple
-    research: "#c8c8c8", // light gray
+    webdev: "#3B82F6",
+    ml: "#FBBF24",
+    aitools: "#EC4899",
+    distributed: "#F97316",
+    infra: "#A855F7",
+    research: "#6B7280",
 };
 
-const PROJECT_COLOR = "#44cfcb"; // cyan — distinct from all cluster colors
+const PROJECT_COLOR = "#22C55E";
 
 // --- Data ---
 
 const rawNodes: NodeDatum[] = [
-    // ── Projects ──────────────────────────────────────────────────────
     { id: "CampusNest", type: "project", cluster: "webdev", color: PROJECT_COLOR },
     { id: "NYC Transit Hub", type: "project", cluster: "webdev", color: PROJECT_COLOR },
     { id: "SteamLensAI", type: "project", cluster: "distributed", color: PROJECT_COLOR },
@@ -55,7 +51,6 @@ const rawNodes: NodeDatum[] = [
     { id: "SimplifyJobsDaemon", type: "project", cluster: "aitools", color: PROJECT_COLOR },
     { id: "Personality Prediction", type: "project", cluster: "research", color: PROJECT_COLOR },
 
-    // ── Web Dev skills ─────────────────────────────────────────────────
     { id: "Next.js", type: "skill", cluster: "webdev", color: clusterColors.webdev },
     { id: "React", type: "skill", cluster: "webdev", color: clusterColors.webdev },
     { id: "TypeScript", type: "skill", cluster: "webdev", color: clusterColors.webdev },
@@ -64,7 +59,6 @@ const rawNodes: NodeDatum[] = [
     { id: "Node.js", type: "skill", cluster: "webdev", color: clusterColors.webdev },
     { id: "Mapbox GL", type: "skill", cluster: "webdev", color: clusterColors.webdev },
 
-    // ── ML skills ──────────────────────────────────────────────────────
     { id: "PyTorch", type: "skill", cluster: "ml", color: clusterColors.ml },
     { id: "Transformers", type: "skill", cluster: "ml", color: clusterColors.ml },
     { id: "Python", type: "skill", cluster: "ml", color: clusterColors.ml },
@@ -72,14 +66,12 @@ const rawNodes: NodeDatum[] = [
     { id: "scikit-learn", type: "skill", cluster: "ml", color: clusterColors.ml },
     { id: "LightGBM", type: "skill", cluster: "ml", color: clusterColors.ml },
 
-    // ── AI Tools skills ────────────────────────────────────────────────
     { id: "Ollama", type: "skill", cluster: "aitools", color: clusterColors.aitools },
     { id: "Gemini API", type: "skill", cluster: "aitools", color: clusterColors.aitools },
     { id: "Function Calling", type: "skill", cluster: "aitools", color: clusterColors.aitools },
     { id: "VSCode API", type: "skill", cluster: "aitools", color: clusterColors.aitools },
     { id: "Claude API", type: "skill", cluster: "aitools", color: clusterColors.aitools },
 
-    // ── Distributed skills ─────────────────────────────────────────────
     { id: "Dask", type: "skill", cluster: "distributed", color: clusterColors.distributed },
     { id: "PostgreSQL", type: "skill", cluster: "distributed", color: clusterColors.distributed },
     { id: "MongoDB", type: "skill", cluster: "distributed", color: clusterColors.distributed },
@@ -87,14 +79,12 @@ const rawNodes: NodeDatum[] = [
     { id: "ETL Pipelines", type: "skill", cluster: "distributed", color: clusterColors.distributed },
     { id: "Parquet", type: "skill", cluster: "distributed", color: clusterColors.distributed },
 
-    // ── Infra skills ───────────────────────────────────────────────────
     { id: "AWS", type: "skill", cluster: "infra", color: clusterColors.infra },
     { id: "Docker", type: "skill", cluster: "infra", color: clusterColors.infra },
     { id: "CI/CD", type: "skill", cluster: "infra", color: clusterColors.infra },
     { id: "Linux", type: "skill", cluster: "infra", color: clusterColors.infra },
     { id: "Terraform", type: "skill", cluster: "infra", color: clusterColors.infra },
 
-    // ── Research skills ────────────────────────────────────────────────
     { id: "NLP", type: "skill", cluster: "research", color: clusterColors.research },
     { id: "spaCy / NLTK", type: "skill", cluster: "research", color: clusterColors.research },
     { id: "GPU Optimization", type: "skill", cluster: "research", color: clusterColors.research },
@@ -102,7 +92,6 @@ const rawNodes: NodeDatum[] = [
 ];
 
 const rawLinks: LinkDatum[] = [
-    // CampusNest (v2 Go + Next.js)
     { source: "CampusNest", target: "Go" },
     { source: "CampusNest", target: "Next.js" },
     { source: "CampusNest", target: "TypeScript" },
@@ -112,14 +101,12 @@ const rawLinks: LinkDatum[] = [
     { source: "CampusNest", target: "CI/CD" },
     { source: "CampusNest", target: "Django" },
 
-    // NYC Transit Hub
     { source: "NYC Transit Hub", target: "Next.js" },
     { source: "NYC Transit Hub", target: "React" },
     { source: "NYC Transit Hub", target: "TypeScript" },
     { source: "NYC Transit Hub", target: "Mapbox GL" },
     { source: "NYC Transit Hub", target: "Node.js" },
 
-    // SteamLensAI
     { source: "SteamLensAI", target: "Python" },
     { source: "SteamLensAI", target: "Dask" },
     { source: "SteamLensAI", target: "CUDA" },
@@ -129,7 +116,6 @@ const rawLinks: LinkDatum[] = [
     { source: "SteamLensAI", target: "ETL Pipelines" },
     { source: "SteamLensAI", target: "GPU Optimization" },
 
-    // Numerai Pipeline
     { source: "Numerai Pipeline", target: "Python" },
     { source: "Numerai Pipeline", target: "LightGBM" },
     { source: "Numerai Pipeline", target: "scikit-learn" },
@@ -138,24 +124,20 @@ const rawLinks: LinkDatum[] = [
     { source: "Numerai Pipeline", target: "Time-Series ML" },
     { source: "Numerai Pipeline", target: "GPU Optimization" },
 
-    // PatchbotAI
     { source: "PatchbotAI", target: "Python" },
     { source: "PatchbotAI", target: "Gemini API" },
     { source: "PatchbotAI", target: "Function Calling" },
 
-    // LocalPilotAI
     { source: "LocalPilotAI", target: "TypeScript" },
     { source: "LocalPilotAI", target: "Ollama" },
     { source: "LocalPilotAI", target: "VSCode API" },
 
-    // SimplifyJobsDaemon
     { source: "SimplifyJobsDaemon", target: "Go" },
     { source: "SimplifyJobsDaemon", target: "Python" },
     { source: "SimplifyJobsDaemon", target: "Ollama" },
     { source: "SimplifyJobsDaemon", target: "Claude API" },
     { source: "SimplifyJobsDaemon", target: "Linux" },
 
-    // Personality Prediction
     { source: "Personality Prediction", target: "Python" },
     { source: "Personality Prediction", target: "NLP" },
     { source: "Personality Prediction", target: "spaCy / NLTK" },
@@ -174,13 +156,6 @@ const legendEntries = [
 
 function nid(d: string | NodeDatum): string {
     return typeof d === "string" ? d : d.id;
-}
-
-function hexToRgba(hex: string, alpha: number): string {
-    const r = parseInt(hex.slice(1, 3), 16);
-    const g = parseInt(hex.slice(3, 5), 16);
-    const b = parseInt(hex.slice(5, 7), 16);
-    return `rgba(${r},${g},${b},${alpha})`;
 }
 
 export default function TechGraph() {
@@ -207,72 +182,45 @@ export default function TechGraph() {
         const svgSel = d3.select(svg);
         svgSel.selectAll("*").remove();
 
-        // --- Defs ---
-        const defs = svgSel.append("defs");
-
-        // Glow filter
-        const glow = defs
-            .append("filter")
-            .attr("id", "glow")
-            .attr("x", "-50%")
-            .attr("y", "-50%")
-            .attr("width", "200%")
-            .attr("height", "200%");
-        glow.append("feGaussianBlur").attr("stdDeviation", "2.5").attr("result", "coloredBlur");
-        const glowMerge = glow.append("feMerge");
-        glowMerge.append("feMergeNode").attr("in", "coloredBlur");
-        glowMerge.append("feMergeNode").attr("in", "SourceGraphic");
-
-        // Background radial gradient
-        const bgGrad = defs
-            .append("radialGradient")
-            .attr("id", "bg-radial")
-            .attr("cx", "50%")
-            .attr("cy", "50%")
-            .attr("r", "50%");
-        bgGrad.append("stop").attr("offset", "0%").attr("stop-color", "rgba(186,187,241,0.03)");
-        bgGrad.append("stop").attr("offset", "100%").attr("stop-color", "transparent");
-
-        // Background
-        svgSel.append("rect").attr("width", width).attr("height", height).attr("fill", "#232634");
-        svgSel.append("rect").attr("width", width).attr("height", height).attr("fill", "url(#bg-radial)");
+        // Background - neo-brutalism cream
+        svgSel.append("rect").attr("width", width).attr("height", height).attr("fill", "#FEF9EF");
 
         const linkGroup = svgSel.append("g");
         const nodeGroup = svgSel.append("g");
         const labelGroup = svgSel.append("g").style("pointer-events", "none");
 
-        // --- Links ---
+        // --- Links - thick and bold ---
         const linkSel = linkGroup
             .selectAll<SVGLineElement, LinkDatum>("line")
             .data(links)
             .join("line")
-            .attr("stroke-width", 0.8)
-            .each(function(l) {
-                const src = nodes.find((n) => n.id === nid(l.source));
-                d3.select(this).attr("stroke", hexToRgba(src?.color ?? "#626880", 0.2));
-            });
+            .attr("stroke-width", 1.5)
+            .attr("stroke", "#1a1a2e")
+            .attr("opacity", 0.15);
 
-        // --- Nodes ---
+        // --- Nodes - bold with stroke ---
         const nodeSel = nodeGroup
             .selectAll<SVGCircleElement, NodeDatum>("circle")
             .data(nodes, (d) => d.id)
             .join("circle")
-            .attr("r", (d) => (d.type === "project" ? 10 : 5))
+            .attr("r", (d) => (d.type === "project" ? 12 : 6))
             .attr("fill", (d) => d.color)
-            .attr("opacity", (d) => (d.type === "project" ? 0.9 : 0.85))
-            .attr("filter", "url(#glow)")
+            .attr("stroke", "#1a1a2e")
+            .attr("stroke-width", 2)
+            .attr("opacity", 1)
             .style("cursor", "grab");
 
-        // --- Hover labels (hidden by default) ---
+        // --- Hover labels ---
         const labelSel = labelGroup
             .selectAll<SVGTextElement, NodeDatum>("text")
             .data(nodes, (d) => d.id)
             .join("text")
             .text((d) => d.id)
             .attr("text-anchor", "middle")
-            .attr("dy", (d) => (d.type === "project" ? -15 : -10))
-            .attr("fill", "#c6d0f5")
+            .attr("dy", (d) => (d.type === "project" ? -18 : -12))
+            .attr("fill", "#1a1a2e")
             .attr("font-size", "0.65rem")
+            .attr("font-weight", "700")
             .attr(
                 "font-family",
                 '"CaskaydiaCove Nerd Font Mono", "JetBrains Mono", monospace'
@@ -292,29 +240,26 @@ export default function TechGraph() {
                     if (tid === d.id) connectedIds.add(sid);
                 });
 
-                // Highlight connected links
                 linkSel
                     .attr("stroke", (l) => {
                         const sid = nid(l.source);
                         const tid = nid(l.target);
-                        if (sid === d.id || tid === d.id) {
-                            return hexToRgba(d.color, 0.6);
-                        }
-                        const src = nodes.find((n) => n.id === sid);
-                        return hexToRgba(src?.color ?? "#626880", 0.2);
+                        if (sid === d.id || tid === d.id) return d.color;
+                        return "#1a1a2e";
                     })
                     .attr("stroke-width", (l) =>
-                        nid(l.source) === d.id || nid(l.target) === d.id ? 1.5 : 0.8
+                        nid(l.source) === d.id || nid(l.target) === d.id ? 3 : 1.5
+                    )
+                    .attr("opacity", (l) =>
+                        nid(l.source) === d.id || nid(l.target) === d.id ? 0.8 : 0.1
                     );
 
-                // Scale hovered node
                 d3.select(this)
                     .transition()
                     .duration(150)
-                    .attr("r", d.type === "project" ? 13 : 7)
-                    .attr("opacity", 1);
+                    .attr("r", d.type === "project" ? 15 : 8)
+                    .attr("stroke-width", 3);
 
-                // Show labels for hovered node + neighbors
                 labelSel
                     .transition()
                     .duration(150)
@@ -322,7 +267,6 @@ export default function TechGraph() {
                         n.id === d.id || connectedIds.has(n.id) ? 1 : 0
                     );
 
-                // Tooltip for projects only
                 if (d.type === "project") {
                     const [mx, my] = d3.pointer(event, container);
                     setTooltip({
@@ -346,22 +290,17 @@ export default function TechGraph() {
                 hoveredRef.current = null;
                 setTooltip(null);
 
-                // Reset links
                 linkSel
-                    .attr("stroke-width", 0.8)
-                    .each(function(l) {
-                        const src = nodes.find((n) => n.id === nid(l.source));
-                        d3.select(this).attr("stroke", hexToRgba(src?.color ?? "#626880", 0.2));
-                    });
+                    .attr("stroke-width", 1.5)
+                    .attr("stroke", "#1a1a2e")
+                    .attr("opacity", 0.15);
 
-                // Reset node
                 d3.select(this)
                     .transition()
                     .duration(150)
-                    .attr("r", d.type === "project" ? 10 : 5)
-                    .attr("opacity", d.type === "project" ? 0.9 : 0.85);
+                    .attr("r", d.type === "project" ? 12 : 6)
+                    .attr("stroke-width", 2);
 
-                // Hide all labels
                 labelSel.transition().duration(150).attr("opacity", 0);
             });
 
@@ -408,7 +347,6 @@ export default function TechGraph() {
             labelSel.attr("x", (d) => d.x!).attr("y", (d) => d.y!);
         });
 
-        // Idle drift
         const driftInterval = setInterval(() => {
             if (simulation.alpha() < 0.01) {
                 simulation.alpha(0.03).restart();
@@ -489,21 +427,23 @@ export default function TechGraph() {
                     top: 16,
                     left: 16,
                     zIndex: 10,
-                    background: "rgba(41,44,60,0.85)",
-                    border: "1px solid #51576d",
-                    borderRadius: 5,
+                    background: "#FFFFFF",
+                    border: "3px solid #1a1a2e",
+                    borderRadius: 6,
                     padding: "0.6rem 0.875rem",
                     fontFamily:
                         '"CaskaydiaCove Nerd Font Mono", "JetBrains Mono", monospace',
+                    boxShadow: "3px 3px 0px #1a1a2e",
                 }}
             >
                 <div
                     style={{
-                        color: "#737994",
+                        color: "#1a1a2e",
                         fontSize: "0.62rem",
                         letterSpacing: "0.08em",
                         textTransform: "uppercase",
                         marginBottom: 8,
+                        fontWeight: 800,
                     }}
                 >
                     knowledge graph
@@ -520,15 +460,15 @@ export default function TechGraph() {
                     >
                         <div
                             style={{
-                                width: "0.5rem",
-                                height: "0.5rem",
-                                borderRadius: "50%",
+                                width: "0.55rem",
+                                height: "0.55rem",
+                                borderRadius: 2,
                                 background: e.color,
-                                boxShadow: `0 0 6px ${hexToRgba(e.color, 0.7)}`,
+                                border: "2px solid #1a1a2e",
                                 flexShrink: 0,
                             }}
                         />
-                        <span style={{ color: "#a5adce", fontSize: "0.68rem" }}>{e.label}</span>
+                        <span style={{ color: "#374151", fontSize: "0.68rem", fontWeight: 600 }}>{e.label}</span>
                     </div>
                 ))}
             </div>
@@ -538,16 +478,16 @@ export default function TechGraph() {
                 style={{ display: "block", width: "100%", height: "100%" }}
             />
 
-            {/* Tooltip (projects only) */}
+            {/* Tooltip */}
             {tooltip && (
                 <div
                     style={{
                         position: "absolute",
                         left: tooltip.x + 14,
                         top: tooltip.y - 10,
-                        background: "rgba(41,44,60,0.95)",
-                        border: "1px solid #51576d",
-                        borderRadius: 5,
+                        background: "#FFFFFF",
+                        border: "3px solid #1a1a2e",
+                        borderRadius: 6,
                         padding: "6px 10px",
                         fontSize: "0.7rem",
                         fontFamily:
@@ -555,13 +495,14 @@ export default function TechGraph() {
                         pointerEvents: "none",
                         whiteSpace: "nowrap",
                         zIndex: 10,
+                        boxShadow: "3px 3px 0px #1a1a2e",
                     }}
                 >
-                    <div style={{ color: "#c6d0f5", fontSize: "0.7rem", fontWeight: 600 }}>
+                    <div style={{ color: "#1a1a2e", fontSize: "0.7rem", fontWeight: 800 }}>
                         {tooltip.name}
                     </div>
                     {tooltip.connected.map((s) => (
-                        <div key={s} style={{ color: "#a5adce", fontSize: "0.65rem" }}>
+                        <div key={s} style={{ color: "#374151", fontSize: "0.65rem", fontWeight: 600 }}>
                             {s}
                         </div>
                     ))}

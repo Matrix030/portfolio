@@ -58,9 +58,9 @@ function useCpuSimulation() {
 }
 
 function cpuColor(pct: number): string {
-  if (pct < 50) return "#a6d189";
-  if (pct < 80) return "#e5c890";
-  return "#e78284";
+  if (pct < 50) return "#22C55E";
+  if (pct < 80) return "#FBBF24";
+  return "#EF4444";
 }
 
 function CpuBar({ value, prevValue }: { value: number; prevValue: number }) {
@@ -87,7 +87,7 @@ function CpuModule() {
   });
 
   return (
-    <Module color={cpuColor(overall)} borderRadius="0">
+    <Module color={cpuColor(overall)}>
       {"cpu"}{" "}
       {cores.map((c, i) => (
         <CpuBar key={i} value={c} prevValue={prevCores.current[i]} />
@@ -114,9 +114,9 @@ function useMemorySimulation() {
 }
 
 function memColor(used: number): string {
-  if (used < 24) return "#c6d0f5";
-  if (used < 28) return "#e5c890";
-  return "#e78284";
+  if (used < 24) return "#1a1a2e";
+  if (used < 28) return "#FBBF24";
+  return "#EF4444";
 }
 
 function MemoryModule() {
@@ -124,7 +124,7 @@ function MemoryModule() {
   const color = memColor(used);
 
   return (
-    <Module color={color} borderRadius="0 5px 5px 0">
+    <Module color={color}>
       <motion.span
         key={Math.round(used * 10)}
         animate={{ scale: [1, 1.05, 1] }}
@@ -157,7 +157,7 @@ function NetworkModule() {
   const bandwidth = useNetworkSimulation();
 
   return (
-    <Module color="#99d1db" borderRadius="0">
+    <Module color="#06B6D4">
       {"net"} <AnimatedNumber value={bandwidth} decimals={1} />
       Mbits
     </Module>
@@ -167,7 +167,7 @@ function NetworkModule() {
 // --- Audio Module ---
 function AudioModule() {
   return (
-    <Module color="#ea999c" borderRadius="5px 0 0 5px">
+    <Module color="#F43F5E">
       <motion.span
         animate={{ scale: [1, 1.1, 1] }}
         transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
@@ -198,7 +198,7 @@ function UptimeModule() {
   }, []);
 
   return (
-    <Module color="#949cbb" borderRadius="0">
+    <Module color="#6B7280">
       {elapsed}
     </Module>
   );
@@ -251,20 +251,20 @@ export default function Waybar({
     <div
       style={{
         position: "fixed",
-        top: 2,
-        left: 2,
-        right: 2,
-        height: "2rem",
+        top: 0,
+        left: 0,
+        right: 0,
+        height: "2.5rem",
         zIndex: 50,
         display: "flex",
         alignItems: "center",
-        background: "#292c3c",
-        borderRadius: 5,
+        background: "#FFFFFF",
+        borderBottom: "3px solid #1a1a2e",
         fontFamily:
           '"CaskaydiaCove Nerd Font Mono", "JetBrains Mono", monospace',
         fontSize: "0.6rem",
-        color: "#c6d0f5",
-        boxShadow: "0 2px 8px rgba(35,38,52,0.8)",
+        color: "#1a1a2e",
+        boxShadow: "0 3px 0px #1a1a2e",
       }}
     >
       {/* LEFT: Workspaces */}
@@ -272,10 +272,8 @@ export default function Waybar({
         style={{
           display: "flex",
           alignItems: "center",
-          background: "#292c3c",
-          borderRadius: 5,
-          margin: 5,
-          marginLeft: 2,
+          marginLeft: 8,
+          gap: 2,
         }}
       >
         {workspaces.map((ws) => {
@@ -285,24 +283,18 @@ export default function Waybar({
               key={ws.id}
               onClick={() => onWorkspaceChange(ws.id)}
               style={{
-                background: "#292c3c",
-                border: "none",
-                borderRadius: 5,
-                padding: "0.3rem",
-                color: isActive ? "#99d1db" : "#babbf1",
+                background: isActive ? "#FBBF24" : "#FFFFFF",
+                border: "2px solid #1a1a2e",
+                borderRadius: 4,
+                padding: "0.25rem 0.4rem",
+                color: "#1a1a2e",
                 cursor: "pointer",
                 fontFamily: "inherit",
                 fontSize: "inherit",
                 lineHeight: 1,
-                transition: "background 0.15s",
-              }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLButtonElement).style.background =
-                  "#414559";
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLButtonElement).style.background =
-                  "#292c3c";
+                fontWeight: isActive ? 700 : 400,
+                boxShadow: isActive ? "2px 2px 0px #1a1a2e" : "none",
+                transition: "all 0.1s",
               }}
             >
               {ws.id}: {isActive ? ws.activeIcon : ws.inactiveIcon}
@@ -311,7 +303,7 @@ export default function Waybar({
         })}
       </div>
 
-      {/* CENTER: Clock + Graduation */}
+      {/* CENTER: Clock */}
       <div
         style={{
           position: "absolute",
@@ -319,31 +311,22 @@ export default function Waybar({
           transform: "translateX(-50%)",
           display: "flex",
           alignItems: "center",
+          gap: 8,
         }}
       >
         <div
           style={{
-            background: "#292c3c",
-            borderRadius: 5,
-            padding: "0.25rem 0.6rem",
-            margin: "4px 0",
-            color: "#8caaee",
+            background: "#E0F2FE",
+            border: "2px solid #1a1a2e",
+            borderRadius: 4,
+            padding: "0.2rem 0.6rem",
+            color: "#1a1a2e",
             whiteSpace: "nowrap",
+            fontWeight: 600,
+            boxShadow: "2px 2px 0px #1a1a2e",
           }}
         >
           {now ? formatClock(now) : "\u00A0"}
-        </div>
-        <div
-          style={{
-            background: "#292c3c",
-            borderRadius: 5,
-            padding: "0.25rem 0.6rem",
-            margin: "4px 0 4px 0.4rem",
-            color: "#f4b8e4",
-            fontWeight: 600,
-            whiteSpace: "nowrap",
-          }}
-        >
         </div>
       </div>
 
@@ -352,8 +335,9 @@ export default function Waybar({
         style={{
           display: "flex",
           alignItems: "center",
-          margin: "4px 2px 4px 0",
           marginLeft: "auto",
+          marginRight: 8,
+          gap: 4,
         }}
       >
         <AudioModule />
@@ -361,7 +345,6 @@ export default function Waybar({
         <NetworkModule />
         <CpuModule />
         <MemoryModule />
-        <div style={{ width: 16, height: 16, marginLeft: 4 }} />
       </div>
     </div>
   );
@@ -369,25 +352,23 @@ export default function Waybar({
 
 function Module({
   color,
-  borderRadius,
   children,
 }: {
   color: string;
-  borderRadius: string;
   children: React.ReactNode;
 }) {
   return (
     <div
       style={{
-        background: "#292c3c",
-        padding: "0.25rem 0.6rem",
-        margin: "4px 0",
+        background: "#FFFFFF",
+        border: "2px solid #1a1a2e",
+        padding: "0.2rem 0.5rem",
         color,
-        borderRadius,
+        borderRadius: 4,
         whiteSpace: "nowrap",
         fontSize: "0.6rem",
         lineHeight: 1,
-        transition: "color 0.4s ease",
+        fontWeight: 600,
       }}
     >
       {children}
