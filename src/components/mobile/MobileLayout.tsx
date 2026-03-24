@@ -67,14 +67,14 @@ function MobileWaybar({
         left: 0,
         right: 0,
         height: "2.5rem",
-        background: "#FFFFFF",
-        borderBottom: "3px solid #1a1a2e",
+        background: "#1a1a2e",
+        borderBottom: "3px solid #e2e0f0",
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
         padding: "0 1rem",
         zIndex: 100,
-        boxShadow: "0 3px 0px #1a1a2e",
+        boxShadow: "0 3px 0px #4a4870",
         fontFamily: FONT,
       }}
     >
@@ -92,8 +92,8 @@ function MobileWaybar({
               width: i === activeIndex ? 8 : 6,
               height: i === activeIndex ? 8 : 6,
               borderRadius: 2,
-              background: i === activeIndex ? "#FBBF24" : "#F5F0E8",
-              border: "2px solid #1a1a2e",
+              background: i === activeIndex ? "#FBBF24" : "#12121e",
+              border: "2px solid #e2e0f0",
               padding: 0,
               cursor: "pointer",
               transition: "all 0.1s",
@@ -102,7 +102,7 @@ function MobileWaybar({
         ))}
       </div>
 
-      <span style={{ color: "#1a1a2e", fontSize: "0.72rem", fontWeight: 700 }}>{time}</span>
+      <span style={{ color: "#e8e5f5", fontSize: "0.72rem", fontWeight: 700 }}>{time}</span>
     </div>
   );
 }
@@ -157,7 +157,7 @@ export default function MobileLayout() {
           right: 0,
           bottom: 0,
           overflow: "hidden",
-          background: "#FEF9EF",
+          background: "#0e0e1c",
         }}
         onTouchStart={handleTouchStart}
         onTouchEnd={handleTouchEnd}
@@ -180,10 +180,10 @@ export default function MobileLayout() {
             {/* Window wrapper */}
             <div
               style={{
-                background: "#FFFFFF",
+                background: "#1a1a2e",
                 borderRadius: 8,
-                border: "3px solid #1a1a2e",
-                boxShadow: "4px 4px 0px #1a1a2e",
+                border: "3px solid #e2e0f0",
+                boxShadow: "4px 4px 0px #4a4870",
                 minHeight: "100%",
                 display: "flex",
                 flexDirection: "column",
@@ -196,7 +196,7 @@ export default function MobileLayout() {
                   height: "1.75rem",
                   minHeight: "1.75rem",
                   background: "#3B82F6",
-                  borderBottom: "3px solid #1a1a2e",
+                  borderBottom: "3px solid #e2e0f0",
                   borderRadius: "5px 5px 0 0",
                   display: "flex",
                   alignItems: "center",
@@ -212,9 +212,9 @@ export default function MobileLayout() {
                   <span style={{ color: "#FBBF24", fontSize: "0.68rem", fontWeight: 700 }}>({ws.label.toUpperCase()})</span>
                 </div>
                 <div style={{ display: "flex", gap: 5 }}>
-                  <div style={{ width: 10, height: 10, borderRadius: 2, background: "#EF4444", border: "2px solid #1a1a2e" }} />
-                  <div style={{ width: 10, height: 10, borderRadius: 2, background: "#FBBF24", border: "2px solid #1a1a2e" }} />
-                  <div style={{ width: 10, height: 10, borderRadius: 2, background: "#22C55E", border: "2px solid #1a1a2e" }} />
+                  <div style={{ width: 10, height: 10, borderRadius: 2, background: "#EF4444", border: "2px solid #e2e0f0" }} />
+                  <div style={{ width: 10, height: 10, borderRadius: 2, background: "#FBBF24", border: "2px solid #e2e0f0" }} />
+                  <div style={{ width: 10, height: 10, borderRadius: 2, background: "#22C55E", border: "2px solid #e2e0f0" }} />
                 </div>
               </div>
 
@@ -248,10 +248,10 @@ export default function MobileLayout() {
               whiteSpace: "nowrap",
               zIndex: 200,
               background: "#FBBF24",
-              border: "2px solid #1a1a2e",
+              border: "2px solid #e2e0f0",
               borderRadius: 4,
               padding: "0.3rem 0.8rem",
-              boxShadow: "2px 2px 0px #1a1a2e",
+              boxShadow: "2px 2px 0px #4a4870",
             }}
           >
             swipe to explore →

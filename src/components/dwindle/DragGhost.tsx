@@ -25,7 +25,7 @@ export default function DragGhost({ x, y, title }: DragGhostProps) {
         width: 120,
         height: 28,
         background: '#FBBF24',
-        border: '3px solid #1a1a2e',
+        border: '3px solid #e2e0f0',
         borderRadius: 4,
         padding: '0 0.75rem',
         display: 'flex',
@@ -39,7 +39,7 @@ export default function DragGhost({ x, y, title }: DragGhostProps) {
         userSelect: 'none',
         whiteSpace: 'nowrap',
         overflow: 'hidden',
-        boxShadow: '3px 3px 0px #1a1a2e',
+        boxShadow: '3px 3px 0px #4a4870',
       }}
     >
       {title}

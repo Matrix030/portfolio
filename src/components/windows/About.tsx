@@ -34,7 +34,7 @@ export default function About() {
             <div>
                 <div
                     style={{
-                        color: "#1a1a2e",
+                        color: "#e8e5f5",
                         fontSize: "1.2rem",
                         fontWeight: 800,
                         lineHeight: 1.2,
@@ -55,13 +55,13 @@ export default function About() {
                 <div
                     style={{
                         height: 3,
-                        background: "#1a1a2e",
+                        background: "#e2e0f0",
                         margin: "10px 0",
                     }}
                 />
                 <div
                     style={{
-                        color: "#374151",
+                        color: "#9896b8",
                         fontSize: "0.73rem",
                         lineHeight: 1.6,
                         fontWeight: 500,
@@ -86,7 +86,7 @@ export default function About() {
                         key={s}
                         style={{
                             background: "#FBBF24",
-                            border: "2px solid #1a1a2e",
+                            border: "2px solid #e2e0f0",
                             borderRadius: 4,
                             padding: "4px 10px",
                             fontSize: "0.68rem",
@@ -95,7 +95,7 @@ export default function About() {
                             overflow: "hidden",
                             textOverflow: "ellipsis",
                             fontWeight: 700,
-                            boxShadow: "2px 2px 0px #1a1a2e",
+                            boxShadow: "2px 2px 0px #4a4870",
                         }}
                     >
                         {s}
@@ -112,28 +112,28 @@ export default function About() {
                         target="_blank"
                         rel="noopener noreferrer"
                         style={{
-                            border: "2px solid #1a1a2e",
+                            border: "2px solid #e2e0f0",
                             borderRadius: 4,
                             padding: "4px 12px",
-                            color: "#1a1a2e",
+                            color: "#e8e5f5",
                             fontSize: "0.68rem",
                             textDecoration: "none",
                             transition: "all 0.1s",
                             whiteSpace: "nowrap",
                             fontWeight: 700,
-                            background: "#FFFFFF",
-                            boxShadow: "2px 2px 0px #1a1a2e",
+                            background: "#1a1a2e",
+                            boxShadow: "2px 2px 0px #4a4870",
                         }}
                         onMouseEnter={(e) => {
                             const t = e.currentTarget;
-                            t.style.background = "#E0F2FE";
-                            t.style.boxShadow = "3px 3px 0px #1a1a2e";
+                            t.style.background = "#0c1f2e";
+                            t.style.boxShadow = "3px 3px 0px #4a4870";
                             t.style.transform = "translate(-1px, -1px)";
                         }}
                         onMouseLeave={(e) => {
                             const t = e.currentTarget;
-                            t.style.background = "#FFFFFF";
-                            t.style.boxShadow = "2px 2px 0px #1a1a2e";
+                            t.style.background = "#1a1a2e";
+                            t.style.boxShadow = "2px 2px 0px #4a4870";
                             t.style.transform = "translate(0, 0)";
                         }}
                     >

@@ -88,8 +88,8 @@ function Skeleton() {
                     animate={{ opacity: [0.4, 0.7, 0.4] }}
                     transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
                     style={{
-                        background: "#F5F0E8",
-                        border: "2px solid #1a1a2e",
+                        background: "#12121e",
+                        border: "2px solid #e2e0f0",
                         borderRadius: 3,
                         height: "0.7rem",
                         width: w,
@@ -136,7 +136,7 @@ function Heatmap() {
     }, []);
 
     const levelColors = [
-        "#F5F0E8",
+        "#12121e",
         "#BBF7D0",
         "#86EFAC",
         "#4ADE80",
@@ -156,7 +156,7 @@ function Heatmap() {
         width: "100%",
         aspectRatio: "1",
         borderRadius: 1,
-        border: "1px solid #1a1a2e",
+        border: "1px solid #e2e0f0",
     };
 
     if (cells.length === 0) {
@@ -165,7 +165,7 @@ function Heatmap() {
                 {Array.from({ length: WEEKS * 7 }).map((_, i) => (
                     <div
                         key={i}
-                        style={{ ...cellStyle, background: "#F5F0E8" }}
+                        style={{ ...cellStyle, background: "#12121e" }}
                     />
                 ))}
             </div>
@@ -180,7 +180,7 @@ function Heatmap() {
                     title={`${c.date}: level ${c.level}`}
                     style={{
                         ...cellStyle,
-                        background: levelColors[c.level] ?? "#F5F0E8",
+                        background: levelColors[c.level] ?? "#12121e",
                     }}
                 />
             ))}
@@ -241,14 +241,14 @@ export default function GitHubActivity() {
             >
                 <span
                     style={{
-                        color: "#1a1a2e",
+                        color: "#e8e5f5",
                         fontSize: "0.72rem",
                         fontWeight: 700,
-                        background: "#FEE2E2",
-                        border: "2px solid #1a1a2e",
+                        background: "#220d10",
+                        border: "2px solid #e2e0f0",
                         borderRadius: 4,
                         padding: "0.3rem 0.6rem",
-                        boxShadow: "2px 2px 0px #1a1a2e",
+                        boxShadow: "2px 2px 0px #4a4870",
                     }}
                 >
                     {"!"} failed to load github data
@@ -284,16 +284,16 @@ export default function GitHubActivity() {
                     }}
                 >
                     <div>
-                        <div style={{ color: "#1a1a2e", fontSize: "0.82rem", fontWeight: 800 }}>
+                        <div style={{ color: "#e8e5f5", fontSize: "0.82rem", fontWeight: 800 }}>
                             {"@"}{USERNAME}
                         </div>
-                        <div style={{ color: "#6B7280", fontSize: "0.65rem", fontWeight: 600 }}>
+                        <div style={{ color: "#6b6890", fontSize: "0.65rem", fontWeight: 600 }}>
                             github activity
                         </div>
                     </div>
                     <div style={{ display: "flex", gap: "0.5rem" }}>
-                        <Pill icon="repo" value={`${stats.public_repos}`} color="#3B82F6" bg="#DBEAFE" />
-                        <Pill icon="flwr" value={`${stats.followers}`} color="#22C55E" bg="#DCFCE7" />
+                        <Pill icon="repo" value={`${stats.public_repos}`} color="#3B82F6" bg="#1a2545" />
+                        <Pill icon="flwr" value={`${stats.followers}`} color="#22C55E" bg="#0d2518" />
                     </div>
                 </div>
             </div>
@@ -344,7 +344,7 @@ function Pill({
         <span
             style={{
                 background: bg,
-                border: "2px solid #1a1a2e",
+                border: "2px solid #e2e0f0",
                 borderRadius: 3,
                 padding: "2px 8px",
                 color,
@@ -362,7 +362,7 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
     return (
         <div
             style={{
-                color: "#1a1a2e",
+                color: "#e8e5f5",
                 fontSize: "0.62rem",
                 textTransform: "uppercase",
                 letterSpacing: "0.08em",
@@ -377,7 +377,7 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
 
 function RepoRow({ repo }: { repo: Repo }) {
     const [hovered, setHovered] = useState(false);
-    const langColor = langColors[repo.language ?? ""] ?? "#6B7280";
+    const langColor = langColors[repo.language ?? ""] ?? "#6b6890";
 
     return (
         <div
@@ -387,8 +387,8 @@ function RepoRow({ repo }: { repo: Repo }) {
                 alignItems: "center",
                 padding: "0.35rem 0.5rem",
                 borderRadius: 3,
-                background: hovered ? "#F5F0E8" : "transparent",
-                borderBottom: "1px solid #1a1a2e",
+                background: hovered ? "#12121e" : "transparent",
+                borderBottom: "1px solid #e2e0f0",
                 transition: "background 0.1s",
                 cursor: "default",
             }}
@@ -398,7 +398,7 @@ function RepoRow({ repo }: { repo: Repo }) {
             <div style={{ display: "flex", flexDirection: "column", gap: 2, minWidth: 0 }}>
                 <span
                     style={{
-                        color: "#1a1a2e",
+                        color: "#e8e5f5",
                         fontSize: "0.72rem",
                         fontWeight: 700,
                         whiteSpace: "nowrap",
@@ -408,7 +408,7 @@ function RepoRow({ repo }: { repo: Repo }) {
                 >
                     {repo.name}
                 </span>
-                <span style={{ color: "#6B7280", fontSize: "0.62rem", fontWeight: 500 }}>
+                <span style={{ color: "#6b6890", fontSize: "0.62rem", fontWeight: 500 }}>
                     {truncate(repo.description, 40)}
                 </span>
             </div>
@@ -429,16 +429,16 @@ function RepoRow({ repo }: { repo: Repo }) {
                                 height: 8,
                                 borderRadius: 2,
                                 background: langColor,
-                                border: "1px solid #1a1a2e",
+                                border: "1px solid #e2e0f0",
                                 flexShrink: 0,
                             }}
                         />
-                        <span style={{ color: "#374151", fontSize: "0.62rem", fontWeight: 600 }}>
+                        <span style={{ color: "#9896b8", fontSize: "0.62rem", fontWeight: 600 }}>
                             {repo.language}
                         </span>
                     </>
                 )}
-                <span style={{ color: "#6B7280", fontSize: "0.6rem", fontWeight: 600 }}>
+                <span style={{ color: "#6b6890", fontSize: "0.6rem", fontWeight: 600 }}>
                     {timeAgo(repo.pushed_at)}
                 </span>
             </div>
@@ -459,7 +459,7 @@ function EventRow({ event }: { event: GitHubEvent }) {
                 gap: "0.5rem",
                 alignItems: "center",
                 padding: "0.25rem 0",
-                borderBottom: "1px solid rgba(26,26,46,0.15)",
+                borderBottom: "1px solid rgba(226,224,240,0.15)",
             }}
         >
             <span style={{ color: cfg.color, fontSize: "0.68rem", flexShrink: 0, fontWeight: 700 }}>
@@ -467,7 +467,7 @@ function EventRow({ event }: { event: GitHubEvent }) {
             </span>
             <span
                 style={{
-                    color: "#374151",
+                    color: "#9896b8",
                     fontSize: "0.68rem",
                     flex: 1,
                     whiteSpace: "nowrap",
@@ -480,7 +480,7 @@ function EventRow({ event }: { event: GitHubEvent }) {
             </span>
             <span
                 style={{
-                    color: "#6B7280",
+                    color: "#6b6890",
                     fontSize: "0.6rem",
                     flexShrink: 0,
                     fontWeight: 600,

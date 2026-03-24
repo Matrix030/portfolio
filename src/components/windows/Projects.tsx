@@ -70,8 +70,8 @@ const projects = [
 ];
 
 const statusColors: Record<string, { bg: string; color: string }> = {
-    active: { bg: "#DCFCE7", color: "#16A34A" },
-    complete: { bg: "#DBEAFE", color: "#2563EB" },
+    active: { bg: "#0d2518", color: "#16A34A" },
+    complete: { bg: "#1a2545", color: "#2563EB" },
 };
 
 export default function Projects() {
@@ -98,16 +98,16 @@ export default function Projects() {
                         key={p.name}
                         className="projects-scroll"
                         style={{
-                            background: "#FFFFFF",
-                            border: "2px solid #1a1a2e",
+                            background: "#1a1a2e",
+                            border: "2px solid #e2e0f0",
                             borderRadius: 6,
                             padding: "10px 12px",
                             cursor: "pointer",
                             transition: "all 0.1s",
                             flexShrink: 0,
                             boxShadow: hovered === i
-                                ? "4px 4px 0px #1a1a2e"
-                                : "2px 2px 0px #1a1a2e",
+                                ? "4px 4px 0px #4a4870"
+                                : "2px 2px 0px #4a4870",
                             transform: hovered === i
                                 ? "translate(-2px, -2px)"
                                 : "translate(0, 0)",
@@ -127,7 +127,7 @@ export default function Projects() {
                             }}
                         >
                             <span
-                                style={{ color: "#1a1a2e", fontSize: "0.78rem", fontWeight: 800 }}
+                                style={{ color: "#e8e5f5", fontSize: "0.78rem", fontWeight: 800 }}
                             >
                                 {p.name}
                             </span>
@@ -135,7 +135,7 @@ export default function Projects() {
                                 style={{
                                     background: sc.bg,
                                     color: sc.color,
-                                    border: "2px solid #1a1a2e",
+                                    border: "2px solid #e2e0f0",
                                     borderRadius: 3,
                                     padding: "2px 6px",
                                     fontSize: "0.6rem",
@@ -150,7 +150,7 @@ export default function Projects() {
                         {/* Row 2: description */}
                         <div
                             style={{
-                                color: "#374151",
+                                color: "#9896b8",
                                 fontSize: "0.68rem",
                                 lineHeight: 1.5,
                                 marginTop: 4,
@@ -173,12 +173,12 @@ export default function Projects() {
                                 <span
                                     key={tag}
                                     style={{
-                                        background: "#F5F0E8",
-                                        border: "2px solid #1a1a2e",
+                                        background: "#12121e",
+                                        border: "2px solid #e2e0f0",
                                         borderRadius: 3,
                                         padding: "1px 6px",
                                         fontSize: "0.62rem",
-                                        color: "#1a1a2e",
+                                        color: "#e8e5f5",
                                         fontWeight: 600,
                                     }}
                                 >

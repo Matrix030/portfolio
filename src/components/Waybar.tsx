@@ -114,7 +114,7 @@ function useMemorySimulation() {
 }
 
 function memColor(used: number): string {
-  if (used < 24) return "#1a1a2e";
+  if (used < 24) return "#e8e5f5";
   if (used < 28) return "#FBBF24";
   return "#EF4444";
 }
@@ -198,7 +198,7 @@ function UptimeModule() {
   }, []);
 
   return (
-    <Module color="#6B7280">
+    <Module color="#6b6890">
       {elapsed}
     </Module>
   );
@@ -258,13 +258,13 @@ export default function Waybar({
         zIndex: 50,
         display: "flex",
         alignItems: "center",
-        background: "#FFFFFF",
-        borderBottom: "3px solid #1a1a2e",
+        background: "#1a1a2e",
+        borderBottom: "3px solid #e2e0f0",
         fontFamily:
           '"CaskaydiaCove Nerd Font Mono", "JetBrains Mono", monospace',
         fontSize: "0.6rem",
-        color: "#1a1a2e",
-        boxShadow: "0 3px 0px #1a1a2e",
+        color: "#e8e5f5",
+        boxShadow: "0 3px 0px #4a4870",
       }}
     >
       {/* LEFT: Workspaces */}
@@ -283,17 +283,17 @@ export default function Waybar({
               key={ws.id}
               onClick={() => onWorkspaceChange(ws.id)}
               style={{
-                background: isActive ? "#FBBF24" : "#FFFFFF",
-                border: "2px solid #1a1a2e",
+                background: isActive ? "#FBBF24" : "#1a1a2e",
+                border: "2px solid #e2e0f0",
                 borderRadius: 4,
                 padding: "0.25rem 0.4rem",
-                color: "#1a1a2e",
+                color: isActive ? "#1a1a2e" : "#e8e5f5",
                 cursor: "pointer",
                 fontFamily: "inherit",
                 fontSize: "inherit",
                 lineHeight: 1,
                 fontWeight: isActive ? 700 : 400,
-                boxShadow: isActive ? "2px 2px 0px #1a1a2e" : "none",
+                boxShadow: isActive ? "2px 2px 0px #4a4870" : "none",
                 transition: "all 0.1s",
               }}
             >
@@ -316,14 +316,14 @@ export default function Waybar({
       >
         <div
           style={{
-            background: "#E0F2FE",
-            border: "2px solid #1a1a2e",
+            background: "#0c1f2e",
+            border: "2px solid #e2e0f0",
             borderRadius: 4,
             padding: "0.2rem 0.6rem",
-            color: "#1a1a2e",
+            color: "#e8e5f5",
             whiteSpace: "nowrap",
             fontWeight: 600,
-            boxShadow: "2px 2px 0px #1a1a2e",
+            boxShadow: "2px 2px 0px #4a4870",
           }}
         >
           {now ? formatClock(now) : "\u00A0"}
@@ -360,8 +360,8 @@ function Module({
   return (
     <div
       style={{
-        background: "#FFFFFF",
-        border: "2px solid #1a1a2e",
+        background: "#1a1a2e",
+        border: "2px solid #e2e0f0",
         padding: "0.2rem 0.5rem",
         color,
         borderRadius: 4,

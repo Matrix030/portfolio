@@ -4,13 +4,13 @@ const skills = [
   {
     category: "Languages",
     color: "#3B82F6",
-    bg: "#DBEAFE",
+    bg: "#1a2545",
     items: ["TypeScript", "JavaScript", "Python", "SQL", "Go"],
   },
   {
     category: "Backend",
     color: "#22C55E",
-    bg: "#DCFCE7",
+    bg: "#0d2518",
     items: [
       "Node.js",
       "Express.js",
@@ -23,25 +23,25 @@ const skills = [
   {
     category: "Frontend",
     color: "#A855F7",
-    bg: "#F3E8FF",
+    bg: "#1d1430",
     items: ["React.js", "Next.js", "CSS"],
   },
   {
     category: "Databases",
     color: "#FBBF24",
-    bg: "#FEF9C3",
+    bg: "#231d0e",
     items: ["PostgreSQL", "DynamoDB", "MongoDB", "MySQL", "Redis"],
   },
   {
     category: "Cloud & Infra",
     color: "#06B6D4",
-    bg: "#CFFAFE",
+    bg: "#0c1f2e",
     items: ["AWS", "Docker", "Terraform", "CI/CD", "EC2", "S3", "Lambda"],
   },
   {
     category: "Data",
     color: "#F43F5E",
-    bg: "#FFE4E6",
+    bg: "#22101a",
     items: ["Pandas", "NumPy", "Dask", "ETL Pipelines"],
   },
 ];
@@ -71,13 +71,13 @@ export default function Skills() {
                 height: 8,
                 borderRadius: 2,
                 background: group.color,
-                border: "2px solid #1a1a2e",
+                border: "2px solid #e2e0f0",
                 flexShrink: 0,
               }}
             />
             <span
               style={{
-                color: "#1a1a2e",
+                color: "#e8e5f5",
                 fontSize: "0.65rem",
                 fontWeight: 800,
                 letterSpacing: "0.05em",
@@ -95,11 +95,11 @@ export default function Skills() {
                 key={item}
                 style={{
                   background: group.bg,
-                  border: "2px solid #1a1a2e",
+                  border: "2px solid #e2e0f0",
                   borderRadius: 3,
                   padding: "2px 8px",
                   fontSize: "0.63rem",
-                  color: "#1a1a2e",
+                  color: "#e8e5f5",
                   fontWeight: 700,
                 }}
               >

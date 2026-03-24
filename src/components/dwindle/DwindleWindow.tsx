@@ -143,13 +143,13 @@ export default function DwindleWindow({
         height: bounds.height,
         borderRadius: 8,
         zIndex,
-        border: isActive ? `3px solid ${accent}` : '3px solid #1a1a2e',
+        border: isActive ? `3px solid ${accent}` : '3px solid #e2e0f0',
         boxShadow: isActive
           ? `5px 5px 0px ${accent}`
-          : '4px 4px 0px #1a1a2e',
+          : '4px 4px 0px #4a4870',
         boxSizing: 'border-box',
         pointerEvents: isDragging ? 'none' : 'auto',
-        background: '#FFFFFF',
+        background: '#1a1a2e',
         overflow: 'hidden',
         transition: 'border-color 0.15s, box-shadow 0.15s',
       }}
@@ -175,8 +175,8 @@ export default function DwindleWindow({
           style={{
             height: '1.75rem',
             flexShrink: 0,
-            background: isActive ? accent : '#F5F0E8',
-            borderBottom: '2px solid #1a1a2e',
+            background: isActive ? accent : '#12121e',
+            borderBottom: '2px solid #e2e0f0',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
@@ -188,7 +188,7 @@ export default function DwindleWindow({
         >
           <span
             style={{
-              color: isActive ? '#FFFFFF' : '#1a1a2e',
+              color: isActive ? '#FFFFFF' : '#e8e5f5',
               fontSize: '0.72rem',
               fontFamily: FONT,
               userSelect: 'none',
@@ -219,13 +219,13 @@ export default function DwindleWindow({
                 height: 12,
                 borderRadius: 3,
                 background: '#EF4444',
-                border: '2px solid #1a1a2e',
+                border: '2px solid #e2e0f0',
                 cursor: 'pointer',
                 padding: 0,
               }}
             />
-            <div style={{ width: 12, height: 12, borderRadius: 3, background: '#FBBF24', border: '2px solid #1a1a2e' }} />
-            <div style={{ width: 12, height: 12, borderRadius: 3, background: '#22C55E', border: '2px solid #1a1a2e' }} />
+            <div style={{ width: 12, height: 12, borderRadius: 3, background: '#FBBF24', border: '2px solid #e2e0f0' }} />
+            <div style={{ width: 12, height: 12, borderRadius: 3, background: '#22C55E', border: '2px solid #e2e0f0' }} />
           </div>
         </div>
 

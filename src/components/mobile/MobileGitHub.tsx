@@ -51,7 +51,7 @@ function Skeleton() {
           key={i}
           animate={{ opacity: [0.4, 0.7, 0.4] }}
           transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-          style={{ background: "#F5F0E8", border: "2px solid #1a1a2e", borderRadius: 3, height: "0.7rem", width: `${w}%` }}
+          style={{ background: "#12121e", border: "2px solid #e2e0f0", borderRadius: 3, height: "0.7rem", width: `${w}%` }}
         />
       ))}
     </div>
@@ -81,7 +81,7 @@ export default function MobileGitHub() {
 
   if (error) {
     return (
-      <div style={{ color: "#1a1a2e", fontFamily: FONT, fontSize: "0.72rem", fontWeight: 700, background: "#FEE2E2", border: "2px solid #1a1a2e", borderRadius: 4, padding: "0.3rem 0.6rem", display: "inline-block" }}>
+      <div style={{ color: "#e8e5f5", fontFamily: FONT, fontSize: "0.72rem", fontWeight: 700, background: "#220d10", border: "2px solid #e2e0f0", borderRadius: 4, padding: "0.3rem 0.6rem", display: "inline-block" }}>
         ! failed to load github data
       </div>
     );
@@ -96,15 +96,15 @@ export default function MobileGitHub() {
       {/* Header */}
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
         <div>
-          <div style={{ color: "#1a1a2e", fontSize: "0.82rem", fontWeight: 800 }}>@{USERNAME}</div>
-          <div style={{ color: "#6B7280", fontSize: "0.65rem", fontWeight: 600 }}>github activity</div>
+          <div style={{ color: "#e8e5f5", fontSize: "0.82rem", fontWeight: 800 }}>@{USERNAME}</div>
+          <div style={{ color: "#6b6890", fontSize: "0.65rem", fontWeight: 600 }}>github activity</div>
         </div>
         <div style={{ display: "flex", gap: "0.4rem" }}>
           {[
-            { label: "repo", value: stats.public_repos, color: "#3B82F6", bg: "#DBEAFE" },
-            { label: "flwr", value: stats.followers, color: "#22C55E", bg: "#DCFCE7" },
+            { label: "repo", value: stats.public_repos, color: "#3B82F6", bg: "#1a2545" },
+            { label: "flwr", value: stats.followers, color: "#22C55E", bg: "#0d2518" },
           ].map(p => (
-            <span key={p.label} style={{ background: p.bg, border: "2px solid #1a1a2e", borderRadius: 3, padding: "2px 8px", color: p.color, fontSize: "0.62rem", fontWeight: 700 }}>
+            <span key={p.label} style={{ background: p.bg, border: "2px solid #e2e0f0", borderRadius: 3, padding: "2px 8px", color: p.color, fontSize: "0.62rem", fontWeight: 700 }}>
               {p.label} {p.value}
             </span>
           ))}
@@ -113,20 +113,20 @@ export default function MobileGitHub() {
 
       {/* Recent Repos */}
       <div>
-        <div style={{ color: "#1a1a2e", fontSize: "0.62rem", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "0.4rem", fontWeight: 800 }}>
+        <div style={{ color: "#e8e5f5", fontSize: "0.62rem", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "0.4rem", fontWeight: 800 }}>
           recent repos
         </div>
         {repos.slice(0, 5).map(repo => (
-          <div key={repo.name} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "0.35rem 0", borderBottom: "1px solid rgba(26,26,46,0.15)" }}>
+          <div key={repo.name} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "0.35rem 0", borderBottom: "1px solid rgba(226,224,240,0.15)" }}>
             <div style={{ minWidth: 0 }}>
-              <div style={{ color: "#1a1a2e", fontSize: "0.72rem", fontWeight: 700, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{repo.name}</div>
-              <div style={{ color: "#6B7280", fontSize: "0.62rem", fontWeight: 500 }}>{truncate(repo.description, 35)}</div>
+              <div style={{ color: "#e8e5f5", fontSize: "0.72rem", fontWeight: 700, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{repo.name}</div>
+              <div style={{ color: "#6b6890", fontSize: "0.62rem", fontWeight: 500 }}>{truncate(repo.description, 35)}</div>
             </div>
             <div style={{ display: "flex", alignItems: "center", gap: "0.4rem", flexShrink: 0, marginLeft: "0.5rem" }}>
               {repo.language && (
-                <div style={{ width: 8, height: 8, borderRadius: 2, background: langColors[repo.language] ?? "#6B7280", border: "1px solid #1a1a2e" }} />
+                <div style={{ width: 8, height: 8, borderRadius: 2, background: langColors[repo.language] ?? "#6b6890", border: "1px solid #e2e0f0" }} />
               )}
-              <span style={{ color: "#6B7280", fontSize: "0.6rem", fontWeight: 600 }}>{timeAgo(repo.pushed_at)}</span>
+              <span style={{ color: "#6b6890", fontSize: "0.6rem", fontWeight: 600 }}>{timeAgo(repo.pushed_at)}</span>
             </div>
           </div>
         ))}
@@ -134,17 +134,17 @@ export default function MobileGitHub() {
 
       {/* Recent Events */}
       <div>
-        <div style={{ color: "#1a1a2e", fontSize: "0.62rem", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "0.4rem", fontWeight: 800 }}>
+        <div style={{ color: "#e8e5f5", fontSize: "0.62rem", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "0.4rem", fontWeight: 800 }}>
           recent activity
         </div>
         {filteredEvents.map((evt, i) => {
           const cfg = eventConfig[evt.type];
           const shortRepo = evt.repo.name.replace(`${USERNAME}/`, "");
           return (
-            <div key={i} style={{ display: "flex", gap: "0.5rem", alignItems: "center", padding: "0.25rem 0", borderBottom: "1px solid rgba(26,26,46,0.15)" }}>
+            <div key={i} style={{ display: "flex", gap: "0.5rem", alignItems: "center", padding: "0.25rem 0", borderBottom: "1px solid rgba(226,224,240,0.15)" }}>
               <span style={{ color: cfg.color, fontSize: "0.68rem", flexShrink: 0, fontWeight: 700 }}>{cfg.icon}</span>
-              <span style={{ color: "#374151", fontSize: "0.68rem", flex: 1, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", fontWeight: 600 }}>{cfg.verb} {shortRepo}</span>
-              <span style={{ color: "#6B7280", fontSize: "0.6rem", flexShrink: 0, fontWeight: 600 }}>{timeAgo(evt.created_at)}</span>
+              <span style={{ color: "#9896b8", fontSize: "0.68rem", flex: 1, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", fontWeight: 600 }}>{cfg.verb} {shortRepo}</span>
+              <span style={{ color: "#6b6890", fontSize: "0.6rem", flexShrink: 0, fontWeight: 600 }}>{timeAgo(evt.created_at)}</span>
             </div>
           );
         })}

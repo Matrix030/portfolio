@@ -17,12 +17,12 @@ function StaticWindow({
   return (
     <div
       style={{
-        background: "#FFFFFF",
+        background: "#1a1a2e",
         borderRadius: 8,
         height: "100%",
         overflow: "hidden",
-        border: "3px solid #1a1a2e",
-        boxShadow: "4px 4px 0px #1a1a2e",
+        border: "3px solid #e2e0f0",
+        boxShadow: "4px 4px 0px #4a4870",
         position: "relative",
         display: "flex",
         flexDirection: "column",
@@ -34,7 +34,7 @@ function StaticWindow({
           height: "1.75rem",
           flexShrink: 0,
           background: accent,
-          borderBottom: "3px solid #1a1a2e",
+          borderBottom: "3px solid #e2e0f0",
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
@@ -54,9 +54,9 @@ function StaticWindow({
         </span>
         {/* Traffic lights (decorative) */}
         <div style={{ display: "flex", gap: "0.35rem", alignItems: "center" }}>
-          <div style={{ width: 12, height: 12, borderRadius: 3, background: "#EF4444", border: "2px solid #1a1a2e" }} />
-          <div style={{ width: 12, height: 12, borderRadius: 3, background: "#FBBF24", border: "2px solid #1a1a2e" }} />
-          <div style={{ width: 12, height: 12, borderRadius: 3, background: "#22C55E", border: "2px solid #1a1a2e" }} />
+          <div style={{ width: 12, height: 12, borderRadius: 3, background: "#EF4444", border: "2px solid #e2e0f0" }} />
+          <div style={{ width: 12, height: 12, borderRadius: 3, background: "#FBBF24", border: "2px solid #e2e0f0" }} />
+          <div style={{ width: 12, height: 12, borderRadius: 3, background: "#22C55E", border: "2px solid #e2e0f0" }} />
         </div>
       </div>
 
@@ -76,7 +76,7 @@ export default function Workspace3() {
         height: "100%",
         gap: 6,
         padding: 6,
-        background: "#FEF9EF",
+        background: "#0e0e1c",
         boxSizing: "border-box",
       }}
     >

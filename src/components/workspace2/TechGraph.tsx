@@ -182,8 +182,8 @@ export default function TechGraph() {
         const svgSel = d3.select(svg);
         svgSel.selectAll("*").remove();
 
-        // Background - neo-brutalism cream
-        svgSel.append("rect").attr("width", width).attr("height", height).attr("fill", "#FEF9EF");
+        // Background - dark neo-brutalism
+        svgSel.append("rect").attr("width", width).attr("height", height).attr("fill", "#0e0e1c");
 
         const linkGroup = svgSel.append("g");
         const nodeGroup = svgSel.append("g");
@@ -195,7 +195,7 @@ export default function TechGraph() {
             .data(links)
             .join("line")
             .attr("stroke-width", 1.5)
-            .attr("stroke", "#1a1a2e")
+            .attr("stroke", "#e2e0f0")
             .attr("opacity", 0.15);
 
         // --- Nodes - bold with stroke ---
@@ -205,7 +205,7 @@ export default function TechGraph() {
             .join("circle")
             .attr("r", (d) => (d.type === "project" ? 12 : 6))
             .attr("fill", (d) => d.color)
-            .attr("stroke", "#1a1a2e")
+            .attr("stroke", "#e2e0f0")
             .attr("stroke-width", 2)
             .attr("opacity", 1)
             .style("cursor", "grab");
@@ -218,7 +218,7 @@ export default function TechGraph() {
             .text((d) => d.id)
             .attr("text-anchor", "middle")
             .attr("dy", (d) => (d.type === "project" ? -18 : -12))
-            .attr("fill", "#1a1a2e")
+            .attr("fill", "#e8e5f5")
             .attr("font-size", "0.65rem")
             .attr("font-weight", "700")
             .attr(
@@ -245,7 +245,7 @@ export default function TechGraph() {
                         const sid = nid(l.source);
                         const tid = nid(l.target);
                         if (sid === d.id || tid === d.id) return d.color;
-                        return "#1a1a2e";
+                        return "#e2e0f0";
                     })
                     .attr("stroke-width", (l) =>
                         nid(l.source) === d.id || nid(l.target) === d.id ? 3 : 1.5
@@ -292,7 +292,7 @@ export default function TechGraph() {
 
                 linkSel
                     .attr("stroke-width", 1.5)
-                    .attr("stroke", "#1a1a2e")
+                    .attr("stroke", "#e2e0f0")
                     .attr("opacity", 0.15);
 
                 d3.select(this)
@@ -427,18 +427,18 @@ export default function TechGraph() {
                     top: 16,
                     left: 16,
                     zIndex: 10,
-                    background: "#FFFFFF",
-                    border: "3px solid #1a1a2e",
+                    background: "#1a1a2e",
+                    border: "3px solid #e2e0f0",
                     borderRadius: 6,
                     padding: "0.6rem 0.875rem",
                     fontFamily:
                         '"CaskaydiaCove Nerd Font Mono", "JetBrains Mono", monospace',
-                    boxShadow: "3px 3px 0px #1a1a2e",
+                    boxShadow: "3px 3px 0px #4a4870",
                 }}
             >
                 <div
                     style={{
-                        color: "#1a1a2e",
+                        color: "#e8e5f5",
                         fontSize: "0.62rem",
                         letterSpacing: "0.08em",
                         textTransform: "uppercase",
@@ -464,11 +464,11 @@ export default function TechGraph() {
                                 height: "0.55rem",
                                 borderRadius: 2,
                                 background: e.color,
-                                border: "2px solid #1a1a2e",
+                                border: "2px solid #e2e0f0",
                                 flexShrink: 0,
                             }}
                         />
-                        <span style={{ color: "#374151", fontSize: "0.68rem", fontWeight: 600 }}>{e.label}</span>
+                        <span style={{ color: "#9896b8", fontSize: "0.68rem", fontWeight: 600 }}>{e.label}</span>
                     </div>
                 ))}
             </div>
@@ -485,8 +485,8 @@ export default function TechGraph() {
                         position: "absolute",
                         left: tooltip.x + 14,
                         top: tooltip.y - 10,
-                        background: "#FFFFFF",
-                        border: "3px solid #1a1a2e",
+                        background: "#1a1a2e",
+                        border: "3px solid #e2e0f0",
                         borderRadius: 6,
                         padding: "6px 10px",
                         fontSize: "0.7rem",
@@ -495,14 +495,14 @@ export default function TechGraph() {
                         pointerEvents: "none",
                         whiteSpace: "nowrap",
                         zIndex: 10,
-                        boxShadow: "3px 3px 0px #1a1a2e",
+                        boxShadow: "3px 3px 0px #4a4870",
                     }}
                 >
-                    <div style={{ color: "#1a1a2e", fontSize: "0.7rem", fontWeight: 800 }}>
+                    <div style={{ color: "#e8e5f5", fontSize: "0.7rem", fontWeight: 800 }}>
                         {tooltip.name}
                     </div>
                     {tooltip.connected.map((s) => (
-                        <div key={s} style={{ color: "#374151", fontSize: "0.65rem", fontWeight: 600 }}>
+                        <div key={s} style={{ color: "#9896b8", fontSize: "0.65rem", fontWeight: 600 }}>
                             {s}
                         </div>
                     ))}

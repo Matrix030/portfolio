@@ -54,7 +54,7 @@ function Kbd({ children }: { children: React.ReactNode }) {
       style={{
         display: "inline-block",
         background: "#FBBF24",
-        border: "2px solid #1a1a2e",
+        border: "2px solid #e2e0f0",
         borderRadius: 3,
         padding: "0px 5px",
         fontSize: "0.62rem",
@@ -62,7 +62,7 @@ function Kbd({ children }: { children: React.ReactNode }) {
         fontFamily: FONT,
         lineHeight: 1.6,
         fontWeight: 700,
-        boxShadow: "1px 1px 0px #1a1a2e",
+        boxShadow: "1px 1px 0px #4a4870",
       }}
     >
       {children}
@@ -71,7 +71,7 @@ function Kbd({ children }: { children: React.ReactNode }) {
 }
 
 function Dim({ children }: { children: React.ReactNode }) {
-  return <span style={{ color: "#6B7280", fontWeight: 600 }}>{children}</span>;
+  return <span style={{ color: "#6b6890", fontWeight: 600 }}>{children}</span>;
 }
 
 function Accent({ children }: { children: React.ReactNode }) {
@@ -119,10 +119,10 @@ export default function OnboardingHint() {
             transform: "translateX(-50%)",
             zIndex: 400,
             width: "clamp(320px, 38vw, 460px)",
-            background: "#FFFFFF",
-            border: "3px solid #1a1a2e",
+            background: "#1a1a2e",
+            border: "3px solid #e2e0f0",
             borderRadius: 8,
-            boxShadow: "6px 6px 0px #1a1a2e",
+            boxShadow: "6px 6px 0px #4a4870",
             fontFamily: FONT,
             overflow: "hidden",
           }}
@@ -132,7 +132,7 @@ export default function OnboardingHint() {
             style={{
               height: "1.9rem",
               background: "#A855F7",
-              borderBottom: "3px solid #1a1a2e",
+              borderBottom: "3px solid #e2e0f0",
               display: "flex",
               alignItems: "center",
               justifyContent: "space-between",
@@ -152,9 +152,9 @@ export default function OnboardingHint() {
             <button
               onClick={dismiss}
               style={{
-                background: "#FFFFFF",
-                border: "2px solid #1a1a2e",
-                color: "#1a1a2e",
+                background: "#1a1a2e",
+                border: "2px solid #e2e0f0",
+                color: "#e8e5f5",
                 cursor: "pointer",
                 fontSize: "0.7rem",
                 lineHeight: 1,
@@ -179,7 +179,7 @@ export default function OnboardingHint() {
             >
               <div
                 style={{
-                  color: "#1a1a2e",
+                  color: "#e8e5f5",
                   fontSize: "0.75rem",
                   fontWeight: 800,
                   marginBottom: "0.4rem",
@@ -189,7 +189,7 @@ export default function OnboardingHint() {
               </div>
               <div
                 style={{
-                  color: "#374151",
+                  color: "#9896b8",
                   fontSize: "0.68rem",
                   lineHeight: 1.65,
                   fontWeight: 500,
@@ -201,12 +201,12 @@ export default function OnboardingHint() {
                 <div
                   style={{
                     marginTop: "0.5rem",
-                    background: "#F5F0E8",
-                    border: "2px solid #1a1a2e",
+                    background: "#12121e",
+                    border: "2px solid #e2e0f0",
                     borderRadius: 4,
                     padding: "0.25rem 0.5rem",
                     fontSize: "0.6rem",
-                    color: "#1a1a2e",
+                    color: "#e8e5f5",
                     display: "inline-block",
                     fontWeight: 700,
                   }}
@@ -235,8 +235,8 @@ export default function OnboardingHint() {
                     width: i === step ? 18 : 8,
                     height: 8,
                     borderRadius: 3,
-                    background: i === step ? "#3B82F6" : "#F5F0E8",
-                    border: "2px solid #1a1a2e",
+                    background: i === step ? "#3B82F6" : "#12121e",
+                    border: "2px solid #e2e0f0",
                     transition: "all 0.2s",
                   }}
                 />
@@ -248,7 +248,7 @@ export default function OnboardingHint() {
               onClick={next}
               style={{
                 background: step === STEPS.length - 1 ? "#22C55E" : "#FBBF24",
-                border: "2px solid #1a1a2e",
+                border: "2px solid #e2e0f0",
                 borderRadius: 4,
                 padding: "0.25rem 0.75rem",
                 fontSize: "0.65rem",
@@ -256,7 +256,7 @@ export default function OnboardingHint() {
                 cursor: "pointer",
                 fontFamily: FONT,
                 fontWeight: 700,
-                boxShadow: "2px 2px 0px #1a1a2e",
+                boxShadow: "2px 2px 0px #4a4870",
                 transition: "all 0.1s",
               }}
             >

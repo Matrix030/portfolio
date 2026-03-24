@@ -33,8 +33,8 @@ export default function LauncherBar({
         left: 0,
         right: 0,
         height: 48,
-        background: '#FFFFFF',
-        borderTop: '3px solid #1a1a2e',
+        background: '#1a1a2e',
+        borderTop: '3px solid #e2e0f0',
         display: 'flex',
         alignItems: 'center',
         padding: '0 1rem',
@@ -44,7 +44,7 @@ export default function LauncherBar({
     >
       <span
         style={{
-          color: '#6B7280',
+          color: '#6b6890',
           fontSize: '0.65rem',
           fontFamily: FONT,
           marginRight: '0.5rem',
@@ -60,24 +60,24 @@ export default function LauncherBar({
         const isFocused = focusedId === id
         const isHovered = hovered === id
 
-        let bg = '#FFFFFF'
-        let color = '#374151'
-        const borderColor = '#1a1a2e'
+        let bg = '#1a1a2e'
+        let color = '#9896b8'
+        const borderColor = '#e2e0f0'
         let shadow = 'none'
 
         if (isFocused) {
           bg = '#FBBF24'
           color = '#1a1a2e'
-          shadow = '2px 2px 0px #1a1a2e'
+          shadow = '2px 2px 0px #4a4870'
         } else if (isOpen) {
-          bg = '#F5F0E8'
-          color = '#1a1a2e'
+          bg = '#12121e'
+          color = '#e8e5f5'
         }
 
         if (isHovered && !isFocused) {
-          bg = '#E0F2FE'
+          bg = '#0c1f2e'
           color = '#3B82F6'
-          shadow = '2px 2px 0px #1a1a2e'
+          shadow = '2px 2px 0px #4a4870'
         }
 
         return (
@@ -111,14 +111,14 @@ export default function LauncherBar({
 
       <span
         style={{
-          color: '#6B7280',
+          color: '#6b6890',
           fontSize: '0.6rem',
           fontFamily: FONT,
           marginLeft: 'auto',
           userSelect: 'none',
           fontWeight: 600,
-          background: '#F5F0E8',
-          border: '2px solid #1a1a2e',
+          background: '#12121e',
+          border: '2px solid #e2e0f0',
           borderRadius: 4,
           padding: '0.2rem 0.5rem',
         }}

@@ -107,11 +107,11 @@ export default function Window({
           position: "absolute",
           inset: 0,
           borderRadius: 8,
-          background: "#FFFFFF",
-          border: active ? "3px solid #3B82F6" : "3px solid #1a1a2e",
+          background: "#1a1a2e",
+          border: active ? "3px solid #3B82F6" : "3px solid #e2e0f0",
           boxShadow: active
             ? "5px 5px 0px #3B82F6"
-            : "4px 4px 0px #1a1a2e",
+            : "4px 4px 0px #4a4870",
           transition: "all 0.15s ease",
           overflow: "hidden",
           opacity: dimmed ? 0.45 : 1,
@@ -134,7 +134,7 @@ export default function Window({
           <span style={{ color: "#22C55E", fontWeight: 700 }}>{"➜"}</span>
           {"  "}
           <span style={{ color: "#06B6D4", fontWeight: 600 }}>portfolio</span>
-          <span style={{ color: "#1a1a2e" }}>:</span>
+          <span style={{ color: "#e8e5f5" }}>:</span>
           <span style={{ color: "#A855F7", fontWeight: 600 }}>({title.toUpperCase()})</span>
         </div>
 
@@ -167,16 +167,16 @@ export default function Window({
               alignItems: "center",
               justifyContent: "center",
               gap: "0.3rem",
-              background: "rgba(254,249,239,0.7)",
+              background: "rgba(14,14,28,0.7)",
               borderRadius: 8,
-              border: "3px solid #1a1a2e",
+              border: "3px solid #e2e0f0",
               pointerEvents: "none",
               zIndex: 1,
             }}
           >
             <span
               style={{
-                color: "#374151",
+                color: "#9896b8",
                 fontFamily: FONT,
                 fontSize: "0.6rem",
                 letterSpacing: "0.12em",
@@ -198,7 +198,7 @@ export default function Window({
             </span>
             <span
               style={{
-                color: "#6B7280",
+                color: "#6b6890",
                 fontFamily: FONT,
                 fontSize: "0.58rem",
                 fontWeight: 600,

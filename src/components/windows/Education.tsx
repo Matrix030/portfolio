@@ -7,7 +7,7 @@ const education = [
     period: "Sept 2024 — May 2026",
     gpa: "3.8 / 4.0",
     color: "#3B82F6",
-    bg: "#DBEAFE",
+    bg: "#1a2545",
     coursework: [
       "Big Data Analytics",
       "Machine Learning",
@@ -22,7 +22,7 @@ const education = [
     period: "2020 — 2024",
     gpa: null,
     color: "#22C55E",
-    bg: "#DCFCE7",
+    bg: "#0d2518",
     coursework: [],
   },
 ];
@@ -57,7 +57,7 @@ export default function Education() {
                 bottom: 0,
                 width: 4,
                 background: entry.color,
-                border: "1px solid #1a1a2e",
+                border: "1px solid #e2e0f0",
                 borderRadius: 2,
               }}
             />
@@ -67,7 +67,7 @@ export default function Education() {
               style={{
                 fontSize: "0.82rem",
                 fontWeight: 800,
-                color: "#1a1a2e",
+                color: "#e8e5f5",
               }}
             >
               {entry.school}
@@ -82,7 +82,7 @@ export default function Education() {
                 background: entry.color,
                 display: "inline-block",
                 padding: "2px 8px",
-                border: "2px solid #1a1a2e",
+                border: "2px solid #e2e0f0",
                 borderRadius: 3,
                 width: "fit-content",
               }}
@@ -92,17 +92,17 @@ export default function Education() {
 
             {/* Period + GPA */}
             <div style={{ display: "flex", gap: 12 }}>
-              <span style={{ fontSize: "0.65rem", color: "#6B7280", fontWeight: 600 }}>
+              <span style={{ fontSize: "0.65rem", color: "#6b6890", fontWeight: 600 }}>
                 {entry.period}
               </span>
               {entry.gpa && (
                 <span
                   style={{
                     fontSize: "0.65rem",
-                    color: "#1a1a2e",
+                    color: "#e8e5f5",
                     fontWeight: 700,
-                    background: "#DCFCE7",
-                    border: "2px solid #1a1a2e",
+                    background: "#0d2518",
+                    border: "2px solid #e2e0f0",
                     borderRadius: 3,
                     padding: "0 6px",
                   }}
@@ -127,11 +127,11 @@ export default function Education() {
                     key={course}
                     style={{
                       background: entry.bg,
-                      border: "2px solid #1a1a2e",
+                      border: "2px solid #e2e0f0",
                       borderRadius: 3,
                       padding: "2px 8px",
                       fontSize: "0.63rem",
-                      color: "#1a1a2e",
+                      color: "#e8e5f5",
                       fontWeight: 700,
                     }}
                   >
@@ -147,7 +147,7 @@ export default function Education() {
             <div
               style={{
                 height: 3,
-                background: "#1a1a2e",
+                background: "#e2e0f0",
                 marginTop: 16,
               }}
             />

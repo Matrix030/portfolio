@@ -262,7 +262,7 @@ export default function DwindleDesktop() {
         position: 'relative',
         width: '100%',
         height: '100%',
-        background: '#FEF9EF',
+        background: '#0e0e1c',
         overflow: 'hidden',
       }}
     >

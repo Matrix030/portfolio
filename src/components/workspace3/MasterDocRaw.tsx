@@ -100,8 +100,8 @@ const TOKEN_COLORS: Record<TokenType, string> = {
   string: "#22C55E",
   number: "#F97316",
   boolean: "#A855F7",
-  null: "#6B7280",
-  punctuation: "#374151",
+  null: "#6b6890",
+  punctuation: "#9896b8",
   whitespace: "inherit",
 };
 
@@ -153,12 +153,12 @@ function CopyIcon() {
 // ---------------------------------------------------------------------------
 
 const btnBase: React.CSSProperties = {
-  background: "#FFFFFF",
-  border: "2px solid #1a1a2e",
+  background: "#1a1a2e",
+  border: "2px solid #e2e0f0",
   borderRadius: 4,
   padding: "3px 10px",
   fontSize: "0.65rem",
-  color: "#1a1a2e",
+  color: "#e8e5f5",
   cursor: "pointer",
   fontFamily: FONT,
   lineHeight: 1,
@@ -166,7 +166,7 @@ const btnBase: React.CSSProperties = {
   alignItems: "center",
   gap: 4,
   fontWeight: 700,
-  boxShadow: "2px 2px 0px #1a1a2e",
+  boxShadow: "2px 2px 0px #4a4870",
 };
 
 // ---------------------------------------------------------------------------
@@ -218,8 +218,8 @@ export default function MasterDocRaw() {
       <div
         style={{
           height: "2.5rem",
-          background: "#F5F0E8",
-          borderBottom: "2px solid #1a1a2e",
+          background: "#12121e",
+          borderBottom: "2px solid #e2e0f0",
           padding: "0 0.75rem",
           display: "flex",
           alignItems: "center",
@@ -227,7 +227,7 @@ export default function MasterDocRaw() {
           flexShrink: 0,
         }}
       >
-        <span style={{ color: "#1a1a2e", fontSize: "0.7rem", fontWeight: 700 }}>
+        <span style={{ color: "#e8e5f5", fontSize: "0.7rem", fontWeight: 700 }}>
           master.json
         </span>
         <div style={{ display: "flex", gap: "0.5rem" }}>
@@ -244,8 +244,8 @@ export default function MasterDocRaw() {
       <div
         style={{
           padding: "0.45rem 0.75rem",
-          background: "#DBEAFE",
-          borderBottom: "2px solid #1a1a2e",
+          background: "#1a2545",
+          borderBottom: "2px solid #e2e0f0",
           flexShrink: 0,
           display: "flex",
           alignItems: "flex-start",
@@ -256,10 +256,10 @@ export default function MasterDocRaw() {
           *
         </span>
         <div>
-          <span style={{ color: "#1a1a2e", fontSize: "0.68rem", fontWeight: 800 }}>
+          <span style={{ color: "#e8e5f5", fontSize: "0.68rem", fontWeight: 800 }}>
             AI-ready context
           </span>
-          <span style={{ color: "#374151", fontSize: "0.68rem", fontWeight: 500 }}>
+          <span style={{ color: "#9896b8", fontSize: "0.68rem", fontWeight: 500 }}>
             {" "}— curl or download this file and drop it into ChatGPT, Claude, or any LLM.
             Ask it anything about my background, projects, or skills.
           </span>
@@ -270,8 +270,8 @@ export default function MasterDocRaw() {
       <div
         style={{
           padding: "0.5rem 0.75rem",
-          background: "#F5F0E8",
-          borderBottom: "2px solid #1a1a2e",
+          background: "#12121e",
+          borderBottom: "2px solid #e2e0f0",
           flexShrink: 0,
         }}
       >
@@ -280,7 +280,7 @@ export default function MasterDocRaw() {
             fontSize: "0.6rem",
             textTransform: "uppercase",
             letterSpacing: "0.08em",
-            color: "#1a1a2e",
+            color: "#e8e5f5",
             marginBottom: "0.3rem",
             fontWeight: 800,
           }}
@@ -289,14 +289,14 @@ export default function MasterDocRaw() {
         </div>
         <div
           style={{
-            background: "#FFFFFF",
-            border: "2px solid #1a1a2e",
+            background: "#1a1a2e",
+            border: "2px solid #e2e0f0",
             borderRadius: 5,
             padding: "0.4rem 0.75rem",
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
-            boxShadow: "2px 2px 0px #1a1a2e",
+            boxShadow: "2px 2px 0px #4a4870",
           }}
         >
           <span style={{ fontSize: "0.7rem", color: "#22C55E", fontWeight: 700 }}>
@@ -308,7 +308,7 @@ export default function MasterDocRaw() {
               background: "transparent",
               border: "none",
               cursor: "pointer",
-              color: curlCopied ? "#22C55E" : "#6B7280",
+              color: curlCopied ? "#22C55E" : "#6b6890",
               padding: "2px 4px",
               display: "flex",
               alignItems: "center",

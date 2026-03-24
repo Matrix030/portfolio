@@ -8,7 +8,7 @@ const experience = [
     role: "Data Engineering Intern",
     period: "Apr 2023 — Sept 2023",
     color: "#3B82F6",
-    bg: "#DBEAFE",
+    bg: "#1a2545",
     points: [
       "85% reduction in report generation time by streamlining a PostgreSQL + Redis pipeline across 36 offices",
       "Reduced CSV proforma processing from 6 hours to 4 minutes via automated ingestion pipeline",
@@ -20,7 +20,7 @@ const experience = [
     role: "Software Development Intern",
     period: "Apr 2022 — Mar 2023",
     color: "#22C55E",
-    bg: "#DCFCE7",
+    bg: "#0d2518",
     points: [
       "Debugged audit logging module in PHP + PostgreSQL, resolving 6 critical defects",
       "Increased end-to-end test coverage to 85% across RBAC and audit logging workflows",
@@ -47,15 +47,15 @@ export default function Experience() {
         <div
           key={`${exp.company}-${exp.role}`}
           style={{
-            background: "#FFFFFF",
-            border: "2px solid #1a1a2e",
+            background: "#1a1a2e",
+            border: "2px solid #e2e0f0",
             borderRadius: 6,
             padding: "10px 12px",
             transition: "all 0.1s",
             flexShrink: 0,
             boxShadow: hovered === i
-              ? "4px 4px 0px #1a1a2e"
-              : "2px 2px 0px #1a1a2e",
+              ? "4px 4px 0px #4a4870"
+              : "2px 2px 0px #4a4870",
             transform: hovered === i
               ? "translate(-2px, -2px)"
               : "translate(0, 0)",
@@ -72,17 +72,17 @@ export default function Experience() {
             }}
           >
             <span
-              style={{ color: "#1a1a2e", fontSize: "0.78rem", fontWeight: 800 }}
+              style={{ color: "#e8e5f5", fontSize: "0.78rem", fontWeight: 800 }}
             >
               {exp.company}
             </span>
             <span
               style={{
-                color: "#6B7280",
+                color: "#6b6890",
                 fontSize: "0.65rem",
                 fontWeight: 600,
-                background: "#F5F0E8",
-                border: "2px solid #1a1a2e",
+                background: "#12121e",
+                border: "2px solid #e2e0f0",
                 borderRadius: 3,
                 padding: "1px 6px",
               }}
@@ -101,7 +101,7 @@ export default function Experience() {
               background: exp.color,
               display: "inline-block",
               padding: "2px 8px",
-              border: "2px solid #1a1a2e",
+              border: "2px solid #e2e0f0",
               borderRadius: 3,
             }}
           >
@@ -121,7 +121,7 @@ export default function Experience() {
               <div
                 key={point}
                 style={{
-                  color: "#374151",
+                  color: "#9896b8",
                   fontSize: "0.67rem",
                   lineHeight: 1.5,
                   fontWeight: 500,

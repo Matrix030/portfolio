@@ -15,13 +15,13 @@ const SKILL_COLORS: Record<string, string> = {
 };
 
 const SKILL_BG: Record<string, string> = {
-  languages: "#DBEAFE",
-  frameworks: "#F3E8FF",
-  databases: "#FEF9C3",
-  infra_devops: "#CFFAFE",
-  cloud_tools: "#DCFCE7",
-  ai_ml: "#FFE4E6",
-  concepts: "#FFEDD5",
+  languages: "#1a2545",
+  frameworks: "#1d1430",
+  databases: "#231d0e",
+  infra_devops: "#0c1f2e",
+  cloud_tools: "#0d2518",
+  ai_ml: "#22101a",
+  concepts: "#221508",
 };
 
 const SKILL_LABELS: Record<string, string> = {
@@ -38,7 +38,7 @@ const sectionLabel: React.CSSProperties = {
   fontSize: "0.62rem",
   textTransform: "uppercase",
   letterSpacing: "0.08em",
-  color: "#1a1a2e",
+  color: "#e8e5f5",
   marginBottom: "0.4rem",
   fontFamily: FONT,
   fontWeight: 800,
@@ -46,7 +46,7 @@ const sectionLabel: React.CSSProperties = {
 
 const divider: React.CSSProperties = {
   height: 3,
-  background: "#1a1a2e",
+  background: "#e2e0f0",
   margin: "0.25rem 0",
 };
 
@@ -62,11 +62,11 @@ function Tag({
     <span
       style={{
         background: bg,
-        border: "2px solid #1a1a2e",
+        border: "2px solid #e2e0f0",
         borderRadius: 3,
         padding: "1px 7px",
         fontSize: "0.61rem",
-        color: "#1a1a2e",
+        color: "#e8e5f5",
         fontFamily: FONT,
         flexShrink: 0,
         fontWeight: 700,
@@ -81,12 +81,12 @@ function MetricPill({ children }: { children: React.ReactNode }) {
   return (
     <span
       style={{
-        background: "#DCFCE7",
-        border: "2px solid #1a1a2e",
+        background: "#0d2518",
+        border: "2px solid #e2e0f0",
         borderRadius: 3,
         padding: "1px 7px",
         fontSize: "0.6rem",
-        color: "#1a1a2e",
+        color: "#e8e5f5",
         fontFamily: FONT,
         flexShrink: 0,
         fontWeight: 700,
@@ -141,7 +141,7 @@ export default function MasterDocViewer() {
       {/* Header */}
       <div style={{ display: "flex", flexDirection: "column", gap: "0.2rem" }}>
         <span
-          style={{ fontSize: "1.1rem", fontWeight: 800, color: "#1a1a2e" }}
+          style={{ fontSize: "1.1rem", fontWeight: 800, color: "#e8e5f5" }}
         >
           Rishikesh Gharat
         </span>
@@ -153,22 +153,22 @@ export default function MasterDocViewer() {
       {/* Recruiter tip */}
       <div
         style={{
-          background: "#DCFCE7",
-          border: "2px solid #1a1a2e",
+          background: "#0d2518",
+          border: "2px solid #e2e0f0",
           borderRadius: 6,
           padding: "0.45rem 0.65rem",
           display: "flex",
           flexDirection: "column",
           gap: "0.15rem",
-          boxShadow: "2px 2px 0px #1a1a2e",
+          boxShadow: "2px 2px 0px #4a4870",
         }}
       >
         <span
-          style={{ color: "#1a1a2e", fontSize: "0.65rem", fontWeight: 800 }}
+          style={{ color: "#e8e5f5", fontSize: "0.65rem", fontWeight: 800 }}
         >
           For recruiters & AI tools
         </span>
-        <span style={{ color: "#374151", fontSize: "0.63rem", lineHeight: 1.5, fontWeight: 500 }}>
+        <span style={{ color: "#9896b8", fontSize: "0.63rem", lineHeight: 1.5, fontWeight: 500 }}>
           The panel on the right exposes a structured JSON endpoint of my full
           background. Curl it or download it and paste into your AI of choice —
           ask anything about my experience, skills, or projects.
@@ -184,8 +184,8 @@ export default function MasterDocViewer() {
           style={{ display: "flex", flexDirection: "column", gap: "0.55rem" }}
         >
           {Object.entries(SKILL_LABELS).map(([key, label]) => {
-            const color = SKILL_COLORS[key] ?? "#1a1a2e";
-            const bg = SKILL_BG[key] ?? "#F5F0E8";
+            const color = SKILL_COLORS[key] ?? "#e8e5f5";
+            const bg = SKILL_BG[key] ?? "#12121e";
             const items = skills[key] ?? [];
             return (
               <div key={key}>
@@ -203,13 +203,13 @@ export default function MasterDocViewer() {
                       height: 7,
                       borderRadius: 2,
                       background: color,
-                      border: "2px solid #1a1a2e",
+                      border: "2px solid #e2e0f0",
                       flexShrink: 0,
                     }}
                   />
                   <span
                     style={{
-                      color: "#1a1a2e",
+                      color: "#e8e5f5",
                       fontSize: "0.6rem",
                       fontWeight: 800,
                       letterSpacing: "0.05em",
@@ -239,11 +239,11 @@ export default function MasterDocViewer() {
         <div style={sectionLabel}>Experience</div>
         <div
           style={{
-            background: "#FFFFFF",
-            border: "2px solid #1a1a2e",
+            background: "#1a1a2e",
+            border: "2px solid #e2e0f0",
             borderRadius: 6,
             padding: "0.6rem 0.75rem",
-            boxShadow: "2px 2px 0px #1a1a2e",
+            boxShadow: "2px 2px 0px #4a4870",
           }}
         >
           <div
@@ -256,18 +256,18 @@ export default function MasterDocViewer() {
             <div>
               <div
                 style={{
-                  color: "#1a1a2e",
+                  color: "#e8e5f5",
                   fontSize: "0.78rem",
                   fontWeight: 800,
                 }}
               >
                 {internship.org}
               </div>
-              <div style={{ color: "#6B7280", fontSize: "0.65rem", fontWeight: 600 }}>
+              <div style={{ color: "#6b6890", fontSize: "0.65rem", fontWeight: 600 }}>
                 {internship.parent_org}
               </div>
             </div>
-            <span style={{ color: "#374151", fontSize: "0.65rem", flexShrink: 0, marginLeft: 8, fontWeight: 600 }}>
+            <span style={{ color: "#9896b8", fontSize: "0.65rem", flexShrink: 0, marginLeft: 8, fontWeight: 600 }}>
               {internship.total_duration}
             </span>
           </div>
@@ -288,14 +288,14 @@ export default function MasterDocViewer() {
                   alignItems: "center",
                   gap: 6,
                   fontSize: "0.67rem",
-                  color: "#374151",
+                  color: "#9896b8",
                   fontWeight: 600,
                 }}
               >
                 <span style={{ color: "#3B82F6", fontWeight: 700 }}>▸</span>
                 <span>{role.title}</span>
-                <span style={{ color: "#1a1a2e" }}>·</span>
-                <span style={{ color: "#6B7280" }}>{role.dates}</span>
+                <span style={{ color: "#e8e5f5" }}>·</span>
+                <span style={{ color: "#6b6890" }}>{role.dates}</span>
               </div>
             ))}
           </div>
@@ -306,10 +306,10 @@ export default function MasterDocViewer() {
               fontSize: "0.68rem",
               fontWeight: 700,
               marginTop: "0.35rem",
-              background: "#DCFCE7",
+              background: "#0d2518",
               display: "inline-block",
               padding: "2px 8px",
-              border: "2px solid #1a1a2e",
+              border: "2px solid #e2e0f0",
               borderRadius: 3,
             }}
           >
@@ -327,15 +327,15 @@ export default function MasterDocViewer() {
             {/* FADS */}
             <div
               style={{
-                background: "#F5F0E8",
-                border: "2px solid #1a1a2e",
+                background: "#12121e",
+                border: "2px solid #e2e0f0",
                 borderRadius: 5,
                 padding: "0.5rem 0.75rem",
               }}
             >
               <div
                 style={{
-                  color: "#1a1a2e",
+                  color: "#e8e5f5",
                   fontSize: "0.75rem",
                   fontWeight: 800,
                   marginBottom: "0.3rem",
@@ -345,7 +345,7 @@ export default function MasterDocViewer() {
               </div>
               <div style={{ display: "flex", flexWrap: "wrap", gap: 3, marginBottom: "0.3rem" }}>
                 {internship.projects.fads.stack.map((t) => (
-                  <Tag key={t} color="#3B82F6" bg="#DBEAFE">
+                  <Tag key={t} color="#3B82F6" bg="#1a2545">
                     {t}
                   </Tag>
                 ))}
@@ -359,15 +359,15 @@ export default function MasterDocViewer() {
             {/* Mail Tracking */}
             <div
               style={{
-                background: "#F5F0E8",
-                border: "2px solid #1a1a2e",
+                background: "#12121e",
+                border: "2px solid #e2e0f0",
                 borderRadius: 5,
                 padding: "0.5rem 0.75rem",
               }}
             >
               <div
                 style={{
-                  color: "#1a1a2e",
+                  color: "#e8e5f5",
                   fontSize: "0.75rem",
                   fontWeight: 800,
                   marginBottom: "0.3rem",
@@ -377,7 +377,7 @@ export default function MasterDocViewer() {
               </div>
               <div style={{ display: "flex", flexWrap: "wrap", gap: 3, marginBottom: "0.3rem" }}>
                 {internship.projects.mail_tracking.stack.map((t) => (
-                  <Tag key={t} color="#22C55E" bg="#DCFCE7">
+                  <Tag key={t} color="#22C55E" bg="#0d2518">
                     {t}
                   </Tag>
                 ))}
@@ -407,11 +407,11 @@ export default function MasterDocViewer() {
               <div
                 key={key}
                 style={{
-                  background: "#FFFFFF",
-                  border: "2px solid #1a1a2e",
+                  background: "#1a1a2e",
+                  border: "2px solid #e2e0f0",
                   borderRadius: 5,
                   padding: "0.5rem 0.75rem",
-                  boxShadow: "2px 2px 0px #1a1a2e",
+                  boxShadow: "2px 2px 0px #4a4870",
                 }}
               >
                 <div
@@ -425,7 +425,7 @@ export default function MasterDocViewer() {
                 >
                   <span
                     style={{
-                      color: "#1a1a2e",
+                      color: "#e8e5f5",
                       fontSize: "0.8rem",
                       fontWeight: 800,
                     }}
@@ -437,12 +437,12 @@ export default function MasterDocViewer() {
                       <span
                         key={d}
                         style={{
-                          background: "#F3E8FF",
-                          border: "2px solid #1a1a2e",
+                          background: "#1d1430",
+                          border: "2px solid #e2e0f0",
                           borderRadius: 3,
                           padding: "1px 6px",
                           fontSize: "0.58rem",
-                          color: "#1a1a2e",
+                          color: "#e8e5f5",
                           fontFamily: FONT,
                           fontWeight: 700,
                         }}
@@ -466,12 +466,12 @@ export default function MasterDocViewer() {
                       <span
                         key={t}
                         style={{
-                          background: "#F5F0E8",
-                          border: "2px solid #1a1a2e",
+                          background: "#12121e",
+                          border: "2px solid #e2e0f0",
                           borderRadius: 3,
                           padding: "1px 6px",
                           fontSize: "0.6rem",
-                          color: "#1a1a2e",
+                          color: "#e8e5f5",
                           fontFamily: FONT,
                           fontWeight: 700,
                         }}
@@ -485,7 +485,7 @@ export default function MasterDocViewer() {
                 {metrics.length > 0 && (
                   <div
                     style={{
-                      background: "#DCFCE7",
+                      background: "#0d2518",
                       borderLeft: "4px solid #22C55E",
                       borderRadius: "0 4px 4px 0",
                       padding: "0.35rem 0.6rem",
@@ -497,7 +497,7 @@ export default function MasterDocViewer() {
                         key={m}
                         style={{
                           fontSize: "0.68rem",
-                          color: "#1a1a2e",
+                          color: "#e8e5f5",
                           lineHeight: 1.6,
                           fontWeight: 700,
                         }}
@@ -510,7 +510,7 @@ export default function MasterDocViewer() {
 
                 <div
                   style={{
-                    color: "#374151",
+                    color: "#9896b8",
                     fontSize: "0.7rem",
                     lineHeight: 1.5,
                     fontWeight: 500,
@@ -535,13 +535,13 @@ export default function MasterDocViewer() {
           {achievements.map((a, i) => (
             <div key={i} style={{
               fontSize: "0.75rem",
-              color: "#1a1a2e",
+              color: "#e8e5f5",
               fontWeight: 700,
-              background: "#FEF9C3",
-              border: "2px solid #1a1a2e",
+              background: "#231d0e",
+              border: "2px solid #e2e0f0",
               borderRadius: 4,
               padding: "0.25rem 0.5rem",
-              boxShadow: "2px 2px 0px #1a1a2e",
+              boxShadow: "2px 2px 0px #4a4870",
             }}>
               {a.text}
             </div>

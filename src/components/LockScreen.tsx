@@ -61,7 +61,7 @@ export default function LockScreen({ onUnlock }: LockScreenProps) {
                 position: "fixed",
                 inset: 0,
                 zIndex: 1000,
-                background: "rgba(254,249,239,0.85)",
+                background: "rgba(14,14,28,0.85)",
                 fontFamily: '"CaskaydiaCove Nerd Font Mono", "JetBrains Mono", monospace',
                 overflow: "hidden",
             }}
@@ -84,7 +84,7 @@ export default function LockScreen({ onUnlock }: LockScreenProps) {
                     {...fadeUp(0.3)}
                     style={{
                         fontSize: "clamp(4rem, 10vw, 7rem)",
-                        color: "#1a1a2e",
+                        color: "#e8e5f5",
                         fontWeight: 800,
                         letterSpacing: "-0.02em",
                         lineHeight: 1,
@@ -99,7 +99,7 @@ export default function LockScreen({ onUnlock }: LockScreenProps) {
                     {...fadeUp(0.4)}
                     style={{
                         fontSize: "clamp(1rem, 2.5vw, 1.8rem)",
-                        color: "#1a1a2e",
+                        color: "#e8e5f5",
                         fontWeight: 700,
                     }}
                 >
@@ -111,14 +111,14 @@ export default function LockScreen({ onUnlock }: LockScreenProps) {
                     {...fadeUp(0.5)}
                     style={{
                         fontSize: "clamp(0.8rem, 1.5vw, 1.1rem)",
-                        color: "#374151",
+                        color: "#9896b8",
                         marginTop: "0.5rem",
                         fontWeight: 600,
                         background: "#FBBF24",
-                        border: "3px solid #1a1a2e",
+                        border: "3px solid #e2e0f0",
                         borderRadius: 6,
                         padding: "0.4rem 1rem",
-                        boxShadow: "3px 3px 0px #1a1a2e",
+                        boxShadow: "3px 3px 0px #4a4870",
                     }}
                 >
                     Hey visitor, welcome to my portfolio!
@@ -135,12 +135,12 @@ export default function LockScreen({ onUnlock }: LockScreenProps) {
                         transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
                         style={{
                             fontSize: "0.72rem",
-                            color: "#6B7280",
+                            color: "#6b6890",
                             fontWeight: 600,
-                            border: "2px solid #1a1a2e",
+                            border: "2px solid #e2e0f0",
                             borderRadius: 4,
                             padding: "0.3rem 0.8rem",
-                            background: "#FFFFFF",
+                            background: "#1a1a2e",
                         }}
                     >
                         press any key to continue
@@ -159,10 +159,10 @@ export default function LockScreen({ onUnlock }: LockScreenProps) {
                     gap: "0.3rem",
                 }}
             >
-                <span style={{ color: "#6B7280", fontSize: "0.72rem", fontWeight: 600 }}>
+                <span style={{ color: "#6b6890", fontSize: "0.72rem", fontWeight: 600 }}>
                     Linux 6.18.9-arch1-2
                 </span>
-                <span style={{ color: "#6B7280", fontSize: "0.72rem", fontWeight: 600 }}>
+                <span style={{ color: "#6b6890", fontSize: "0.72rem", fontWeight: 600 }}>
                     up 2h 30m
                 </span>
             </div>
@@ -175,7 +175,7 @@ export default function LockScreen({ onUnlock }: LockScreenProps) {
                     right: "1.5rem",
                 }}
             >
-                <span style={{ color: "#6B7280", fontSize: "0.72rem", fontWeight: 600 }}>
+                <span style={{ color: "#6b6890", fontSize: "0.72rem", fontWeight: 600 }}>
                     New York, NY
                 </span>
             </div>
