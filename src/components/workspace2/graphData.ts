@@ -81,7 +81,6 @@ export const rawNodes: NodeDatum[] = [
     { id: "Dask", type: "skill", cluster: "distributed", color: clusterColors.distributed },
     { id: "PostgreSQL", type: "skill", cluster: "distributed", color: clusterColors.distributed },
     { id: "MongoDB", type: "skill", cluster: "distributed", color: clusterColors.distributed },
-    { id: "Redis", type: "skill", cluster: "distributed", color: clusterColors.distributed },
     { id: "ETL Pipelines", type: "skill", cluster: "distributed", color: clusterColors.distributed },
     { id: "Parquet", type: "skill", cluster: "distributed", color: clusterColors.distributed },
     { id: "Java 21", type: "skill", cluster: "distributed", color: clusterColors.distributed },
@@ -98,7 +97,6 @@ export const rawNodes: NodeDatum[] = [
     { id: "Docker", type: "skill", cluster: "infra", color: clusterColors.infra },
     { id: "CI/CD", type: "skill", cluster: "infra", color: clusterColors.infra },
     { id: "Linux", type: "skill", cluster: "infra", color: clusterColors.infra },
-    { id: "Terraform", type: "skill", cluster: "infra", color: clusterColors.infra },
 
     // ── Research skills ────────────────────────────────────────────────
     { id: "NLP", type: "skill", cluster: "research", color: clusterColors.research },
@@ -132,6 +130,7 @@ export const rawLinks: LinkDatum[] = [
     { source: "SteamLensAI", target: "PyTorch" },
     { source: "SteamLensAI", target: "Transformers" },
     { source: "SteamLensAI", target: "Parquet" },
+    { source: "SteamLensAI", target: "MongoDB" },
     { source: "SteamLensAI", target: "ETL Pipelines" },
     { source: "SteamLensAI", target: "GPU Optimization" },
 
