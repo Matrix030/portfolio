@@ -3,7 +3,6 @@
 const stats = [
     "📍 New York, NY",
     "🎓 NYU Tandon — May 2026",
-    "💼 Open to work",
     "🖥 Go · Python · TypeScript",
 ];
 
