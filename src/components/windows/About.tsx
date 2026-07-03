@@ -66,7 +66,7 @@ export default function About() {
                     }}
                 >
                     NYU CS grad student finishing May 2026. I build full-stack systems and
-                    ML pipelines — currently obsessed with Go concurrency, LLM
+                    distributed system — currently obsessed with Go concurrency, LLM
                     applications, and making things fast.
                 </div>
             </div>
