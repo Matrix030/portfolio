@@ -3,8 +3,6 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
-// Place your resume PDF at /public/resume.pdf for the download to work
-
 const FONT = '"CaskaydiaCove Nerd Font Mono", "JetBrains Mono", monospace';
 
 function IconGitHub() {
@@ -23,15 +21,6 @@ function IconLinkedIn() {
   );
 }
 
-function IconDownload() {
-  return (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M12 3v13M7 11l5 5 5-5" />
-      <path d="M5 21h14" />
-    </svg>
-  );
-}
-
 function IconMail() {
   return (
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -43,24 +32,15 @@ function IconMail() {
 
 const items = [
   {
-    label: "Resume",
-    icon: <IconDownload />,
-    color: "#a6d189",
-    action: "download" as const,
-    href: "/Portfolio_Rishikesh_Gharat_Resume.pdf",
-  },
-  {
     label: "LinkedIn",
     icon: <IconLinkedIn />,
     color: "#8caaee",
-    action: "link" as const,
     href: "https://linkedin.com/in/rishikesh-gharat",
   },
   {
     label: "GitHub",
     icon: <IconGitHub />,
     color: "#ca9ee6",
-    action: "link" as const,
     href: "https://github.com/Matrix030",
   },
 ];
@@ -74,14 +54,7 @@ export default function ContactFAB() {
   const [mainHovered, setMainHovered] = useState(false);
 
   function handleAction(item: (typeof items)[number]) {
-    if (item.action === "link") {
-      window.open(item.href, "_blank");
-    } else {
-      const a = document.createElement("a");
-      a.href = item.href;
-      a.download = "Portfolio_Rishikesh_Gharat_Resume.pdf";
-      a.click();
-    }
+    window.open(item.href, "_blank");
   }
 
   return (
